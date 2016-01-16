@@ -148,9 +148,9 @@
 		02DF52911C4AF508003D9E33 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				02DF52921C4AF625003D9E33 /* NoteDetailViewController.swift */,
 				02DF528B1C4AF10A003D9E33 /* CategoryTableViewController.swift */,
 				02DF528F1C4AF4FF003D9E33 /* NotesTableViewController.swift */,
+				02DF52921C4AF625003D9E33 /* NoteDetailViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
