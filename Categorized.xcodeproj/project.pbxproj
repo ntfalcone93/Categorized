@@ -14,6 +14,7 @@
 		02DF52681C4AEFBE003D9E33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02DF52661C4AEFBE003D9E33 /* LaunchScreen.storyboard */; };
 		02DF52731C4AEFBE003D9E33 /* CategorizedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52721C4AEFBE003D9E33 /* CategorizedTests.swift */; };
 		02DF527E1C4AEFBE003D9E33 /* CategorizedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF527D1C4AEFBE003D9E33 /* CategorizedUITests.swift */; };
+		02DF528C1C4AF10A003D9E33 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF528B1C4AF10A003D9E33 /* CategoryTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		02DF52791C4AEFBE003D9E33 /* CategorizedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CategorizedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		02DF527D1C4AEFBE003D9E33 /* CategorizedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorizedUITests.swift; sourceTree = "<group>"; };
 		02DF527F1C4AEFBE003D9E33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02DF528B1C4AF10A003D9E33 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				02DF525D1C4AEFBE003D9E33 /* AppDelegate.swift */,
 				02DF525F1C4AEFBE003D9E33 /* ViewController.swift */,
+				02DF528B1C4AF10A003D9E33 /* CategoryTableViewController.swift */,
 				02DF52611C4AEFBE003D9E33 /* Main.storyboard */,
 				02DF52641C4AEFBE003D9E33 /* Assets.xcassets */,
 				02DF52661C4AEFBE003D9E33 /* LaunchScreen.storyboard */,
@@ -258,6 +261,7 @@
 			files = (
 				02DF52601C4AEFBE003D9E33 /* ViewController.swift in Sources */,
 				02DF525E1C4AEFBE003D9E33 /* AppDelegate.swift in Sources */,
+				02DF528C1C4AF10A003D9E33 /* CategoryTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
