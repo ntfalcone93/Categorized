@@ -1,5 +1,5 @@
 //
-//  CategoryTableViewController.swift
+//  NotesTableViewController.swift
 //  Categorized
 //
 //  Created by Nathan on 1/16/16.
@@ -8,15 +8,17 @@
 
 import UIKit
 
-class CategoryTableViewController: UITableViewController {
+class NotesTableViewController: UITableViewController {
+    
+    // IBOutlets
+    @IBOutlet weak var noteCount: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Toolbar setup
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
         
-        
-        // Allows editing
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
@@ -25,13 +27,13 @@ class CategoryTableViewController: UITableViewController {
     @IBAction func editButtonTapped(sender: AnyObject) {
         
     }
+    
     // New button
     @IBAction func newButtonTapped(sender: AnyObject) {
         
     }
     
     // MARK: - Table view data source
-    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -41,7 +43,7 @@ class CategoryTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("categoryCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("noteCell", forIndexPath: indexPath)
         
         return cell
     }
