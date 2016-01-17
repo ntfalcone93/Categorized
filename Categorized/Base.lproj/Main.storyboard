@@ -79,10 +79,9 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
+                        <barButtonItem title="    " id="2Lw-PD-UTn"/>
                         <barButtonItem systemItem="flexibleSpace" id="GET-6j-4ja"/>
-                        <barButtonItem title="noteCount" id="33x-6L-1TL">
-                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        </barButtonItem>
+                        <barButtonItem title="noteCount" id="33x-6L-1TL"/>
                         <barButtonItem systemItem="flexibleSpace" id="OFz-ZR-tcD"/>
                         <barButtonItem title="New" id="K4h-Wt-YMN">
                             <connections>

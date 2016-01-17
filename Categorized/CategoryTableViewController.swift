@@ -13,9 +13,6 @@ class CategoryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Toolbar setup
-        
-        
         // Allows editing
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }

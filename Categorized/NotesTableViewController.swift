@@ -19,6 +19,11 @@ class NotesTableViewController: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
+        // Note count
+        noteCount.enabled = false
+        noteCount.tintColor = UIColor.blackColor()
+        noteCount.title = "1 Note"
+        
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
