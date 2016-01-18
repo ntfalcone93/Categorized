@@ -15,6 +15,11 @@ class NotesController: NSObject {
     var categories: [Category] = []
     var notesInCategory: [Note] = []
     
+    // Create User
+    func createUser() {
+        
+    }
+    
 //    func createCategory(title: String, caption: String, completion: (key: String) -> ()) {
 //        
 //    }

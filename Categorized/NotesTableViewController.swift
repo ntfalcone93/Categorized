@@ -12,17 +12,30 @@ class NotesTableViewController: UITableViewController {
     
     // IBOutlets
     @IBOutlet weak var noteCount: UIBarButtonItem!
+    var category: Category?
+    var selectedNote: Note?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
+        if let unwrappedCategory = category {
+            // Fetch notes
+            FirebaseController.sharedInstance.fetchCategoriesNotes(unwrappedCategory, completion: { () -> () in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadData()
+                })
+            })
+            // Title
+//            navigationController?.navigationBar.topItem?.title = unwrappedCategory.title
+            // Note count
+            noteCount.title = "\(unwrappedCategory.notes.count)"
+        }
         
         // Note count
         noteCount.enabled = false
         noteCount.tintColor = UIColor.blackColor()
-        noteCount.title = "1 Note"
         
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
@@ -38,19 +51,38 @@ class NotesTableViewController: UITableViewController {
         
     }
     
+    // MARK: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "" {
+            let noteDetailVC = segue.destinationViewController as! NoteDetailViewController
+            if let unwrappedNote = selectedNote {
+                noteDetailVC.note = unwrappedNote
+                noteDetailVC.navigationItem.title = unwrappedNote.title
+            }
+        }
+    }
+    
     // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return FirebaseController.sharedInstance.notesInCategory.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("noteCell", forIndexPath: indexPath)
         
+        let note = FirebaseController.sharedInstance.notesInCategory[indexPath.row]
+        cell.textLabel?.text = note.title
+        
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let note = FirebaseController.sharedInstance.notesInCategory[indexPath.row]
+        selectedNote = note
     }
     
     // Override to support conditional editing of the table view.
@@ -66,11 +98,5 @@ class NotesTableViewController: UITableViewController {
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
-    }
-    
-    // MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
 }

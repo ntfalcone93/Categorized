@@ -11,15 +11,18 @@ import Firebase
 
 class User: NSObject {
     
+    let email: String
     var categories: [String] = []
     let ref: Firebase?
     
-    override init() {
+    init(email: String) {
+        self.email = email
         self.categories = []
         self.ref = nil
     }
     
     init(snapshot: FDataSnapshot) {
+        self.email = snapshot.value["email"] as! String
         if let unwrappedCategories = snapshot.value["categories"] as? [String: String] {
             self.categories = Array(unwrappedCategories.values)
         }
@@ -27,12 +30,14 @@ class User: NSObject {
     }
     
     init(dictionary: [String: AnyObject]) {
+        self.email = dictionary["email"] as! String
         self.categories = dictionary["categories"] as! [String]
         self.ref = nil
     }
     
     func toAnyObject() -> AnyObject {
         return [
+            "email" : self.email,
             "categories" : self.categories
         ]
     }

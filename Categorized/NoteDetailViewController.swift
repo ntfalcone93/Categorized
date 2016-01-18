@@ -10,12 +10,20 @@ import UIKit
 
 class NoteDetailViewController: UIViewController {
     
+    var note: Note?
     // IBOutlets
+    @IBOutlet weak var textView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        if let unwrappedNote = note {
+            // Title
+//            self.title = "Some note"
+            
+            // Body text
+            textView.text = unwrappedNote.bodyText
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -26,6 +34,7 @@ class NoteDetailViewController: UIViewController {
     // MARK: IBActions
     // Share button
     @IBAction func shareButtonTapped(sender: AnyObject) {
+        
     }
     
     /*

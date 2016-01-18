@@ -27,6 +27,9 @@
 		02DF52A91C4B0787003D9E33 /* libicucore.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 02DF52A81C4B0787003D9E33 /* libicucore.A.dylib */; };
 		02DF52B01C4B10C7003D9E33 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02DF52AF1C4B10C7003D9E33 /* Firebase.framework */; };
 		02DF52B21C4B39A9003D9E33 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52B11C4B39A9003D9E33 /* User.swift */; };
+		02DF52B61C4C1ABE003D9E33 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52B51C4C1ABE003D9E33 /* LoginViewController.swift */; };
+		02DF52B81C4C1F3F003D9E33 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52B71C4C1F3F003D9E33 /* SignUpViewController.swift */; };
+		02DF52BA1C4C1FED003D9E33 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52B91C4C1FED003D9E33 /* TermsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,9 @@
 		02DF52A81C4B0787003D9E33 /* libicucore.A.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.A.dylib; path = /usr/lib/libicucore.A.dylib; sourceTree = "<absolute>"; };
 		02DF52AF1C4B10C7003D9E33 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
 		02DF52B11C4B39A9003D9E33 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		02DF52B51C4C1ABE003D9E33 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		02DF52B71C4C1F3F003D9E33 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		02DF52B91C4C1FED003D9E33 /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +185,7 @@
 		02DF52911C4AF508003D9E33 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				02DF52BB1C4C1FF4003D9E33 /* Login */,
 				02DF528B1C4AF10A003D9E33 /* CategoryTableViewController.swift */,
 				02DF528F1C4AF4FF003D9E33 /* NotesTableViewController.swift */,
 				02DF52921C4AF625003D9E33 /* NoteDetailViewController.swift */,
@@ -216,6 +223,16 @@
 				02DF52A01C4B06B3003D9E33 /* CFNetwork.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		02DF52BB1C4C1FF4003D9E33 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				02DF52B51C4C1ABE003D9E33 /* LoginViewController.swift */,
+				02DF52B71C4C1F3F003D9E33 /* SignUpViewController.swift */,
+				02DF52B91C4C1FED003D9E33 /* TermsViewController.swift */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +366,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02DF52B81C4C1F3F003D9E33 /* SignUpViewController.swift in Sources */,
 				02DF529C1C4B01A5003D9E33 /* FirebaseController.swift in Sources */,
 				02DF525E1C4AEFBE003D9E33 /* AppDelegate.swift in Sources */,
 				02DF52951C4B015D003D9E33 /* Category.swift in Sources */,
@@ -357,6 +375,8 @@
 				02DF52B21C4B39A9003D9E33 /* User.swift in Sources */,
 				02DF52901C4AF4FF003D9E33 /* NotesTableViewController.swift in Sources */,
 				02DF52971C4B0163003D9E33 /* Note.swift in Sources */,
+				02DF52B61C4C1ABE003D9E33 /* LoginViewController.swift in Sources */,
+				02DF52BA1C4C1FED003D9E33 /* TermsViewController.swift in Sources */,
 				02DF529A1C4B019D003D9E33 /* NotesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
