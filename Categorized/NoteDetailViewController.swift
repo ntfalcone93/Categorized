@@ -8,11 +8,12 @@
 
 import UIKit
 
-class NoteDetailViewController: UIViewController {
+class NoteDetailViewController: UIViewController, UIScrollViewDelegate, UITextViewDelegate {
     
     var note: Note?
     // IBOutlets
     @IBOutlet weak var textView: UITextView!
+    let defaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,14 @@ class NoteDetailViewController: UIViewController {
                     self.textView.text = updateNote.bodyText
                 }
             })
+            // Text view font size
+            if let font = textView.font {
+                if let fontSize = defaults.objectForKey("fontSize") {
+                    textView.font = UIFont(name: font.fontName, size: CGFloat(fontSize as! NSNumber))
+                } else {
+                    textView.font = UIFont(name: font.fontName, size: CGFloat(16))
+                }
+            }
         }
     }
     
@@ -55,5 +64,11 @@ class NoteDetailViewController: UIViewController {
     // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: Scroll view and text view delegate
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        textView.resignFirstResponder()
+    }
+    
     
 }

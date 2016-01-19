@@ -24,7 +24,7 @@
                                     <constraint firstAttribute="width" constant="271" id="A9a-p9-NvB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="35"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bd1-i5-eTh">
@@ -134,7 +134,7 @@
                                     <constraint firstAttribute="width" constant="200" id="lia-Ni-8H2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uwy-Vn-c0M">
@@ -510,6 +510,56 @@ You will comply with all applicable laws when using or accessing Categorized.</s
             </objects>
             <point key="canvasLocation" x="1768" y="1082"/>
         </scene>
+        <!--Picker View Controller-->
+        <scene sceneID="G3a-vk-HxQ">
+            <objects>
+                <viewController storyboardIdentifier="pickerVC" id="LNR-1X-DYf" customClass="PickerViewController" customModule="Categorized" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LGS-Z5-cWc"/>
+                        <viewControllerLayoutGuide type="bottom" id="C17-z3-ps3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="b96-ye-uI9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sj3-bG-6cG">
+                                <rect key="frame" x="0.0" y="384" width="600" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="LNR-1X-DYf" id="Qxi-6U-hgm"/>
+                                    <outlet property="delegate" destination="LNR-1X-DYf" id="XYa-hx-W31"/>
+                                </connections>
+                            </pickerView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0L-ja-res">
+                                <rect key="frame" x="0.0" y="340" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="flexibleSpace" id="Lse-MF-O9f"/>
+                                    <barButtonItem systemItem="done" id="bZf-ri-c3h">
+                                        <connections>
+                                            <action selector="doneButtonTapped:" destination="LNR-1X-DYf" id="UJH-tf-SLI"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sj3-bG-6cG" firstAttribute="leading" secondItem="b96-ye-uI9" secondAttribute="leading" id="C2y-Un-v0v"/>
+                            <constraint firstItem="sj3-bG-6cG" firstAttribute="top" secondItem="k0L-ja-res" secondAttribute="bottom" id="Jxf-Mt-wzz"/>
+                            <constraint firstItem="sj3-bG-6cG" firstAttribute="bottom" secondItem="C17-z3-ps3" secondAttribute="top" id="Oct-UT-vvq"/>
+                            <constraint firstItem="sj3-bG-6cG" firstAttribute="leading" secondItem="k0L-ja-res" secondAttribute="leading" id="reD-H0-bge"/>
+                            <constraint firstAttribute="trailing" secondItem="k0L-ja-res" secondAttribute="trailing" id="rkQ-Lm-G5B"/>
+                            <constraint firstItem="k0L-ja-res" firstAttribute="trailing" secondItem="sj3-bG-6cG" secondAttribute="trailing" id="uBw-gp-4tc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="pickerView" destination="sj3-bG-6cG" id="fjz-j9-hsk"/>
+                        <outlet property="toolbar" destination="k0L-ja-res" id="wCw-Te-fLZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2dH-qt-emV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1768" y="1760"/>
+        </scene>
         <!--Notes Table View Controller-->
         <scene sceneID="zeR-BZ-4tl">
             <objects>
@@ -577,8 +627,11 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ouQ-WI-Uqz">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="6Lm-On-O6S" id="dYN-pJ-bSG"/>
+                                </connections>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

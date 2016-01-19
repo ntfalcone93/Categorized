@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITableView.appearance().backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
         UITableViewCell.appearance().backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
         UITextView.appearance().backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
+        UIPickerView.appearance().backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
         
         return true
     }

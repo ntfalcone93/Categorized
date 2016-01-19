@@ -9,17 +9,13 @@
 import UIKit
 
 class SettingsTableViewController: UITableViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        
     }
-
+    
     // MARK: IBActions
     @IBAction func doneButtonTapped(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -30,35 +26,37 @@ class SettingsTableViewController: UITableViewController {
         
     }
     
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 4
     }
-
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("settingCell", forIndexPath: indexPath)
-
+        
         switch indexPath.row {
-        case 0:
-            cell.textLabel?.text = "Terms of Service"
+        case 0 :
+            cell.textLabel?.text = "Change Font Size"
         case 1:
-            cell.textLabel?.text = "Change Password"
+            cell.textLabel?.text = "Terms of Service"
         case 2:
-            cell.textLabel?.text = "Log Out"
+            cell.textLabel?.text = "Change Password"
         case 3:
+            cell.textLabel?.text = "Log Out"
+        case 4:
             cell.textLabel?.text = "Delete Account"
         default:
             break
         }
-
+        
         return cell
     }
     
@@ -66,18 +64,25 @@ class SettingsTableViewController: UITableViewController {
         
         switch indexPath.row {
         case 0:
+            // Present PickerViewController
+            let pickerVC = self.storyboard?.instantiateViewControllerWithIdentifier("pickerVC") as! PickerViewController
+            // Makes the PickerViewController show up on top of the current view
+            pickerVC.modalPresentationStyle = .OverCurrentContext
+            presentViewController(pickerVC, animated: true, completion: nil)
+            break
+        case 1:
             let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let termsVC = mainStoryboard.instantiateViewControllerWithIdentifier("termsOfServiceID") as! TermsViewController
             self.presentViewController(termsVC, animated: true, completion: nil)
             break
-        case 1:
+        case 2:
             UIAlertController.changePasswordAlert(self)
             break
-        case 2:
+        case 3:
             UIAlertController.logOutUser(self)
             break
-        case 3:
-//            UIAlertController.deleteAccountAlert(self)
+        case 4:
+            //            UIAlertController.deleteAccountAlert(self)
             break
         default:
             break

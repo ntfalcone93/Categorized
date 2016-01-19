@@ -33,6 +33,7 @@
 		02DF52BA1C4C1FED003D9E33 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52B91C4C1FED003D9E33 /* TermsViewController.swift */; };
 		02DF52BF1C4DA2D6003D9E33 /* UIAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52BE1C4DA2D6003D9E33 /* UIAlerts.swift */; };
 		02DF52C11C4DE0BC003D9E33 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52C01C4DE0BC003D9E33 /* UIColor.swift */; };
+		02FE2F611C4EDCE9005FFFFC /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FE2F601C4EDCE9005FFFFC /* PickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		02DF52B91C4C1FED003D9E33 /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		02DF52BE1C4DA2D6003D9E33 /* UIAlerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlerts.swift; sourceTree = "<group>"; };
 		02DF52C01C4DE0BC003D9E33 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		02FE2F601C4EDCE9005FFFFC /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 				02DF528F1C4AF4FF003D9E33 /* NotesTableViewController.swift */,
 				02DF52921C4AF625003D9E33 /* NoteDetailViewController.swift */,
 				0249D5A21C4EB32F0042D88A /* SettingsTableViewController.swift */,
+				02FE2F601C4EDCE9005FFFFC /* PickerViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 			files = (
 				02DF52BF1C4DA2D6003D9E33 /* UIAlerts.swift in Sources */,
 				02DF52C11C4DE0BC003D9E33 /* UIColor.swift in Sources */,
+				02FE2F611C4EDCE9005FFFFC /* PickerViewController.swift in Sources */,
 				02DF52B81C4C1F3F003D9E33 /* SignUpViewController.swift in Sources */,
 				02DF529C1C4B01A5003D9E33 /* FirebaseController.swift in Sources */,
 				02DF525E1C4AEFBE003D9E33 /* AppDelegate.swift in Sources */,
