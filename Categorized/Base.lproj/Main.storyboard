@@ -108,9 +108,11 @@
                     <connections>
                         <outlet property="emailTextField" destination="Nha-Kg-1Th" id="sWf-jR-xMt"/>
                         <outlet property="passwordTextField" destination="bd1-i5-eTh" id="aXs-aa-z9e"/>
+                        <segue destination="Ycp-DD-7Ks" kind="unwind" identifier="unwindFromLoginToCategoryTVC" unwindAction="unwindFromLoginSegue:" id="NIP-TG-teo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Jp-7o-s7A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Ycp-DD-7Ks" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1095" y="-269"/>
         </scene>
@@ -235,7 +237,7 @@
         <!--Terms View Controller-->
         <scene sceneID="fRK-bm-QZo">
             <objects>
-                <viewController id="IdA-5f-23b" customClass="TermsViewController" customModule="Categorized" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="termsOfServiceID" id="IdA-5f-23b" customClass="TermsViewController" customModule="Categorized" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7bz-6K-G1c"/>
                         <viewControllerLayoutGuide type="bottom" id="JJs-nx-Cgw"/>
@@ -247,7 +249,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yA3-42-J4T">
                                 <rect key="frame" x="0.0" y="20" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">Statement of Rights and Responsibilities
+                                <string key="text">Statement of Rights and Responsibilities
 This Statement of Rights and Responsibilities ("Statement," "Terms," or "SRR") derives from the Categorized Principles, and is our terms of service that governs our relationship with users and others who interact with Categorized, as well as Categorized brands, products and services, which we call the “Categorized Services” or “Services”. By using or accessing the Categorized Services, you agree to this Statement, as updated from time to time in accordance with Section 13 below. Additionally, you will find resources at the end of this document that help you understand how Categorized works.
 Because Categorized provides a wide range of Services, we may ask you to review and accept supplemental terms that apply to your interaction with a specific app, product, or service. To the extent those supplemental terms conflict with this SRR, the supplemental terms associated with the app, product, or service govern with respect to your use of such app, product or service to the extent of the conflict.
 Privacy
@@ -383,7 +385,7 @@ All of our rights and obligations under this Statement are freely assignable by 
 Nothing in this Statement shall prevent us from complying with the law.
 This Statement does not confer any third party beneficiary rights.
 We reserve all rights not expressly granted to you.
-You will comply with all applicable laws when using or accessing Categorized.</mutableString>
+You will comply with all applicable laws when using or accessing Categorized.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -450,7 +452,11 @@ You will comply with all applicable laws when using or accessing Categorized.</m
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Categorized" id="hPE-UR-xgK">
-                        <barButtonItem key="leftBarButtonItem" title="Settings" id="cIb-8i-GWz"/>
+                        <barButtonItem key="leftBarButtonItem" image="setting_gear" id="cIb-8i-GWz">
+                            <connections>
+                                <segue destination="Jek-Df-Mnq" kind="presentation" id="2la-fL-Xdy"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="EwC-DX-A6z">
                             <connections>
                                 <action selector="editButtonTapped:" destination="CSX-H8-Roa" id="pHj-Sr-Bk3"/>
@@ -464,6 +470,45 @@ You will comply with all applicable laws when using or accessing Categorized.</m
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3zL-fh-LCj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1095" y="409"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="gDi-YJ-cr5">
+            <objects>
+                <tableViewController id="HPq-Da-1aw" customClass="SettingsTableViewController" customModule="Categorized" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="or6-ge-IQI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="settingCell" id="AuC-xN-eIy">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AuC-xN-eIy" id="UVc-uM-PZ3">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="HPq-Da-1aw" id="1ZI-xR-BAq"/>
+                            <outlet property="delegate" destination="HPq-Da-1aw" id="hvi-bh-L3k"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Settings" id="UqU-i5-E40">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Ojo-9z-s4T">
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="HPq-Da-1aw" id="hVZ-pu-aI0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="nf4-v2-fZc" kind="unwind" identifier="unwindToCategoryTVCSegue" unwindAction="unwindFromSettingsSegue:" id="ToB-gW-PlE"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lrS-gz-ETB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="nf4-v2-fZc" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1768" y="1082"/>
         </scene>
         <!--Notes Table View Controller-->
         <scene sceneID="zeR-BZ-4tl">
@@ -581,5 +626,26 @@ You will comply with all applicable laws when using or accessing Categorized.</m
             </objects>
             <point key="canvasLocation" x="406" y="409"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="UYv-yX-fnZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jek-Df-Mnq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="skn-rq-gZ5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HPq-Da-1aw" kind="relationship" relationship="rootViewController" id="xbp-sc-Xlg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="twA-9R-Pgp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1095" y="1082"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="setting_gear" width="24" height="24"/>
+    </resources>
 </document>

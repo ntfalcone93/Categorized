@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0249D5A31C4EB32F0042D88A /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249D5A21C4EB32F0042D88A /* SettingsTableViewController.swift */; };
 		02DF525E1C4AEFBE003D9E33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF525D1C4AEFBE003D9E33 /* AppDelegate.swift */; };
 		02DF52631C4AEFBE003D9E33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02DF52611C4AEFBE003D9E33 /* Main.storyboard */; };
 		02DF52651C4AEFBE003D9E33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02DF52641C4AEFBE003D9E33 /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0249D5A21C4EB32F0042D88A /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		02DF525A1C4AEFBE003D9E33 /* Categorized.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Categorized.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02DF525D1C4AEFBE003D9E33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02DF52621C4AEFBE003D9E33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				02DF528B1C4AF10A003D9E33 /* CategoryTableViewController.swift */,
 				02DF528F1C4AF4FF003D9E33 /* NotesTableViewController.swift */,
 				02DF52921C4AF625003D9E33 /* NoteDetailViewController.swift */,
+				0249D5A21C4EB32F0042D88A /* SettingsTableViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				02DF52B21C4B39A9003D9E33 /* User.swift in Sources */,
 				02DF52901C4AF4FF003D9E33 /* NotesTableViewController.swift in Sources */,
 				02DF52971C4B0163003D9E33 /* Note.swift in Sources */,
+				0249D5A31C4EB32F0042D88A /* SettingsTableViewController.swift in Sources */,
 				02DF52B61C4C1ABE003D9E33 /* LoginViewController.swift in Sources */,
 				02DF52BA1C4C1FED003D9E33 /* TermsViewController.swift in Sources */,
 				02DF529A1C4B019D003D9E33 /* NotesController.swift in Sources */,

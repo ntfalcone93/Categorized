@@ -34,10 +34,11 @@ class LoginViewController: UIViewController {
                     FirebaseController.sharedInstance.retrieveCurrentUserWithUserID(auth.uid, completion: { (user) -> () in
                         if user != nil {
                             self.defaults.setObject(auth.uid, forKey: "userID")
-                            self.dismissViewControllerAnimated(true, completion: nil)
+                            self.performSegueWithIdentifier("unwindFromLoginToCategoryTVC", sender: nil)
                         }
                     })
                 } else {
+                    UIAlertController.invalidLoginAlert(self)
                     print("Error while logging user in: \(error.localizedDescription)")
                 }
             })
@@ -53,7 +54,10 @@ class LoginViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+        if segue.identifier == "unwindFromLoginToCategoryTVC" {
+            let categoryTVC = segue.destinationViewController as! CategoryTableViewController
+            categoryTVC.userWasSentToLogin = true
+        }
     }
 }
 
