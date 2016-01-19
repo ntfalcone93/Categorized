@@ -10,14 +10,12 @@ import UIKit
 
 class CategoryTableViewController: UITableViewController {
     
-    var selectedCategory: Category?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Check if user is logged in
         self.checkForUser { () -> () in
-            // TESTING
+            // Fetch the users categories
             if let unwrappedUser = FirebaseController.sharedInstance.currentUser {
                 FirebaseController.sharedInstance.fetchUsersCategories(unwrappedUser, completion: { () -> () in
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -26,7 +24,6 @@ class CategoryTableViewController: UITableViewController {
                 })
             }
         }
-        
         
         // Allows editing
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
@@ -39,16 +36,21 @@ class CategoryTableViewController: UITableViewController {
     }
     // New button
     @IBAction func newButtonTapped(sender: AnyObject) {
-        
+        UIAlertController.createNewCategory(self) { () -> () in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadData()
+            })
+        }
     }
     
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "categoryToNotesSegue" {
             let notesTVC = segue.destinationViewController as! NotesTableViewController
-            if let unwrappedCategory = selectedCategory {
-                notesTVC.category = unwrappedCategory
-                notesTVC.navigationItem.title = unwrappedCategory.title
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let category = FirebaseController.sharedInstance.usersCategories[indexPath.row]
+                notesTVC.category = category
+                notesTVC.navigationItem.title = category.title
             }
         }
     }
@@ -82,16 +84,11 @@ class CategoryTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("categoryCell", forIndexPath: indexPath)
-        
+        cell.backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
         let category = FirebaseController.sharedInstance.usersCategories[indexPath.row]
         cell.textLabel?.text = category.title
         
         return cell
-    }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let category = FirebaseController.sharedInstance.usersCategories[indexPath.row]
-        selectedCategory = category
     }
     
     // Override to support conditional editing of the table view.
@@ -103,9 +100,13 @@ class CategoryTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
+            if let unwrappedUser = FirebaseController.sharedInstance.currentUser {
+                // TODO: Find out why the array duplicates here
+                let category = FirebaseController.sharedInstance.usersCategories[indexPath.row]
+                FirebaseController.sharedInstance.removeCategoryFromUsersCategories(category, user: unwrappedUser)
+                FirebaseController.sharedInstance.usersCategories.removeAtIndex(indexPath.row)
+            }
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
 }

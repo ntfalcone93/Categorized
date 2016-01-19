@@ -18,11 +18,20 @@ class NoteDetailViewController: UIViewController {
         super.viewDidLoad()
         
         if let unwrappedNote = note {
-            // Title
-//            self.title = "Some note"
             
             // Body text
-            textView.text = unwrappedNote.bodyText
+            FirebaseController.sharedInstance.fetchNoteWithNoteID(unwrappedNote.ref!.key, completion: { (note) -> () in
+                if let updateNote = note {
+                    self.textView.text = updateNote.bodyText
+                }
+            })
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(true)
+        if let unwrappedNote = note {
+            FirebaseController.sharedInstance.updateNote(textView.text, note: unwrappedNote)
         }
     }
     

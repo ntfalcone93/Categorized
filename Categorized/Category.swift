@@ -29,8 +29,8 @@ class Category: NSObject {
         self.title = snapshot.value["title"] as! String
         self.caption = snapshot.value["caption"] as! String
         self.dateLastEdited = snapshot.value["dateLastEdited"] as! String
-        if let unwrappedNotes = snapshot.value["notes"] as? [String: String] {
-            self.notes = Array(unwrappedNotes.values)
+        if let unwrappedNotes = snapshot.value["notes"] as? [String: AnyObject] {
+            self.notes = Array(unwrappedNotes.keys)
         }
         self.ref = snapshot.ref
     }

@@ -18,16 +18,40 @@ class FirebaseController: NSObject {
     var notesInCategory: [Note] = []
     
     
+    // MARK: Updating Categories and Notes
+    func updateNote(bodyText: String, note: Note) {
+        note.ref!.childByAppendingPath("bodyText").setValue(bodyText)
+        note.ref!.childByAppendingPath("dateLastEdited").setValue("\(NSDate())")
+    }
     
     
+    // MARK: Creating New Categories and notes
+    func createNewCategory(title: String, caption: String) {
+        let category = Category(title: title, caption: caption)
+        ref.childByAppendingPath("categories").childByAutoId().setValue(category.toAnyObject()) { (error, categoryRef) -> Void in
+            if error == nil {
+                if let unwrappedUser = self.currentUser {
+                    self.addCategoryToUsersCategories(categoryRef.ref!.key, user: unwrappedUser)
+                }
+            }
+        }
+    }
     
+    func createNewNote(title: String, category: Category) {
+        let note = Note(title: title, bodyText: "")
+        ref.childByAppendingPath("notes").childByAutoId().setValue(note.toAnyObject()) { (error, noteRef) -> Void in
+            if error == nil {
+                self.addNoteToCategory(category, noteID: noteRef.ref!.key)
+            }
+        }
+    }
     
     // MARK: Fetching Categories and Notes
     // Categories
     func fetchUsersCategories(user: User, completion:() -> ()) {
         usersCategories.removeAll()
         let userCategoriesRef = user.ref!.childByAppendingPath("categories")
-        userCategoriesRef.observeEventType(.Value, withBlock: {(snapshot) -> Void in
+        userCategoriesRef.queryOrderedByValue().observeEventType(.Value, withBlock: {(snapshot) -> Void in
             let categoryIDs = snapshot.children.allObjects
             for categoryID in categoryIDs {
                 self.fetchCategoryWithCategoryID(categoryID.ref!.key, completion: { (category) -> () in
@@ -50,14 +74,14 @@ class FirebaseController: NSObject {
             let category = Category(snapshot: snapshot)
             completion(category)
         })
-// TODO: Do I need this       completion(nil)
+        // TODO: Do I need this       completion(nil)
     }
     
     // Notes
     func fetchCategoriesNotes(category: Category, completion:() -> ()) {
         notesInCategory.removeAll()
         let notesRef = category.ref!.childByAppendingPath("notes")
-        notesRef.observeEventType(.Value, withBlock: {(snapshot) -> Void in
+        notesRef.queryOrderedByValue().observeEventType(.Value, withBlock: {(snapshot) -> Void in
             let noteIDs = snapshot.children.allObjects
             for noteID in noteIDs {
                 self.fetchNoteWithNoteID(noteID.ref!.key, completion: { (note) -> () in
@@ -113,6 +137,25 @@ class FirebaseController: NSObject {
                 completion(nil)
             }
         })
+    }
+    
+    // MARK: Adding and Removing Categories and Notes
+    // Categories
+    func addCategoryToUsersCategories(categoryID: String, user: User) {
+        ref.childByAppendingPath("users").childByAppendingPath(user.ref!.key).childByAppendingPath("categories").childByAppendingPath(categoryID).setValue(true)
+    }
+    
+    func removeCategoryFromUsersCategories(category: Category, user: User) {
+        ref.childByAppendingPath("users").childByAppendingPath(user.ref!.key).childByAppendingPath("categories").childByAppendingPath(category.ref!.key).removeValue()
+    }
+    
+    // Notes
+    func addNoteToCategory(category: Category, noteID: String) {
+        ref.childByAppendingPath("categories").childByAppendingPath(category.ref!.key).childByAppendingPath("notes").childByAppendingPath(noteID).setValue(true)
+    }
+    
+    func removeNoteFromCategory(category: Category, note: Note) {
+        ref.childByAppendingPath("categories").childByAppendingPath(category.ref!.key).childByAppendingPath("notes").childByAppendingPath(note.ref!.key).removeValue()
     }
     
     

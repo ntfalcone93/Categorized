@@ -45,6 +45,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func forgotPasswordButtonTapped(sender: AnyObject) {
+        UIAlertController.forgotPassword(self)
     }
     
     // MARK: - Navigation

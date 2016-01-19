@@ -13,7 +13,6 @@ class NotesTableViewController: UITableViewController {
     // IBOutlets
     @IBOutlet weak var noteCount: UIBarButtonItem!
     var category: Category?
-    var selectedNote: Note?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +23,18 @@ class NotesTableViewController: UITableViewController {
             // Fetch notes
             FirebaseController.sharedInstance.fetchCategoriesNotes(unwrappedCategory, completion: { () -> () in
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.tableView.reloadData()
+                    // Note count
+                    if unwrappedCategory.notes.count >= 1 {
+                        self.noteCount.title = "\(unwrappedCategory.notes.count) Notes"
+                        self.tableView.reloadData()
+                    } else {
+                        self.noteCount.title = "0 Notes"
+                    }
                 })
             })
-            // Title
-//            navigationController?.navigationBar.topItem?.title = unwrappedCategory.title
-            // Note count
-            noteCount.title = "\(unwrappedCategory.notes.count)"
+            if unwrappedCategory.notes.count == 0 {
+                self.noteCount.title = "0 Notes"
+            }
         }
         
         // Note count
@@ -48,16 +52,26 @@ class NotesTableViewController: UITableViewController {
     
     // New button
     @IBAction func newButtonTapped(sender: AnyObject) {
-        
+        if let unwrappedCategory = category {
+            UIAlertController.createNewNote(self, category: unwrappedCategory, completion: { () -> () in
+                // TODO: Figure out why none of this is getting called
+                // Adds 1 to the note count
+                //                self.noteCount.title = "\(unwrappedCategory.notes.count + 1) Notes"
+                //                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                //                    self.tableView.reloadData()
+                //                })
+            })
+        }
     }
     
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "" {
+        if segue.identifier == "toNoteDetailSegue" {
             let noteDetailVC = segue.destinationViewController as! NoteDetailViewController
-            if let unwrappedNote = selectedNote {
-                noteDetailVC.note = unwrappedNote
-                noteDetailVC.navigationItem.title = unwrappedNote.title
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let note = FirebaseController.sharedInstance.notesInCategory[indexPath.row]
+                noteDetailVC.note = note
+                noteDetailVC.title = note.title
             }
         }
     }
@@ -80,11 +94,6 @@ class NotesTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let note = FirebaseController.sharedInstance.notesInCategory[indexPath.row]
-        selectedNote = note
-    }
-    
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
@@ -94,9 +103,13 @@ class NotesTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
+            if let unwrappedCategory = category {
+                // TODO: Find out why the array duplicates here
+                let note = FirebaseController.sharedInstance.notesInCategory[indexPath.row]
+                FirebaseController.sharedInstance.removeNoteFromCategory(unwrappedCategory, note: note)
+                FirebaseController.sharedInstance.notesInCategory.removeAtIndex(indexPath.row)
+            }
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
 }

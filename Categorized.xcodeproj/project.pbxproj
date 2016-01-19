@@ -30,6 +30,8 @@
 		02DF52B61C4C1ABE003D9E33 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52B51C4C1ABE003D9E33 /* LoginViewController.swift */; };
 		02DF52B81C4C1F3F003D9E33 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52B71C4C1F3F003D9E33 /* SignUpViewController.swift */; };
 		02DF52BA1C4C1FED003D9E33 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52B91C4C1FED003D9E33 /* TermsViewController.swift */; };
+		02DF52BF1C4DA2D6003D9E33 /* UIAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52BE1C4DA2D6003D9E33 /* UIAlerts.swift */; };
+		02DF52C11C4DE0BC003D9E33 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52C01C4DE0BC003D9E33 /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		02DF52B51C4C1ABE003D9E33 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		02DF52B71C4C1F3F003D9E33 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		02DF52B91C4C1FED003D9E33 /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
+		02DF52BE1C4DA2D6003D9E33 /* UIAlerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlerts.swift; sourceTree = "<group>"; };
+		02DF52C01C4DE0BC003D9E33 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +169,8 @@
 		02DF528D1C4AF254003D9E33 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				02DF52BE1C4DA2D6003D9E33 /* UIAlerts.swift */,
+				02DF52C01C4DE0BC003D9E33 /* UIColor.swift */,
 				02DF525D1C4AEFBE003D9E33 /* AppDelegate.swift */,
 				02DF52641C4AEFBE003D9E33 /* Assets.xcassets */,
 				02DF52691C4AEFBE003D9E33 /* Info.plist */,
@@ -366,6 +372,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02DF52BF1C4DA2D6003D9E33 /* UIAlerts.swift in Sources */,
+				02DF52C11C4DE0BC003D9E33 /* UIColor.swift in Sources */,
 				02DF52B81C4C1F3F003D9E33 /* SignUpViewController.swift in Sources */,
 				02DF529C1C4B01A5003D9E33 /* FirebaseController.swift in Sources */,
 				02DF525E1C4AEFBE003D9E33 /* AppDelegate.swift in Sources */,
@@ -534,6 +542,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Categorized",

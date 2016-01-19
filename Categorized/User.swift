@@ -23,8 +23,8 @@ class User: NSObject {
     
     init(snapshot: FDataSnapshot) {
         self.email = snapshot.value["email"] as! String
-        if let unwrappedCategories = snapshot.value["categories"] as? [String: String] {
-            self.categories = Array(unwrappedCategories.values)
+        if let unwrappedCategories = snapshot.value["categories"] as? [String: AnyObject] {
+            self.categories = Array(unwrappedCategories.keys)
         }
         self.ref = snapshot.ref
     }
