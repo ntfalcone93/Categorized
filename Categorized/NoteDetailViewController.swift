@@ -52,7 +52,10 @@ class NoteDetailViewController: UIViewController, UIScrollViewDelegate, UITextVi
     // MARK: IBActions
     // Share button
     @IBAction func shareButtonTapped(sender: AnyObject) {
-        
+        // TODO: Find out why this crashes
+//        if let unwrappedNote = note {
+//            UIAlertController.displayShareSheet(self, note: unwrappedNote)
+//        }
     }
     
     /*

@@ -12,6 +12,13 @@ import Firebase
 
 extension UIAlertController {
     
+    
+    // Alert for sharing notes
+    class func displayShareSheet(target: UIViewController, note: Note) {
+        let activityViewController = UIActivityViewController(activityItems: [note.title, note.bodyText], applicationActivities: nil)
+        target.presentViewController(activityViewController, animated: true, completion: nil)
+    }
+    
     // MARK: Alerts for creating categories and notes
     // Alert for creating new category
     class func createNewCategory(target: UIViewController, completion:() -> ()) {
