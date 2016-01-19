@@ -16,6 +16,22 @@
 		02DF528C1C4AF10A003D9E33 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF528B1C4AF10A003D9E33 /* CategoryTableViewController.swift */; };
 		02DF52901C4AF4FF003D9E33 /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF528F1C4AF4FF003D9E33 /* NotesTableViewController.swift */; };
 		02DF52931C4AF625003D9E33 /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52921C4AF625003D9E33 /* NoteDetailViewController.swift */; };
+		02DF52951C4B015D003D9E33 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52941C4B015D003D9E33 /* Category.swift */; };
+		02DF52971C4B0163003D9E33 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52961C4B0163003D9E33 /* Note.swift */; };
+		02DF529A1C4B019D003D9E33 /* NotesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52991C4B019D003D9E33 /* NotesController.swift */; };
+		02DF529C1C4B01A5003D9E33 /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF529B1C4B01A5003D9E33 /* FirebaseController.swift */; };
+		02DF52A11C4B06B3003D9E33 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02DF52A01C4B06B3003D9E33 /* CFNetwork.framework */; };
+		02DF52A31C4B06BB003D9E33 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02DF52A21C4B06BB003D9E33 /* Security.framework */; };
+		02DF52A51C4B06CC003D9E33 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02DF52A41C4B06CC003D9E33 /* SystemConfiguration.framework */; };
+		02DF52A71C4B076F003D9E33 /* libc++.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 02DF52A61C4B076F003D9E33 /* libc++.1.dylib */; };
+		02DF52A91C4B0787003D9E33 /* libicucore.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 02DF52A81C4B0787003D9E33 /* libicucore.A.dylib */; };
+		02DF52B01C4B10C7003D9E33 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02DF52AF1C4B10C7003D9E33 /* Firebase.framework */; };
+		02DF52B21C4B39A9003D9E33 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52B11C4B39A9003D9E33 /* User.swift */; };
+		02DF52B61C4C1ABE003D9E33 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52B51C4C1ABE003D9E33 /* LoginViewController.swift */; };
+		02DF52B81C4C1F3F003D9E33 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52B71C4C1F3F003D9E33 /* SignUpViewController.swift */; };
+		02DF52BA1C4C1FED003D9E33 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52B91C4C1FED003D9E33 /* TermsViewController.swift */; };
+		02DF52BF1C4DA2D6003D9E33 /* UIAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52BE1C4DA2D6003D9E33 /* UIAlerts.swift */; };
+		02DF52C11C4DE0BC003D9E33 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52C01C4DE0BC003D9E33 /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +67,22 @@
 		02DF528B1C4AF10A003D9E33 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		02DF528F1C4AF4FF003D9E33 /* NotesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
 		02DF52921C4AF625003D9E33 /* NoteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
+		02DF52941C4B015D003D9E33 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		02DF52961C4B0163003D9E33 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		02DF52991C4B019D003D9E33 /* NotesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesController.swift; sourceTree = "<group>"; };
+		02DF529B1C4B01A5003D9E33 /* FirebaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
+		02DF52A01C4B06B3003D9E33 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		02DF52A21C4B06BB003D9E33 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		02DF52A41C4B06CC003D9E33 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		02DF52A61C4B076F003D9E33 /* libc++.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.1.dylib"; path = "/usr/lib/libc++.1.dylib"; sourceTree = "<absolute>"; };
+		02DF52A81C4B0787003D9E33 /* libicucore.A.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.A.dylib; path = /usr/lib/libicucore.A.dylib; sourceTree = "<absolute>"; };
+		02DF52AF1C4B10C7003D9E33 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
+		02DF52B11C4B39A9003D9E33 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		02DF52B51C4C1ABE003D9E33 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		02DF52B71C4C1F3F003D9E33 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		02DF52B91C4C1FED003D9E33 /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
+		02DF52BE1C4DA2D6003D9E33 /* UIAlerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlerts.swift; sourceTree = "<group>"; };
+		02DF52C01C4DE0BC003D9E33 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +90,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02DF52A91C4B0787003D9E33 /* libicucore.A.dylib in Frameworks */,
+				02DF52B01C4B10C7003D9E33 /* Firebase.framework in Frameworks */,
+				02DF52A71C4B076F003D9E33 /* libc++.1.dylib in Frameworks */,
+				02DF52A51C4B06CC003D9E33 /* SystemConfiguration.framework in Frameworks */,
+				02DF52A31C4B06BB003D9E33 /* Security.framework in Frameworks */,
+				02DF52A11C4B06B3003D9E33 /* CFNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +141,8 @@
 			children = (
 				02DF528E1C4AF269003D9E33 /* Storyboards */,
 				02DF52911C4AF508003D9E33 /* Views */,
+				02DF52981C4B0168003D9E33 /* Model Objects */,
+				02DF529D1C4B01A9003D9E33 /* Model Controllers */,
 				02DF528D1C4AF254003D9E33 /* Other */,
 			);
 			path = Categorized;
@@ -129,9 +169,12 @@
 		02DF528D1C4AF254003D9E33 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				02DF52BE1C4DA2D6003D9E33 /* UIAlerts.swift */,
+				02DF52C01C4DE0BC003D9E33 /* UIColor.swift */,
 				02DF525D1C4AEFBE003D9E33 /* AppDelegate.swift */,
 				02DF52641C4AEFBE003D9E33 /* Assets.xcassets */,
 				02DF52691C4AEFBE003D9E33 /* Info.plist */,
+				02DF52AB1C4B0840003D9E33 /* Frameworks */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -148,11 +191,54 @@
 		02DF52911C4AF508003D9E33 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				02DF52BB1C4C1FF4003D9E33 /* Login */,
 				02DF528B1C4AF10A003D9E33 /* CategoryTableViewController.swift */,
 				02DF528F1C4AF4FF003D9E33 /* NotesTableViewController.swift */,
 				02DF52921C4AF625003D9E33 /* NoteDetailViewController.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		02DF52981C4B0168003D9E33 /* Model Objects */ = {
+			isa = PBXGroup;
+			children = (
+				02DF52B11C4B39A9003D9E33 /* User.swift */,
+				02DF52941C4B015D003D9E33 /* Category.swift */,
+				02DF52961C4B0163003D9E33 /* Note.swift */,
+			);
+			name = "Model Objects";
+			sourceTree = "<group>";
+		};
+		02DF529D1C4B01A9003D9E33 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				02DF52991C4B019D003D9E33 /* NotesController.swift */,
+				02DF529B1C4B01A5003D9E33 /* FirebaseController.swift */,
+			);
+			name = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		02DF52AB1C4B0840003D9E33 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				02DF52A81C4B0787003D9E33 /* libicucore.A.dylib */,
+				02DF52A61C4B076F003D9E33 /* libc++.1.dylib */,
+				02DF52AF1C4B10C7003D9E33 /* Firebase.framework */,
+				02DF52A41C4B06CC003D9E33 /* SystemConfiguration.framework */,
+				02DF52A21C4B06BB003D9E33 /* Security.framework */,
+				02DF52A01C4B06B3003D9E33 /* CFNetwork.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		02DF52BB1C4C1FF4003D9E33 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				02DF52B51C4C1ABE003D9E33 /* LoginViewController.swift */,
+				02DF52B71C4C1F3F003D9E33 /* SignUpViewController.swift */,
+				02DF52B91C4C1FED003D9E33 /* TermsViewController.swift */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,10 +372,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02DF52BF1C4DA2D6003D9E33 /* UIAlerts.swift in Sources */,
+				02DF52C11C4DE0BC003D9E33 /* UIColor.swift in Sources */,
+				02DF52B81C4C1F3F003D9E33 /* SignUpViewController.swift in Sources */,
+				02DF529C1C4B01A5003D9E33 /* FirebaseController.swift in Sources */,
 				02DF525E1C4AEFBE003D9E33 /* AppDelegate.swift in Sources */,
+				02DF52951C4B015D003D9E33 /* Category.swift in Sources */,
 				02DF52931C4AF625003D9E33 /* NoteDetailViewController.swift in Sources */,
 				02DF528C1C4AF10A003D9E33 /* CategoryTableViewController.swift in Sources */,
+				02DF52B21C4B39A9003D9E33 /* User.swift in Sources */,
 				02DF52901C4AF4FF003D9E33 /* NotesTableViewController.swift in Sources */,
+				02DF52971C4B0163003D9E33 /* Note.swift in Sources */,
+				02DF52B61C4C1ABE003D9E33 /* LoginViewController.swift in Sources */,
+				02DF52BA1C4C1FED003D9E33 /* TermsViewController.swift in Sources */,
+				02DF529A1C4B019D003D9E33 /* NotesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,10 +525,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Categorized",
+				);
 				INFOPLIST_FILE = Categorized/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.falconedevelopment.Categorized;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -440,10 +542,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Categorized",
+				);
 				INFOPLIST_FILE = Categorized/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.falconedevelopment.Categorized;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -514,6 +624,7 @@
 				02DF52841C4AEFBE003D9E33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		02DF52851C4AEFBE003D9E33 /* Build configuration list for PBXNativeTarget "CategorizedTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +633,7 @@
 				02DF52871C4AEFBE003D9E33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		02DF52881C4AEFBE003D9E33 /* Build configuration list for PBXNativeTarget "CategorizedUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +642,7 @@
 				02DF528A1C4AEFBE003D9E33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

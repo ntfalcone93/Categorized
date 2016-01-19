@@ -13,8 +13,17 @@ class CategoryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Toolbar setup
-        
+        // Check if user is logged in
+        self.checkForUser { () -> () in
+            // Fetch the users categories
+            if let unwrappedUser = FirebaseController.sharedInstance.currentUser {
+                FirebaseController.sharedInstance.fetchUsersCategories(unwrappedUser, completion: { () -> () in
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.tableView.reloadData()
+                    })
+                })
+            }
+        }
         
         // Allows editing
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
@@ -27,7 +36,40 @@ class CategoryTableViewController: UITableViewController {
     }
     // New button
     @IBAction func newButtonTapped(sender: AnyObject) {
-        
+        UIAlertController.createNewCategory(self) { () -> () in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadData()
+            })
+        }
+    }
+    
+    // MARK: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "categoryToNotesSegue" {
+            let notesTVC = segue.destinationViewController as! NotesTableViewController
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let category = FirebaseController.sharedInstance.usersCategories[indexPath.row]
+                notesTVC.category = category
+                notesTVC.navigationItem.title = category.title
+            }
+        }
+    }
+    
+    // Checks to see if a user is logged in still and fetches that user
+    func checkForUser(completion:() -> ()){
+        FirebaseController.sharedInstance.fetchCurrentUser({ (authData) -> () in
+            if authData == nil {
+                self.performSegueWithIdentifier("toLoginViewController", sender: nil)
+                completion()
+            } else {
+                if let auth = authData {
+                    FirebaseController.sharedInstance.retrieveCurrentUserWithUserID(auth.uid, completion: { (user) -> () in
+                        FirebaseController.sharedInstance.currentUser = user
+                        completion()
+                    })
+                }
+            }
+        })
     }
     
     // MARK: - Table view data source
@@ -37,11 +79,14 @@ class CategoryTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return FirebaseController.sharedInstance.usersCategories.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("categoryCell", forIndexPath: indexPath)
+        cell.backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
+        let category = FirebaseController.sharedInstance.usersCategories[indexPath.row]
+        cell.textLabel?.text = category.title
         
         return cell
     }
@@ -55,15 +100,13 @@ class CategoryTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
+            if let unwrappedUser = FirebaseController.sharedInstance.currentUser {
+                // TODO: Find out why the array duplicates here
+                let category = FirebaseController.sharedInstance.usersCategories[indexPath.row]
+                FirebaseController.sharedInstance.removeCategoryFromUsersCategories(category, user: unwrappedUser)
+                FirebaseController.sharedInstance.usersCategories.removeAtIndex(indexPath.row)
+            }
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
-    }
-    
-    // MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
 }
