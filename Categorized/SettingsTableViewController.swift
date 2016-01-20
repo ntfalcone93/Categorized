@@ -10,6 +10,8 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
     
+    let defaults = NSUserDefaults.standardUserDefaults()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,7 +38,7 @@ class SettingsTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return 6
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -46,12 +48,14 @@ class SettingsTableViewController: UITableViewController {
         case 0 :
             cell.textLabel?.text = "Change Font Size"
         case 1:
-            cell.textLabel?.text = "Terms of Service"
+            cell.textLabel?.text = "Change Color Theme"
         case 2:
-            cell.textLabel?.text = "Change Password"
+            cell.textLabel?.text = "Terms of Service"
         case 3:
-            cell.textLabel?.text = "Log Out"
+            cell.textLabel?.text = "Change Password"
         case 4:
+            cell.textLabel?.text = "Log Out"
+        case 5:
             cell.textLabel?.text = "Delete Account"
         default:
             break
@@ -71,17 +75,24 @@ class SettingsTableViewController: UITableViewController {
             presentViewController(pickerVC, animated: true, completion: nil)
             break
         case 1:
+            // Present ThemeViewController
+            let themeVC = self.storyboard?.instantiateViewControllerWithIdentifier("themeVC") as! ThemeViewController
+            // Makes the ThemeViewController show up on top of the current view
+            themeVC.modalPresentationStyle = .OverCurrentContext
+            presentViewController(themeVC, animated: true, completion: nil)
+            break
+        case 2:
             let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let termsVC = mainStoryboard.instantiateViewControllerWithIdentifier("termsOfServiceID") as! TermsViewController
             self.presentViewController(termsVC, animated: true, completion: nil)
             break
-        case 2:
+        case 3:
             UIAlertController.changePasswordAlert(self)
             break
-        case 3:
+        case 4:
             UIAlertController.logOutUser(self)
             break
-        case 4:
+        case 5:
             //            UIAlertController.deleteAccountAlert(self)
             break
         default:
@@ -89,5 +100,47 @@ class SettingsTableViewController: UITableViewController {
         }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+}
+
+// Extension for theme
+extension SettingsTableViewController {
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        // Theme
+        if let theme = defaults.objectForKey("themeNum") {
+            if let colorIndex = theme as? Int {
+                switch colorIndex {
+                case 0:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeOrange()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeOrange()
+                    break
+                case 1:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
+                    break
+                case 2:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeGreen()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeGreen()
+                    break
+                case 3:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeBlue()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeBlue()
+                    break
+                case 4:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themePink()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themePink()
+                    break
+                default:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
+                    break
+                }
+            }
+        } else {
+            navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
+            navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
+        }
     }
 }

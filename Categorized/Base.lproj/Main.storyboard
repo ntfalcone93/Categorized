@@ -33,7 +33,7 @@
                                     <constraint firstAttribute="height" constant="30" id="58q-jv-Tjh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="DMy-OI-3l7" id="VcG-Pm-qqY"/>
                                 </connections>
@@ -421,20 +421,71 @@ You will comply with all applicable laws when using or accessing Categorized.</s
         <scene sceneID="IwZ-rE-puX">
             <objects>
                 <tableViewController id="CSX-H8-Roa" customClass="CategoryTableViewController" customModule="Categorized" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="tJi-wi-hbg">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" id="tJi-wi-hbg">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" id="1FE-cO-NVV">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" id="T3G-UK-jx4">
+                                <rect key="frame" x="0.0" y="92" width="600" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1FE-cO-NVV" id="PNE-o8-mhr">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T3G-UK-jx4" id="MuF-Ha-5zM">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="FVb-Nh-Poj" kind="show" identifier="categoryToNotesSegue" id="RJm-bD-Tcy"/>
+                                    <segue destination="FVb-Nh-Poj" kind="show" identifier="categoryToNotesSegue" id="ixc-kf-VJh"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="customCategoryCell" rowHeight="70" id="1FE-cO-NVV" customClass="CategoryTableViewCell" customModule="Categorized" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="142" width="600" height="70"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1FE-cO-NVV" id="PNE-o8-mhr">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="titleLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBT-pV-G8W">
+                                            <rect key="frame" x="8" y="8" width="584" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="captionLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vT-tu-yjr">
+                                            <rect key="frame" x="8" y="40" width="195" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="DBd-0R-WlA"/>
+                                                <constraint firstAttribute="width" constant="195" id="Fj6-Af-EXE"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dateAndTimeLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2w-M2-JWh">
+                                            <rect key="frame" x="416" y="40" width="176" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="176" id="1Ro-N7-zNE"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="4vT-tu-yjr" firstAttribute="baseline" secondItem="r2w-M2-JWh" secondAttribute="baseline" id="2GY-du-ifa"/>
+                                        <constraint firstItem="r2w-M2-JWh" firstAttribute="trailing" secondItem="PNE-o8-mhr" secondAttribute="trailingMargin" id="2U4-iw-9YO"/>
+                                        <constraint firstItem="pBT-pV-G8W" firstAttribute="leading" secondItem="4vT-tu-yjr" secondAttribute="leading" id="5sN-oI-YiE"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="r2w-M2-JWh" secondAttribute="bottom" constant="0.5" id="8Hw-NJ-RP9"/>
+                                        <constraint firstItem="4vT-tu-yjr" firstAttribute="top" secondItem="pBT-pV-G8W" secondAttribute="bottom" constant="11" id="ILY-IL-ITy"/>
+                                        <constraint firstItem="pBT-pV-G8W" firstAttribute="top" secondItem="PNE-o8-mhr" secondAttribute="topMargin" id="R0r-IC-Tb6"/>
+                                        <constraint firstItem="pBT-pV-G8W" firstAttribute="leading" secondItem="PNE-o8-mhr" secondAttribute="leadingMargin" id="fed-FY-MUf"/>
+                                        <constraint firstItem="pBT-pV-G8W" firstAttribute="trailing" secondItem="r2w-M2-JWh" secondAttribute="trailing" id="oes-A0-azk"/>
+                                        <constraint firstItem="r2w-M2-JWh" firstAttribute="top" secondItem="4vT-tu-yjr" secondAttribute="top" id="zh0-HZ-onA"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="captionLabel" destination="4vT-tu-yjr" id="Gyo-6r-gtm"/>
+                                    <outlet property="dateAndTimeLabel" destination="r2w-M2-JWh" id="coX-GL-uTh"/>
+                                    <outlet property="titleLabel" destination="pBT-pV-G8W" id="Tw0-FX-c7g"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -444,7 +495,10 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                         </connections>
                     </tableView>
                     <toolbarItems>
+                        <barButtonItem title="    " id="2Lw-PD-UTn"/>
                         <barButtonItem systemItem="flexibleSpace" id="Otx-Rw-oJv"/>
+                        <barButtonItem title="categoryCount" id="BCh-4U-ACu"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="NBe-Kx-iLI"/>
                         <barButtonItem title="New" id="I2P-lM-7XB">
                             <connections>
                                 <action selector="newButtonTapped:" destination="CSX-H8-Roa" id="Hzd-Qw-fv6"/>
@@ -464,6 +518,8 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="categoryCount" destination="BCh-4U-ACu" id="wtT-Hl-ws7"/>
+                        <outlet property="newCategoryButton" destination="I2P-lM-7XB" id="TYL-nl-tTe"/>
                         <segue destination="DMy-OI-3l7" kind="presentation" identifier="toLoginViewController" id="pZG-Sn-VYb"/>
                     </connections>
                 </tableViewController>
@@ -510,6 +566,115 @@ You will comply with all applicable laws when using or accessing Categorized.</s
             </objects>
             <point key="canvasLocation" x="1768" y="1082"/>
         </scene>
+        <!--Theme View Controller-->
+        <scene sceneID="Tv8-Oh-ome">
+            <objects>
+                <viewController storyboardIdentifier="themeVC" id="iZp-eQ-5lw" customClass="ThemeViewController" customModule="Categorized" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bE4-UY-89p"/>
+                        <viewControllerLayoutGuide type="bottom" id="3d7-S5-U3N"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NB9-eY-wbg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0L-ja-res">
+                                <rect key="frame" x="0.0" y="381" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="flexibleSpace" id="Lse-MF-O9f"/>
+                                    <barButtonItem systemItem="done" id="bZf-ri-c3h">
+                                        <connections>
+                                            <action selector="doneButtonTapped:" destination="iZp-eQ-5lw" id="pEr-8g-s6c"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="y6U-6m-H7B">
+                                <rect key="frame" x="0.0" y="425" width="600" height="175"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="rmr-kb-QZK">
+                                    <size key="itemSize" width="120" height="175"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="orangeCell" id="sfw-YB-NwC">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="175"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="175"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <size key="customSize" width="120" height="175"/>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="yellowCell" id="I2Q-al-2dg">
+                                        <rect key="frame" x="120" y="0.0" width="120" height="175"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="175"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <size key="customSize" width="120" height="175"/>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="greenCell" id="sYK-nx-HYJ">
+                                        <rect key="frame" x="240" y="0.0" width="120" height="175"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="175"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <size key="customSize" width="120" height="175"/>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="blueCell" id="I2Z-mN-Hho">
+                                        <rect key="frame" x="360" y="0.0" width="120" height="175"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="175"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <size key="customSize" width="120" height="175"/>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="pinkCell" id="Rcy-WJ-0MW">
+                                        <rect key="frame" x="480" y="0.0" width="120" height="175"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="175"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <size key="customSize" width="120" height="175"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="iZp-eQ-5lw" id="f6e-hL-OQt"/>
+                                    <outlet property="delegate" destination="iZp-eQ-5lw" id="cc8-xU-YHR"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="y6U-6m-H7B" firstAttribute="leading" secondItem="k0L-ja-res" secondAttribute="leading" id="6Jc-Td-2W2"/>
+                            <constraint firstItem="k0L-ja-res" firstAttribute="leading" secondItem="NB9-eY-wbg" secondAttribute="leading" id="JdF-7f-DAe"/>
+                            <constraint firstItem="y6U-6m-H7B" firstAttribute="trailing" secondItem="k0L-ja-res" secondAttribute="trailing" id="NAl-ou-JGe"/>
+                            <constraint firstItem="3d7-S5-U3N" firstAttribute="top" secondItem="y6U-6m-H7B" secondAttribute="bottom" id="SSj-54-eZc"/>
+                            <constraint firstItem="y6U-6m-H7B" firstAttribute="top" secondItem="k0L-ja-res" secondAttribute="bottom" id="XJY-LZ-hjd"/>
+                            <constraint firstItem="k0L-ja-res" firstAttribute="top" secondItem="bE4-UY-89p" secondAttribute="bottom" constant="361" id="aLo-ue-0Z4"/>
+                            <constraint firstAttribute="trailing" secondItem="k0L-ja-res" secondAttribute="trailing" id="xWi-CW-WfX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="y6U-6m-H7B" id="P6Q-Bi-NsY"/>
+                        <outlet property="toolbar" destination="k0L-ja-res" id="m7q-XI-g6F"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HRo-wl-ike" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1983" y="1758"/>
+        </scene>
         <!--Picker View Controller-->
         <scene sceneID="G3a-vk-HxQ">
             <objects>
@@ -529,13 +694,13 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                                     <outlet property="delegate" destination="LNR-1X-DYf" id="XYa-hx-W31"/>
                                 </connections>
                             </pickerView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0L-ja-res">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fB2-M6-pX9">
                                 <rect key="frame" x="0.0" y="340" width="600" height="44"/>
                                 <items>
-                                    <barButtonItem systemItem="flexibleSpace" id="Lse-MF-O9f"/>
-                                    <barButtonItem systemItem="done" id="bZf-ri-c3h">
+                                    <barButtonItem systemItem="flexibleSpace" id="O4A-0D-nff"/>
+                                    <barButtonItem systemItem="done" id="ykM-ZM-HgU">
                                         <connections>
-                                            <action selector="doneButtonTapped:" destination="LNR-1X-DYf" id="UJH-tf-SLI"/>
+                                            <action selector="doneButtonTapped:" destination="LNR-1X-DYf" id="SmG-ee-wFM"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -543,12 +708,12 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="sj3-bG-6cG" firstAttribute="leading" secondItem="b96-ye-uI9" secondAttribute="leading" id="C2y-Un-v0v"/>
-                            <constraint firstItem="sj3-bG-6cG" firstAttribute="top" secondItem="k0L-ja-res" secondAttribute="bottom" id="Jxf-Mt-wzz"/>
-                            <constraint firstItem="sj3-bG-6cG" firstAttribute="bottom" secondItem="C17-z3-ps3" secondAttribute="top" id="Oct-UT-vvq"/>
-                            <constraint firstItem="sj3-bG-6cG" firstAttribute="leading" secondItem="k0L-ja-res" secondAttribute="leading" id="reD-H0-bge"/>
-                            <constraint firstAttribute="trailing" secondItem="k0L-ja-res" secondAttribute="trailing" id="rkQ-Lm-G5B"/>
-                            <constraint firstItem="k0L-ja-res" firstAttribute="trailing" secondItem="sj3-bG-6cG" secondAttribute="trailing" id="uBw-gp-4tc"/>
+                            <constraint firstItem="sj3-bG-6cG" firstAttribute="top" secondItem="fB2-M6-pX9" secondAttribute="bottom" id="1Io-Ch-Orp"/>
+                            <constraint firstItem="sj3-bG-6cG" firstAttribute="bottom" secondItem="C17-z3-ps3" secondAttribute="top" id="2Fb-4n-j7y"/>
+                            <constraint firstItem="sj3-bG-6cG" firstAttribute="leading" secondItem="fB2-M6-pX9" secondAttribute="leading" id="AS7-R6-MJf"/>
+                            <constraint firstAttribute="trailing" secondItem="sj3-bG-6cG" secondAttribute="trailing" id="eJC-PX-kcq"/>
+                            <constraint firstItem="fB2-M6-pX9" firstAttribute="trailing" secondItem="sj3-bG-6cG" secondAttribute="trailing" id="hNC-bv-hFY"/>
+                            <constraint firstItem="fB2-M6-pX9" firstAttribute="leading" secondItem="b96-ye-uI9" secondAttribute="leading" id="qne-Kx-WfJ"/>
                         </constraints>
                     </view>
                     <connections>
@@ -558,22 +723,22 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2dH-qt-emV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1768" y="1760"/>
+            <point key="canvasLocation" x="1330" y="1758"/>
         </scene>
         <!--Notes Table View Controller-->
         <scene sceneID="zeR-BZ-4tl">
             <objects>
                 <tableViewController id="FVb-Nh-Poj" customClass="NotesTableViewController" customModule="Categorized" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7gz-3f-e6D">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" id="7gz-3f-e6D">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="noteCell" id="yyG-iN-ngX">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yyG-iN-ngX" id="2bY-fg-NAW">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -587,7 +752,6 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="    " id="2Lw-PD-UTn"/>
                         <barButtonItem systemItem="flexibleSpace" id="GET-6j-4ja"/>
                         <barButtonItem title="noteCount" id="33x-6L-1TL"/>
                         <barButtonItem systemItem="flexibleSpace" id="OFz-ZR-tcD"/>
@@ -605,6 +769,7 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="newNoteButton" destination="K4h-Wt-YMN" id="pun-Zv-hX2"/>
                         <outlet property="noteCount" destination="33x-6L-1TL" id="Wy8-08-sRq"/>
                     </connections>
                 </tableViewController>
@@ -628,7 +793,7 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes"/>
                                 <connections>
                                     <outlet property="delegate" destination="6Lm-On-O6S" id="dYN-pJ-bSG"/>
                                 </connections>
@@ -650,6 +815,7 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="shareButton" destination="Fcd-Cy-xE0" id="ggg-i3-XJv"/>
                         <outlet property="textView" destination="ouQ-WI-Uqz" id="TEb-3a-9gJ"/>
                     </connections>
                 </viewController>

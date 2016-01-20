@@ -11,8 +11,10 @@ import UIKit
 class NotesTableViewController: UITableViewController {
     
     // IBOutlets
+    @IBOutlet weak var newNoteButton: UIBarButtonItem!
     @IBOutlet weak var noteCount: UIBarButtonItem!
     var category: Category?
+    let defaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +43,11 @@ class NotesTableViewController: UITableViewController {
         noteCount.enabled = false
         noteCount.tintColor = UIColor.blackColor()
         
+        // Navigation
+//        if let leftBarItem = navigationItem.leftBarButtonItem {
+//            leftBarItem.title = ""
+//        }
+//        self.navigationItem.backBarButtonItem?.title = ""
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
@@ -110,6 +117,61 @@ class NotesTableViewController: UITableViewController {
                 FirebaseController.sharedInstance.notesInCategory.removeAtIndex(indexPath.row)
             }
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        }
+    }
+}
+
+extension NotesTableViewController {
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        // Theme
+        if let theme = defaults.objectForKey("themeNum") {
+            if let colorIndex = theme as? Int {
+                switch colorIndex {
+                case 0:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeOrange()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeOrange()
+                    navigationController?.navigationBar.tintColor = UIColor.themeOrange()
+                    newNoteButton.tintColor = UIColor.themeOrange()
+                    break
+                case 1:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
+                    navigationController?.navigationBar.tintColor = UIColor.themeYellow()
+                    newNoteButton.tintColor = UIColor.themeYellow()
+                    break
+                case 2:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeGreen()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeGreen()
+                    navigationController?.navigationBar.tintColor = UIColor.themeGreen()
+                    newNoteButton.tintColor = UIColor.themeGreen()
+                    break
+                case 3:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeBlue()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeBlue()
+                    navigationController?.navigationBar.tintColor = UIColor.themeBlue()
+                    newNoteButton.tintColor = UIColor.themeBlue()
+                    break
+                case 4:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themePink()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themePink()
+                    navigationController?.navigationBar.tintColor = UIColor.themePink()
+                    newNoteButton.tintColor = UIColor.themePink()
+                    break
+                default:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
+                    navigationController?.navigationBar.tintColor = UIColor.themeYellow()
+                    newNoteButton.tintColor = UIColor.themeYellow()
+                    break
+                }
+            }
+        } else {
+            navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
+            navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
+            navigationController?.navigationBar.tintColor = UIColor.themeYellow()
+            newNoteButton.tintColor = UIColor.themeYellow()
         }
     }
 }

@@ -39,6 +39,7 @@ extension UIColor{
         return UIColor(red:0.89, green:0.69, blue:0.06, alpha:1)
     }
     
+    // Highlighter colors
     class func highlighterYellow() -> UIColor {
         return UIColor(red:0.95, green:0.95, blue:0.08, alpha:1)
     }
@@ -57,5 +58,26 @@ extension UIColor{
     
     class func highlighterPink() -> UIColor {
         return UIColor(red:1, green:0, blue:0.6, alpha:1)
+    }
+    
+    // Theme colors
+    class func themeOrange() -> UIColor {
+        return UIColor(red:1, green:0.4, blue:0.01, alpha:1)
+    }
+    
+    class func themeYellow() -> UIColor {
+        return UIColor(red:0.89, green:0.69, blue:0.06, alpha:1)
+    }
+    
+    class func themeGreen() -> UIColor {
+        return UIColor(red:0, green:0.7, blue:0, alpha:1)
+    }
+    
+    class func themeBlue() -> UIColor {
+        return UIColor(red: 0.0, green: 122.0/255.0, blue: 1.0, alpha: 1.0)
+    }
+    
+    class func themePink() -> UIColor {
+        return UIColor(red:0.9, green:0, blue:0.45, alpha:1)
     }
 }

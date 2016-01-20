@@ -10,7 +10,10 @@ import UIKit
 
 class CategoryTableViewController: UITableViewController {
     
+    @IBOutlet weak var categoryCount: UIBarButtonItem!
     var userWasSentToLogin: Bool?
+    let defaults = NSUserDefaults.standardUserDefaults()
+    @IBOutlet weak var newCategoryButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +23,10 @@ class CategoryTableViewController: UITableViewController {
             // Fetch the users categories
             if let unwrappedUser = FirebaseController.sharedInstance.currentUser {
                 FirebaseController.sharedInstance.fetchUsersCategories(unwrappedUser, completion: { () -> () in
+                    // Category count
+                    let count = FirebaseController.sharedInstance.usersCategories.count
+                    self.categoryCount.title = "\(count) Categories"
+                    
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.tableView.reloadData()
                     })
@@ -27,27 +34,35 @@ class CategoryTableViewController: UITableViewController {
             }
         }
         
+        // Category count
+        categoryCount.enabled = false
+        categoryCount.tintColor = UIColor.blackColor()
+        // When there are 0 categories or view has not loaded
+        if FirebaseController.sharedInstance.usersCategories.count == 0 {
+            categoryCount.title = "0 Categories"
+        }
+        
         // Allows editing
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        // Added this because if the user is sent to the loginVC the view does not reload
-        if userWasSentToLogin == true {
-            // Check if user is logged in
-            self.checkForUser { () -> () in
-                // Fetch the users categories
-                if let unwrappedUser = FirebaseController.sharedInstance.currentUser {
-                    FirebaseController.sharedInstance.fetchUsersCategories(unwrappedUser, completion: { () -> () in
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            self.tableView.reloadData()
-                        })
-                    })
-                }
-            }
-        }
-    }
+//    override func viewWillAppear(animated: Bool) {
+//        super.viewWillAppear(true)
+//        // Added this because if the user is sent to the loginVC the view does not reload
+//        if userWasSentToLogin == true {
+//            // Check if user is logged in
+//            self.checkForUser { () -> () in
+//                // Fetch the users categories
+//                if let unwrappedUser = FirebaseController.sharedInstance.currentUser {
+//                    FirebaseController.sharedInstance.fetchUsersCategories(unwrappedUser, completion: { () -> () in
+//                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                            self.tableView.reloadData()
+//                        })
+//                    })
+//                }
+//            }
+//        }
+//    }
     
     // MARK: IBActions
     // Edit button
@@ -72,6 +87,8 @@ class CategoryTableViewController: UITableViewController {
                 let category = FirebaseController.sharedInstance.usersCategories[indexPath.row]
                 notesTVC.category = category
                 notesTVC.navigationItem.title = category.title
+                let backItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+                navigationItem.backBarButtonItem = backItem
             }
         }
     }
@@ -138,6 +155,69 @@ class CategoryTableViewController: UITableViewController {
                 FirebaseController.sharedInstance.usersCategories.removeAtIndex(indexPath.row)
             }
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        }
+    }
+}
+
+extension CategoryTableViewController {
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        // Added this because if the user is sent to the loginVC the view does not reload
+        if userWasSentToLogin == true {
+            // Check if user is logged in
+            self.checkForUser { () -> () in
+                // Fetch the users categories
+                if let unwrappedUser = FirebaseController.sharedInstance.currentUser {
+                    FirebaseController.sharedInstance.fetchUsersCategories(unwrappedUser, completion: { () -> () in
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.tableView.reloadData()
+                        })
+                    })
+                }
+            }
+        }
+        
+        // Theme
+        if let theme = defaults.objectForKey("themeNum") {
+            if let colorIndex = theme as? Int {
+                switch colorIndex {
+                case 0:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeOrange()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeOrange()
+                    newCategoryButton.tintColor = UIColor.themeOrange()
+                    break
+                case 1:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
+                    newCategoryButton.tintColor = UIColor.themeYellow()
+                    break
+                case 2:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeGreen()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeGreen()
+                    newCategoryButton.tintColor = UIColor.themeGreen()
+                    break
+                case 3:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeBlue()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeBlue()
+                    newCategoryButton.tintColor = UIColor.themeBlue()
+                    break
+                case 4:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themePink()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themePink()
+                    newCategoryButton.tintColor = UIColor.themePink()
+                    break
+                default:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
+                    newCategoryButton.tintColor = UIColor.themeYellow()
+                    break
+                }
+            }
+        } else {
+            navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
+            navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
+            newCategoryButton.tintColor = UIColor.themeYellow()
         }
     }
 }

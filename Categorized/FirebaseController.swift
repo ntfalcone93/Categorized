@@ -12,11 +12,17 @@ import Firebase
 class FirebaseController: NSObject {
     
     static let sharedInstance = FirebaseController()
+//    let ref = Firebase.defaultConfig()
+
     let ref = Firebase(url: "https://categorized.firebaseio.com")
     var currentUser: User?
     var usersCategories: [Category] = []
     var notesInCategory: [Note] = []
     
+//    func ref() -> Firebase {
+//        Firebase.defaultConfig().persistenceEnabled = true
+//        return Firebase(url: "https://categorized.firebaseio.com")
+//    }
     
     // MARK: Updating Categories and Notes
     func updateNote(bodyText: String, note: Note) {
@@ -235,4 +241,6 @@ class FirebaseController: NSObject {
         }
         completion(nil)
     }
+    
+    
 }

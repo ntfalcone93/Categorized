@@ -46,21 +46,6 @@ class PickerViewController: UIViewController {
         }
         return index
     }
-    
-    /*
-    // Gets index of that user in membersAddedToPlaylist
-    func getIndexOfUserWithUserId(user: User, userArray: [User]) -> Int {
-    var index = 0
-    for member in userArray {
-    if member.uid == user.uid {
-    return index
-    }
-    // Each time the for loop runs 1 gets added to the index
-    index += 1
-    }
-    return index
-    }
-    */
 }
 
 extension PickerViewController: UIPickerViewDataSource, UIPickerViewDelegate {

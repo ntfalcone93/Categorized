@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0228AE611C4F1643002CF317 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0228AE601C4F1643002CF317 /* CategoryTableViewCell.swift */; };
 		0249D5A31C4EB32F0042D88A /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249D5A21C4EB32F0042D88A /* SettingsTableViewController.swift */; };
+		025EEB8F1C4FF6F200909F94 /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EEB8E1C4FF6F200909F94 /* ThemeViewController.swift */; };
 		02DF525E1C4AEFBE003D9E33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF525D1C4AEFBE003D9E33 /* AppDelegate.swift */; };
 		02DF52631C4AEFBE003D9E33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02DF52611C4AEFBE003D9E33 /* Main.storyboard */; };
 		02DF52651C4AEFBE003D9E33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02DF52641C4AEFBE003D9E33 /* Assets.xcassets */; };
@@ -19,7 +21,6 @@
 		02DF52931C4AF625003D9E33 /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52921C4AF625003D9E33 /* NoteDetailViewController.swift */; };
 		02DF52951C4B015D003D9E33 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52941C4B015D003D9E33 /* Category.swift */; };
 		02DF52971C4B0163003D9E33 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52961C4B0163003D9E33 /* Note.swift */; };
-		02DF529A1C4B019D003D9E33 /* NotesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52991C4B019D003D9E33 /* NotesController.swift */; };
 		02DF529C1C4B01A5003D9E33 /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF529B1C4B01A5003D9E33 /* FirebaseController.swift */; };
 		02DF52A11C4B06B3003D9E33 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02DF52A01C4B06B3003D9E33 /* CFNetwork.framework */; };
 		02DF52A31C4B06BB003D9E33 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02DF52A21C4B06BB003D9E33 /* Security.framework */; };
@@ -54,7 +55,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0228AE601C4F1643002CF317 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		0249D5A21C4EB32F0042D88A /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		025EEB8E1C4FF6F200909F94 /* ThemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
 		02DF525A1C4AEFBE003D9E33 /* Categorized.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Categorized.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02DF525D1C4AEFBE003D9E33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02DF52621C4AEFBE003D9E33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -72,7 +75,6 @@
 		02DF52921C4AF625003D9E33 /* NoteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
 		02DF52941C4B015D003D9E33 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		02DF52961C4B0163003D9E33 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
-		02DF52991C4B019D003D9E33 /* NotesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesController.swift; sourceTree = "<group>"; };
 		02DF529B1C4B01A5003D9E33 /* FirebaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
 		02DF52A01C4B06B3003D9E33 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		02DF52A21C4B06BB003D9E33 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -197,10 +199,12 @@
 			children = (
 				02DF52BB1C4C1FF4003D9E33 /* Login */,
 				02DF528B1C4AF10A003D9E33 /* CategoryTableViewController.swift */,
+				0228AE601C4F1643002CF317 /* CategoryTableViewCell.swift */,
 				02DF528F1C4AF4FF003D9E33 /* NotesTableViewController.swift */,
 				02DF52921C4AF625003D9E33 /* NoteDetailViewController.swift */,
 				0249D5A21C4EB32F0042D88A /* SettingsTableViewController.swift */,
 				02FE2F601C4EDCE9005FFFFC /* PickerViewController.swift */,
+				025EEB8E1C4FF6F200909F94 /* ThemeViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -218,7 +222,6 @@
 		02DF529D1C4B01A9003D9E33 /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				02DF52991C4B019D003D9E33 /* NotesController.swift */,
 				02DF529B1C4B01A5003D9E33 /* FirebaseController.swift */,
 			);
 			name = "Model Controllers";
@@ -386,15 +389,16 @@
 				02DF529C1C4B01A5003D9E33 /* FirebaseController.swift in Sources */,
 				02DF525E1C4AEFBE003D9E33 /* AppDelegate.swift in Sources */,
 				02DF52951C4B015D003D9E33 /* Category.swift in Sources */,
+				0228AE611C4F1643002CF317 /* CategoryTableViewCell.swift in Sources */,
 				02DF52931C4AF625003D9E33 /* NoteDetailViewController.swift in Sources */,
 				02DF528C1C4AF10A003D9E33 /* CategoryTableViewController.swift in Sources */,
 				02DF52B21C4B39A9003D9E33 /* User.swift in Sources */,
+				025EEB8F1C4FF6F200909F94 /* ThemeViewController.swift in Sources */,
 				02DF52901C4AF4FF003D9E33 /* NotesTableViewController.swift in Sources */,
 				02DF52971C4B0163003D9E33 /* Note.swift in Sources */,
 				0249D5A31C4EB32F0042D88A /* SettingsTableViewController.swift in Sources */,
 				02DF52B61C4C1ABE003D9E33 /* LoginViewController.swift in Sources */,
 				02DF52BA1C4C1FED003D9E33 /* TermsViewController.swift in Sources */,
-				02DF529A1C4B019D003D9E33 /* NotesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

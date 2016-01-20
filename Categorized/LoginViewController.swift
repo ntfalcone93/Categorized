@@ -67,6 +67,22 @@ extension LoginViewController : UITextFieldDelegate {
         if textField.tag == 0 {
             self.passwordTextField.becomeFirstResponder()
         } else {
+            // Acts as a login button when go is tapped on keyboard
+            if let email = emailTextField.text, let password = passwordTextField.text {
+                FirebaseController.sharedInstance.ref.authUser(email, password: password, withCompletionBlock: { (error, auth) -> Void in
+                    if auth != nil {
+                        FirebaseController.sharedInstance.retrieveCurrentUserWithUserID(auth.uid, completion: { (user) -> () in
+                            if user != nil {
+                                self.defaults.setObject(auth.uid, forKey: "userID")
+                                self.performSegueWithIdentifier("unwindFromLoginToCategoryTVC", sender: nil)
+                            }
+                        })
+                    } else {
+                        UIAlertController.invalidLoginAlert(self)
+                        print("Error while logging user in: \(error.localizedDescription)")
+                    }
+                })
+            }
             textField.resignFirstResponder()
         }
         return true

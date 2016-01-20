@@ -235,13 +235,10 @@ extension UIAlertController {
         let alertController = UIAlertController(title: "Delete Account", message: "If you are sure you want to delete your account, please enter you email and password", preferredStyle: .Alert)
         
         let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) { (action) -> Void in
-            // TODO: Add functionality to delete users account
             let emailTextField = alertController.textFields![0]
             let passwordTextField = alertController.textFields![1]
             
-            
             if let currentUser = FirebaseController.sharedInstance.currentUser {
-                
                 FirebaseController.sharedInstance.ref.removeUser(emailTextField.text, password: passwordTextField.text, withCompletionBlock: { (error) -> Void in
                     if error == nil {
                         print("Account was succesfully deleted")

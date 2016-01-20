@@ -13,6 +13,7 @@ class NoteDetailViewController: UIViewController, UIScrollViewDelegate, UITextVi
     var note: Note?
     // IBOutlets
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     let defaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
@@ -72,6 +73,58 @@ class NoteDetailViewController: UIViewController, UIScrollViewDelegate, UITextVi
     func scrollViewDidScroll(scrollView: UIScrollView) {
         textView.resignFirstResponder()
     }
-    
-    
+}
+
+extension NoteDetailViewController {
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        // Theme
+        if let theme = defaults.objectForKey("themeNum") {
+            if let colorIndex = theme as? Int {
+                switch colorIndex {
+                case 0:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeOrange()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeOrange()
+                    navigationController?.navigationBar.tintColor = UIColor.themeOrange()
+                    shareButton.tintColor = UIColor.themeOrange()
+                    break
+                case 1:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
+                    navigationController?.navigationBar.tintColor = UIColor.themeYellow()
+                    shareButton.tintColor = UIColor.themeYellow()
+                    break
+                case 2:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeGreen()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeGreen()
+                    navigationController?.navigationBar.tintColor = UIColor.themeGreen()
+                    shareButton.tintColor = UIColor.themeGreen()
+                    break
+                case 3:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeBlue()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeBlue()
+                    navigationController?.navigationBar.tintColor = UIColor.themeBlue()
+                    shareButton.tintColor = UIColor.themeBlue()
+                    break
+                case 4:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themePink()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themePink()
+                    navigationController?.navigationBar.tintColor = UIColor.themePink()
+                    shareButton.tintColor = UIColor.themePink()
+                    break
+                default:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
+                    navigationController?.navigationBar.tintColor = UIColor.themeYellow()
+                    shareButton.tintColor = UIColor.themeYellow()
+                    break
+                }
+            }
+        } else {
+            navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
+            navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
+            navigationController?.navigationBar.tintColor = UIColor.themeYellow()
+            shareButton.tintColor = UIColor.themeYellow()
+        }
+    }
 }
