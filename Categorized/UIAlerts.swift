@@ -127,6 +127,25 @@ extension UIAlertController {
             completion: nil)
     }
     
+    // MARK: Login Alerts
+    class func connectionErrorAlert(target:UIViewController){
+        
+        let alert = UIAlertController(title: "Connection Error",
+            message: "Please try again",
+            preferredStyle: .Alert)
+        
+        let cancelAction = UIAlertAction(title: "Ok",
+            style: .Default) { (action: UIAlertAction) -> Void in
+        }
+        
+        alert.addAction(cancelAction)
+        
+        target.presentViewController(alert,
+            animated: true,
+            completion: nil)
+    }
+
+    
     class func forgotPassword(target: UIViewController) {
         let alertController = UIAlertController(title: "Forgot Password", message: "No problem, just enter your email to reset your password.", preferredStyle: .Alert)
         

@@ -33,7 +33,7 @@
                                     <constraint firstAttribute="height" constant="30" id="58q-jv-Tjh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="DMy-OI-3l7" id="VcG-Pm-qqY"/>
                                 </connections>
