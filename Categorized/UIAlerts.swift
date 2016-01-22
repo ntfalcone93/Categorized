@@ -46,9 +46,15 @@ extension UIAlertController {
         
         alertController.addTextFieldWithConfigurationHandler { (textField) -> Void in
             textField.placeholder = "Title"
+            textField.autocapitalizationType = .Sentences
+            textField.autocorrectionType = .Yes
+            textField.spellCheckingType = .Yes
         }
         alertController.addTextFieldWithConfigurationHandler { (textField) -> Void in
             textField.placeholder = "Caption"
+            textField.autocapitalizationType = .Sentences
+            textField.autocorrectionType = .Yes
+            textField.spellCheckingType = .Yes
         }
         
         alertController.addAction(cancelAction)
@@ -80,11 +86,11 @@ extension UIAlertController {
         
         let createAction = UIAlertAction(title: "Create", style: .Default) { (action) -> Void in
             let titleTextField = alertController.textFields![0]
-            
             if titleTextField.text != "" {
                 if let title = titleTextField.text {
-                    FirebaseController.sharedInstance.createNewNote(title, category: category)
-                    completion()
+                    FirebaseController.sharedInstance.createNewNote(title, category: category, completion: { () -> () in
+                        completion()
+                    })
                 }
             } else {
                 self.noteTitleTextFieldEmpty(target, category: category)
@@ -94,6 +100,9 @@ extension UIAlertController {
         
         alertController.addTextFieldWithConfigurationHandler { (textField) -> Void in
             textField.placeholder = "Title"
+            textField.autocapitalizationType = .Sentences
+            textField.autocorrectionType = .Yes
+            textField.spellCheckingType = .Yes
         }
         
         alertController.addAction(cancelAction)

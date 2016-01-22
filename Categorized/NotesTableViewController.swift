@@ -19,35 +19,10 @@ class NotesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        if let unwrappedCategory = category {
-            // Fetch notes
-            FirebaseController.sharedInstance.fetchCategoriesNotes(unwrappedCategory, completion: { () -> () in
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    // Note count
-                    if unwrappedCategory.notes.count >= 1 {
-                        self.noteCount.title = "\(unwrappedCategory.notes.count) Notes"
-                        self.tableView.reloadData()
-                    } else {
-                        self.noteCount.title = "0 Notes"
-                    }
-                })
-            })
-            if unwrappedCategory.notes.count == 0 {
-                self.noteCount.title = "0 Notes"
-            }
-        }
-        
         // Note count
         noteCount.enabled = false
         noteCount.tintColor = UIColor.blackColor()
         
-        // Navigation
-//        if let leftBarItem = navigationItem.leftBarButtonItem {
-//            leftBarItem.title = ""
-//        }
-//        self.navigationItem.backBarButtonItem?.title = ""
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
@@ -61,12 +36,11 @@ class NotesTableViewController: UITableViewController {
     @IBAction func newButtonTapped(sender: AnyObject) {
         if let unwrappedCategory = category {
             UIAlertController.createNewNote(self, category: unwrappedCategory, completion: { () -> () in
-                // TODO: Figure out why none of this is getting called
-                // Adds 1 to the note count
-                //                self.noteCount.title = "\(unwrappedCategory.notes.count + 1) Notes"
-                //                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                //                    self.tableView.reloadData()
-                //                })
+                let count = FirebaseController.sharedInstance.notesInCategory.count
+                self.noteCount.title = "\(count) Notes"
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadData()
+                })
             })
         }
     }
@@ -113,8 +87,10 @@ class NotesTableViewController: UITableViewController {
             if let unwrappedCategory = category {
                 // TODO: Find out why the array duplicates here
                 let note = FirebaseController.sharedInstance.notesInCategory[indexPath.row]
-                FirebaseController.sharedInstance.removeNoteFromCategory(unwrappedCategory, note: note)
+                FirebaseController.sharedInstance.deleteNote(note, category: unwrappedCategory)
                 FirebaseController.sharedInstance.notesInCategory.removeAtIndex(indexPath.row)
+                let count = FirebaseController.sharedInstance.notesInCategory.count
+                self.noteCount.title = "\(count) Notes"
             }
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
@@ -125,6 +101,29 @@ extension NotesTableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        
+        
+        if let unwrappedCategory = category {
+            // Fetch notes
+            FirebaseController.sharedInstance.fetchCategoriesNotes(unwrappedCategory, completion: { () -> () in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    // Note count
+                    if unwrappedCategory.notes.count >= 1 {
+                        self.noteCount.title = "\(unwrappedCategory.notes.count) Notes"
+                        self.tableView.reloadData()
+                    } else {
+                        self.noteCount.title = "0 Notes"
+                    }
+                })
+            })
+            if unwrappedCategory.notes.count == 0 {
+                self.noteCount.title = "0 Notes"
+            } else {
+                let count = unwrappedCategory.notes.count
+                self.noteCount.title = "\(count) Notes"
+            }
+        }
+        
         // Theme
         if let theme = defaults.objectForKey("themeNum") {
             if let colorIndex = theme as? Int {

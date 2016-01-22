@@ -138,7 +138,7 @@ class CategoryTableViewController: UITableViewController {
             if let unwrappedUser = FirebaseController.sharedInstance.currentUser {
                 // TODO: Find out why the array duplicates here
                 let category = FirebaseController.sharedInstance.usersCategories[indexPath.row]
-                FirebaseController.sharedInstance.removeCategoryFromUsersCategories(category, user: unwrappedUser)
+                FirebaseController.sharedInstance.deleteCategory(category, user: unwrappedUser)
                 FirebaseController.sharedInstance.usersCategories.removeAtIndex(indexPath.row)
                 // Fixes categoryCount
                 let count = FirebaseController.sharedInstance.usersCategories.count

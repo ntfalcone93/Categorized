@@ -15,7 +15,7 @@ class Note: NSObject {
     let bodyText: String
     let dateLastEditedUTCString: String
 //    let categoryID: String
-    let ref: Firebase?
+    var ref: Firebase?
     
     // Converts dateLastEditedUTCString into a date
     var dateLastEdited: NSDate {
@@ -57,7 +57,7 @@ class Note: NSObject {
         return [
             "title" : title,
             "bodyText" : bodyText,
-            "dateLastEdited" : dateLastEdited
+            "dateLastEdited" : dateLastEditedUTCString
         ]
     }
 }

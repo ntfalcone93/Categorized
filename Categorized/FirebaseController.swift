@@ -12,17 +12,17 @@ import Firebase
 class FirebaseController: NSObject {
     
     static let sharedInstance = FirebaseController()
-//    let ref = Firebase.defaultConfig()
-
+    //    let ref = Firebase.defaultConfig()
+    
     let ref = Firebase(url: "https://categorized.firebaseio.com")
     var currentUser: User?
     var usersCategories: [Category] = []
     var notesInCategory: [Note] = []
     
-//    func ref() -> Firebase {
-//        Firebase.defaultConfig().persistenceEnabled = true
-//        return Firebase(url: "https://categorized.firebaseio.com")
-//    }
+    //    func ref() -> Firebase {
+    //        Firebase.defaultConfig().persistenceEnabled = true
+    //        return Firebase(url: "https://categorized.firebaseio.com")
+    //    }
     
     // MARK: Updating Categories and Notes
     func updateNote(bodyText: String, note: Note) {
@@ -38,6 +38,7 @@ class FirebaseController: NSObject {
             if error == nil {
                 if let unwrappedUser = self.currentUser {
                     self.addCategoryToUsersCategories(categoryRef.ref!.key, user: unwrappedUser)
+                    category.ref = categoryRef
                     self.usersCategories.append(category)
                     completion()
                 }
@@ -48,13 +49,42 @@ class FirebaseController: NSObject {
         }
     }
     
-    func createNewNote(title: String, category: Category) {
+    func createNewNote(title: String, category: Category, completion: () -> ()) {
         let note = Note(title: title, bodyText: "")
         ref.childByAppendingPath("notes").childByAutoId().setValue(note.toAnyObject()) { (error, noteRef) -> Void in
             if error == nil {
                 self.addNoteToCategory(category, noteID: noteRef.ref!.key)
+                note.ref = noteRef
+                self.notesInCategory.append(note)
+                completion()
+            } else {
+                print("Error creating note: \(error.localizedDescription)")
+                completion()
             }
         }
+    }
+    
+    // MARK: Deleting Notes and Categories
+    func deleteCategory(category: Category, user: User) {
+        // Deletes category from Firebase
+        category.ref!.removeValue()
+        // Delete each one of the categoryies notes
+        for noteID in category.notes {
+            deleteNoteWithID(noteID)
+        }
+        // Deletes the category ref from the users array of categories
+        removeCategoryFromUsersCategories(category, user: user)
+    }
+    
+    func deleteNote(note: Note, category: Category) {
+        // Deletes note from Firebase
+        note.ref!.removeValue()
+        // Deletes the note ref from the categories array of notes
+        removeNoteFromCategory(category, note: note)
+    }
+    
+    func deleteNoteWithID(noteID: String) {
+        ref.childByAppendingPath("notes").childByAppendingPath(noteID).removeValue()
     }
     
     // MARK: Fetching Categories and Notes
@@ -85,7 +115,6 @@ class FirebaseController: NSObject {
             let category = Category(snapshot: snapshot)
             completion(category)
         })
-        // TODO: Do I need this       completion(nil)
     }
     
     // Notes
@@ -188,17 +217,17 @@ class FirebaseController: NSObject {
                                 // Gives them a home category
                                 // TODO: Took this out because it was the source of a crash when creating an account
                                 
-//                                self.createHomeCategory({ (firebase) -> () in
-//                                    if let ref = firebase {
-//                                        userRef.childByAppendingPath("categories").childByAppendingPath("\(ref.key)").setValue(true)
-//                                    }
-//                                })
-//                                // Gives them a work category
-//                                self.createWorkCategory({ (firebase) -> () in
-//                                    if let ref = firebase {
-//                                        userRef.childByAppendingPath("categories").childByAppendingPath("\(ref.key)").setValue(true)
-//                                    }
-//                                })
+                                //                                self.createHomeCategory({ (firebase) -> () in
+                                //                                    if let ref = firebase {
+                                //                                        userRef.childByAppendingPath("categories").childByAppendingPath("\(ref.key)").setValue(true)
+                                //                                    }
+                                //                                })
+                                //                                // Gives them a work category
+                                //                                self.createWorkCategory({ (firebase) -> () in
+                                //                                    if let ref = firebase {
+                                //                                        userRef.childByAppendingPath("categories").childByAppendingPath("\(ref.key)").setValue(true)
+                                //                                    }
+                                //                                })
                             } else {
                                 print("Error setting users properties: \(error.localizedDescription)")
                             }

@@ -15,7 +15,7 @@ class Category: NSObject {
     let caption: String
     let dateLastEditedUTCString: String
     var notes: [String] = []
-    let ref: Firebase?
+    var ref: Firebase?
     
     // Converts dateLastEditedUTCString into a date
     var dateLastEdited: NSDate {
