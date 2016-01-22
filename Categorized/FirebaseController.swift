@@ -32,13 +32,18 @@ class FirebaseController: NSObject {
     
     
     // MARK: Creating New Categories and notes
-    func createNewCategory(title: String, caption: String) {
+    func createNewCategory(title: String, caption: String, completion: () -> ()) {
         let category = Category(title: title, caption: caption)
         ref.childByAppendingPath("categories").childByAutoId().setValue(category.toAnyObject()) { (error, categoryRef) -> Void in
             if error == nil {
                 if let unwrappedUser = self.currentUser {
                     self.addCategoryToUsersCategories(categoryRef.ref!.key, user: unwrappedUser)
+                    self.usersCategories.append(category)
+                    completion()
                 }
+            } else {
+                print("Error creating category: \(error.localizedDescription)")
+                completion()
             }
         }
     }
@@ -57,7 +62,7 @@ class FirebaseController: NSObject {
     func fetchUsersCategories(user: User, completion:() -> ()) {
         usersCategories.removeAll()
         let userCategoriesRef = user.ref!.childByAppendingPath("categories")
-        userCategoriesRef.queryOrderedByValue().observeEventType(.Value, withBlock: {(snapshot) -> Void in
+        userCategoriesRef.queryOrderedByValue().observeSingleEventOfType(.Value, withBlock: {(snapshot) -> Void in
             let categoryIDs = snapshot.children.allObjects
             for categoryID in categoryIDs {
                 self.fetchCategoryWithCategoryID(categoryID.ref!.key, completion: { (category) -> () in
@@ -87,7 +92,7 @@ class FirebaseController: NSObject {
     func fetchCategoriesNotes(category: Category, completion:() -> ()) {
         notesInCategory.removeAll()
         let notesRef = category.ref!.childByAppendingPath("notes")
-        notesRef.queryOrderedByValue().observeEventType(.Value, withBlock: {(snapshot) -> Void in
+        notesRef.queryOrderedByValue().observeSingleEventOfType(.Value, withBlock: {(snapshot) -> Void in
             let noteIDs = snapshot.children.allObjects
             for noteID in noteIDs {
                 self.fetchNoteWithNoteID(noteID.ref!.key, completion: { (note) -> () in
@@ -181,17 +186,19 @@ class FirebaseController: NSObject {
                                 // Sets userID in NSUserDefaults making it easier for user to login
                                 NSUserDefaults.standardUserDefaults().setObject(auth.uid, forKey: "userID")
                                 // Gives them a home category
-                                self.createHomeCategory({ (firebase) -> () in
-                                    if let ref = firebase {
-                                        userRef.childByAppendingPath("categories").childByAppendingPath("\(ref.key)").setValue(true)
-                                    }
-                                })
-                                // Gives them a work category
-                                self.createWorkCategory({ (firebase) -> () in
-                                    if let ref = firebase {
-                                        userRef.childByAppendingPath("categories").childByAppendingPath("\(ref.key)").setValue(true)
-                                    }
-                                })
+                                // TODO: Took this out because it was the source of a crash when creating an account
+                                
+//                                self.createHomeCategory({ (firebase) -> () in
+//                                    if let ref = firebase {
+//                                        userRef.childByAppendingPath("categories").childByAppendingPath("\(ref.key)").setValue(true)
+//                                    }
+//                                })
+//                                // Gives them a work category
+//                                self.createWorkCategory({ (firebase) -> () in
+//                                    if let ref = firebase {
+//                                        userRef.childByAppendingPath("categories").childByAppendingPath("\(ref.key)").setValue(true)
+//                                    }
+//                                })
                             } else {
                                 print("Error setting users properties: \(error.localizedDescription)")
                             }

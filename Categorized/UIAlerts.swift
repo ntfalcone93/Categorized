@@ -24,7 +24,9 @@ extension UIAlertController {
     class func createNewCategory(target: UIViewController, completion:() -> ()) {
         let alertController = UIAlertController(title: "New Category", message: "Create a new category with a title and caption", preferredStyle: .Alert)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in
+            completion()
+        }
         
         let createAction = UIAlertAction(title: "Create", style: .Default) { (action) -> Void in
             let titleTextField = alertController.textFields![0]
@@ -32,11 +34,13 @@ extension UIAlertController {
             
             if titleTextField.text != "" {
                 if let title = titleTextField.text, let caption = captionTextField.text {
-                    FirebaseController.sharedInstance.createNewCategory(title, caption: caption)
-                    FirebaseController.sharedInstance.usersCategories.removeAll()
+                    FirebaseController.sharedInstance.createNewCategory(title, caption: caption, completion: { () -> () in
+                        completion()
+                    })
                 }
             } else {
                 self.categoryTitleTextFieldEmpty(target)
+                completion()
             }
         }
         
@@ -70,7 +74,9 @@ extension UIAlertController {
     class func createNewNote(target: UIViewController, category: Category, completion:() -> ()) {
         let alertController = UIAlertController(title: "New Note", message: "Create a new note with a title", preferredStyle: .Alert)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) -> Void in
+            completion()
+        }
         
         let createAction = UIAlertAction(title: "Create", style: .Default) { (action) -> Void in
             let titleTextField = alertController.textFields![0]
@@ -78,10 +84,11 @@ extension UIAlertController {
             if titleTextField.text != "" {
                 if let title = titleTextField.text {
                     FirebaseController.sharedInstance.createNewNote(title, category: category)
-                    FirebaseController.sharedInstance.notesInCategory.removeAll()
+                    completion()
                 }
             } else {
                 self.noteTitleTextFieldEmpty(target, category: category)
+                completion()
             }
         }
         

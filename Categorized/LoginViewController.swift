@@ -1,4 +1,4 @@
-    //
+//
 //  LoginViewController.swift
 //  Categorized
 //
@@ -18,14 +18,8 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         
-        
-        // Do any additional setup after loading the view.
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     // MARK: IBActions
     @IBAction func loginButtonTapped(sender: AnyObject) {
         if let email = emailTextField.text, let password = passwordTextField.text {

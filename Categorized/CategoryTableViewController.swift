@@ -40,29 +40,14 @@ class CategoryTableViewController: UITableViewController {
         // When there are 0 categories or view has not loaded
         if FirebaseController.sharedInstance.usersCategories.count == 0 {
             categoryCount.title = "0 Categories"
+        } else {
+            let count = FirebaseController.sharedInstance.usersCategories.count
+            categoryCount.title = "\(count) Categories"
         }
         
         // Allows editing
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    
-//    override func viewWillAppear(animated: Bool) {
-//        super.viewWillAppear(true)
-//        // Added this because if the user is sent to the loginVC the view does not reload
-//        if userWasSentToLogin == true {
-//            // Check if user is logged in
-//            self.checkForUser { () -> () in
-//                // Fetch the users categories
-//                if let unwrappedUser = FirebaseController.sharedInstance.currentUser {
-//                    FirebaseController.sharedInstance.fetchUsersCategories(unwrappedUser, completion: { () -> () in
-//                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                            self.tableView.reloadData()
-//                        })
-//                    })
-//                }
-//            }
-//        }
-//    }
     
     // MARK: IBActions
     // Edit button
@@ -73,6 +58,8 @@ class CategoryTableViewController: UITableViewController {
     // New button
     @IBAction func newButtonTapped(sender: AnyObject) {
         UIAlertController.createNewCategory(self) { () -> () in
+            let count = FirebaseController.sharedInstance.usersCategories.count
+            self.categoryCount.title = "\(count) Categories"
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.tableView.reloadData()
             })
@@ -153,6 +140,9 @@ class CategoryTableViewController: UITableViewController {
                 let category = FirebaseController.sharedInstance.usersCategories[indexPath.row]
                 FirebaseController.sharedInstance.removeCategoryFromUsersCategories(category, user: unwrappedUser)
                 FirebaseController.sharedInstance.usersCategories.removeAtIndex(indexPath.row)
+                // Fixes categoryCount
+                let count = FirebaseController.sharedInstance.usersCategories.count
+                categoryCount.title = "\(count) Categories"
             }
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
@@ -176,6 +166,13 @@ extension CategoryTableViewController {
                     })
                 }
             }
+        }
+        
+        if FirebaseController.sharedInstance.usersCategories.count == 0 {
+            categoryCount.title = "0 Categories"
+        } else {
+            let count = FirebaseController.sharedInstance.usersCategories.count
+            categoryCount.title = "\(count) Categories"
         }
         
         // Theme
