@@ -9,7 +9,7 @@
 import UIKit
 
 class NoteDetailViewController: UIViewController, UIScrollViewDelegate, UITextViewDelegate {
-    
+    var category: Category?
     var note: Note?
     // IBOutlets
     @IBOutlet weak var textView: UITextView!
@@ -40,8 +40,8 @@ class NoteDetailViewController: UIViewController, UIScrollViewDelegate, UITextVi
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(true)
-        if let unwrappedNote = note {
-            FirebaseController.sharedInstance.updateNote(textView.text, note: unwrappedNote)
+        if let unwrappedNote = note, let unwrappedCategory = category {
+            FirebaseController.sharedInstance.updateNote(textView.text, note: unwrappedNote, category: unwrappedCategory)
         }
     }
     

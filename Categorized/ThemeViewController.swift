@@ -17,31 +17,12 @@ class ThemeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        
-        if let theme = defaults.objectForKey("themeNum") {
-            if let index = theme as? Int {
-                let indexPath = getIndexOfTheme(index)
-                collectionView.selectItemAtIndexPath(indexPath, animated: true, scrollPosition: .None)
-            }
-        }
     }
     
-    func getIndexOfTheme(index: Int) -> NSIndexPath {
-        switch index {
-        case 0:
-            return NSIndexPath(index: 0)
-        case 1:
-            return NSIndexPath(index: 1)
-        case 2:
-            return NSIndexPath(index: 2)
-        case 3:
-            return NSIndexPath(index: 3)
-        case 4:
-            return NSIndexPath(index: 4)
-        default:
-            return NSIndexPath(index: 0)
-        }
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(true)
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("changedTheme", object: nil)
     }
     
     // MARK: IBActions
@@ -50,6 +31,42 @@ class ThemeViewController: UIViewController {
     }
 }
 
+// MARK: Done button theme
+extension ThemeViewController {
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        if let theme = defaults.objectForKey("themeNum") {
+            if let colorIndex = theme as? Int {
+                switch colorIndex {
+                case 0:
+                    toolbar.tintColor = UIColor.themeOrange()
+                    break
+                case 1:
+                    toolbar.tintColor = UIColor.themeYellow()
+                    break
+                case 2:
+                    toolbar.tintColor = UIColor.themeGreen()
+                    break
+                case 3:
+                    toolbar.tintColor = UIColor.themeBlue()
+                    break
+                case 4:
+                    toolbar.tintColor = UIColor.themePink()
+                    break
+                default:
+                    toolbar.tintColor = UIColor.themeYellow()
+                    break
+                }
+            }
+        } else {
+            toolbar.tintColor = UIColor.themeYellow()
+        }
+
+    }
+}
+
+// MARK: Collection View methods
 extension ThemeViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -90,18 +107,23 @@ extension ThemeViewController: UICollectionViewDataSource, UICollectionViewDeleg
         switch indexPath.row {
         case 0:
             defaults.setObject(0, forKey: "themeNum")
+            dismissViewControllerAnimated(true, completion: nil)
             break
         case 1:
             defaults.setObject(1, forKey: "themeNum")
+            dismissViewControllerAnimated(true, completion: nil)
             break
         case 2:
             defaults.setObject(2, forKey: "themeNum")
+            dismissViewControllerAnimated(true, completion: nil)
             break
         case 3:
             defaults.setObject(3, forKey: "themeNum")
+            dismissViewControllerAnimated(true, completion: nil)
             break
         case 4:
             defaults.setObject(4, forKey: "themeNum")
+            dismissViewControllerAnimated(true, completion: nil)
             break
         default:
             break

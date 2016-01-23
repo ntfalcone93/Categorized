@@ -697,7 +697,10 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fB2-M6-pX9">
                                 <rect key="frame" x="0.0" y="340" width="600" height="44"/>
                                 <items>
+                                    <barButtonItem title="      " id="nTA-sv-Ciu"/>
                                     <barButtonItem systemItem="flexibleSpace" id="O4A-0D-nff"/>
+                                    <barButtonItem title="Current Font Size:" id="afo-uC-Xmc"/>
+                                    <barButtonItem systemItem="flexibleSpace" id="Rtz-sj-ri0"/>
                                     <barButtonItem systemItem="done" id="ykM-ZM-HgU">
                                         <connections>
                                             <action selector="doneButtonTapped:" destination="LNR-1X-DYf" id="eqV-MU-JM1"/>
@@ -717,6 +720,7 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="currentFontSize" destination="afo-uC-Xmc" id="sHG-KQ-gj3"/>
                         <outlet property="pickerView" destination="sj3-bG-6cG" id="fjz-j9-hsk"/>
                         <outlet property="toolbar" destination="fB2-M6-pX9" id="thj-4N-rO0"/>
                     </connections>
@@ -752,6 +756,7 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                         </connections>
                     </tableView>
                     <toolbarItems>
+                        <barButtonItem title="    " id="8J1-wD-HBd"/>
                         <barButtonItem systemItem="flexibleSpace" id="GET-6j-4ja"/>
                         <barButtonItem title="noteCount" id="33x-6L-1TL"/>
                         <barButtonItem systemItem="flexibleSpace" id="OFz-ZR-tcD"/>

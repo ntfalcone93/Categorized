@@ -53,6 +53,9 @@ class NotesTableViewController: UITableViewController {
                 let note = FirebaseController.sharedInstance.notesInCategory[indexPath.row]
                 noteDetailVC.note = note
                 noteDetailVC.title = note.title
+                if let unwrappedCategory = self.category {
+                    noteDetailVC.category = unwrappedCategory
+                }
             }
         }
     }
@@ -107,19 +110,15 @@ extension NotesTableViewController {
             // Fetch notes
             FirebaseController.sharedInstance.fetchCategoriesNotes(unwrappedCategory, completion: { () -> () in
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    // Note count
-                    if unwrappedCategory.notes.count >= 1 {
-                        self.noteCount.title = "\(unwrappedCategory.notes.count) Notes"
-                        self.tableView.reloadData()
-                    } else {
-                        self.noteCount.title = "0 Notes"
-                    }
+                    self.tableView.reloadData()
+                    let count = FirebaseController.sharedInstance.notesInCategory.count
+                    self.noteCount.title = "\(count) Notes"
                 })
             })
             if unwrappedCategory.notes.count == 0 {
                 self.noteCount.title = "0 Notes"
             } else {
-                let count = unwrappedCategory.notes.count
+                let count = FirebaseController.sharedInstance.notesInCategory.count
                 self.noteCount.title = "\(count) Notes"
             }
         }

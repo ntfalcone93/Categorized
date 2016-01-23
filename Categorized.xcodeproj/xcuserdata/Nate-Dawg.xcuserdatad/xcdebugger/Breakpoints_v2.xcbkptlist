@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
+            timestampString = "475210815.190913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
             landmarkName = "createUserInFirebase(_:password:)"
             landmarkType = "5">
             <Locations>
@@ -42,11 +42,11 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "475194454.081505"
+                  timestampString = "475211931.979147"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "208"
-                  endingLineNumber = "208"
+                  startingLineNumber = "228"
+                  endingLineNumber = "228"
                   offsetFromSymbolStart = "176">
                </Location>
                <Location
@@ -57,11 +57,11 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "475194454.081683"
+                  timestampString = "475211931.979434"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "209"
-                  endingLineNumber = "209"
+                  startingLineNumber = "229"
+                  endingLineNumber = "229"
                   offsetFromSymbolStart = "40">
                </Location>
             </Locations>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
+            timestampString = "475210815.190913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
             landmarkName = "createUserInFirebase(_:password:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
+            timestampString = "475210815.190913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
             landmarkName = "createUserInFirebase(_:password:)"
             landmarkType = "5">
             <Locations>
@@ -106,11 +106,11 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "475194454.122133"
+                  timestampString = "475211932.012331"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "212"
-                  endingLineNumber = "212"
+                  startingLineNumber = "232"
+                  endingLineNumber = "232"
                   offsetFromSymbolStart = "204">
                </Location>
                <Location
@@ -121,11 +121,11 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "475194454.122282"
+                  timestampString = "475211932.012813"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "214"
-                  endingLineNumber = "214"
+                  startingLineNumber = "234"
+                  endingLineNumber = "234"
                   offsetFromSymbolStart = "28">
                </Location>
             </Locations>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
+            timestampString = "475210815.190913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
             landmarkName = "createUserInFirebase(_:password:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -154,39 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
-            landmarkName = "createUserInFirebase(_:password:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
-            landmarkName = "createUserInFirebase(_:password:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
+            timestampString = "475210815.190913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "236"
@@ -202,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
+            timestampString = "475210815.190913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "240"
@@ -218,11 +186,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
+            timestampString = "475210815.190913"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
+            landmarkName = "createUserInFirebase(_:password:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Categorized/FirebaseController.swift"
+            timestampString = "475210815.190913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "248"
             endingLineNumber = "248"
+            landmarkName = "createUserInFirebase(_:password:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Categorized/FirebaseController.swift"
+            timestampString = "475210815.190913"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
             landmarkName = "createHomeCategory(_:)"
             landmarkType = "5">
             <Locations>
@@ -234,11 +234,11 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "475194454.157478"
+                  timestampString = "475211932.041149"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "248"
-                  endingLineNumber = "248"
+                  startingLineNumber = "256"
+                  endingLineNumber = "256"
                   offsetFromSymbolStart = "196">
                </Location>
                <Location
@@ -249,11 +249,11 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "475194454.157616"
+                  timestampString = "475211932.041275"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "249"
-                  endingLineNumber = "249"
+                  startingLineNumber = "257"
+                  endingLineNumber = "257"
                   offsetFromSymbolStart = "32">
                </Location>
             </Locations>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
+            timestampString = "475210815.190913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
+            startingLineNumber = "257"
+            endingLineNumber = "257"
             landmarkName = "createHomeCategory(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
+            timestampString = "475210815.190913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
             landmarkName = "createHomeCategory(_:)"
             landmarkType = "5">
             <Locations>
@@ -298,11 +298,11 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "475194454.158876"
+                  timestampString = "475211932.04245"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "251"
-                  endingLineNumber = "251"
+                  startingLineNumber = "259"
+                  endingLineNumber = "259"
                   offsetFromSymbolStart = "288">
                </Location>
                <Location
@@ -313,11 +313,11 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "475194454.159007"
+                  timestampString = "475211932.042556"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "252"
-                  endingLineNumber = "252"
+                  startingLineNumber = "260"
+                  endingLineNumber = "260"
                   offsetFromSymbolStart = "28">
                </Location>
             </Locations>
@@ -330,60 +330,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
-            landmarkName = "createHomeCategory(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "258"
-            endingLineNumber = "258"
-            landmarkName = "createHomeCategory(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
-            landmarkName = "createHomeCategory(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
+            timestampString = "475210815.190913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "264"
             endingLineNumber = "264"
-            landmarkName = "createWorkCategory(_:)"
+            landmarkName = "createHomeCategory(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -394,76 +346,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
-            landmarkName = "createWorkCategory(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Categorized.FirebaseController.createWorkCategory (Categorized.FirebaseController)((Swift.Optional&lt;__ObjC.Firebase&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Categorized"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "475194454.162132"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "265"
-                  endingLineNumber = "265"
-                  offsetFromSymbolStart = "196">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Categorized.FirebaseController.(createWorkCategory (Categorized.FirebaseController) -&gt; ((Swift.Optional&lt;__ObjC.Firebase&gt;) -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "Categorized"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "475194454.162255"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "266"
-                  endingLineNumber = "266"
-                  offsetFromSymbolStart = "32">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
-            landmarkName = "createWorkCategory(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
+            timestampString = "475210815.190913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "266"
             endingLineNumber = "266"
-            landmarkName = "createWorkCategory(_:)"
+            landmarkName = "createHomeCategory(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -474,103 +362,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "268"
-            endingLineNumber = "268"
-            landmarkName = "createWorkCategory(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Categorized.FirebaseController.(createWorkCategory (Categorized.FirebaseController) -&gt; ((Swift.Optional&lt;__ObjC.Firebase&gt;) -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "Categorized"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "475194454.164181"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "268"
-                  endingLineNumber = "268"
-                  offsetFromSymbolStart = "288">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Categorized.FirebaseController.(createWorkCategory (Categorized.FirebaseController) -&gt; ((Swift.Optional&lt;__ObjC.Firebase&gt;) -&gt; ()) -&gt; ()).(closure #1).(closure #1)"
-                  moduleName = "Categorized"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "475194454.164302"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "269"
-                  endingLineNumber = "269"
-                  offsetFromSymbolStart = "28">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
-            landmarkName = "createWorkCategory(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
-            landmarkName = "createWorkCategory(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "273"
-            endingLineNumber = "273"
-            landmarkName = "createWorkCategory(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
+            timestampString = "475210815.190913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "261"
@@ -586,7 +378,71 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
+            timestampString = "475210815.190913"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
+            landmarkName = "createWorkCategory(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Categorized/FirebaseController.swift"
+            timestampString = "475210815.190913"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
+            landmarkName = "createWorkCategory(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Categorized.FirebaseController.createWorkCategory (Categorized.FirebaseController)((Swift.Optional&lt;__ObjC.Firebase&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Categorized"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
+                  timestampString = "475211932.045291"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "273"
+                  endingLineNumber = "273"
+                  offsetFromSymbolStart = "196">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Categorized.FirebaseController.(createWorkCategory (Categorized.FirebaseController) -&gt; ((Swift.Optional&lt;__ObjC.Firebase&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "Categorized"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
+                  timestampString = "475211932.045401"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "274"
+                  endingLineNumber = "274"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Categorized/FirebaseController.swift"
+            timestampString = "475210815.190913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "275"
@@ -602,7 +458,87 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
+            timestampString = "475210815.190913"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
+            landmarkName = "createWorkCategory(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Categorized/FirebaseController.swift"
+            timestampString = "475210815.190913"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
+            landmarkName = "createWorkCategory(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Categorized.FirebaseController.(createWorkCategory (Categorized.FirebaseController) -&gt; ((Swift.Optional&lt;__ObjC.Firebase&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "Categorized"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
+                  timestampString = "475211932.047462"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "276"
+                  endingLineNumber = "276"
+                  offsetFromSymbolStart = "288">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Categorized.FirebaseController.(createWorkCategory (Categorized.FirebaseController) -&gt; ((Swift.Optional&lt;__ObjC.Firebase&gt;) -&gt; ()) -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "Categorized"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
+                  timestampString = "475211932.047591"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "277"
+                  endingLineNumber = "277"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Categorized/FirebaseController.swift"
+            timestampString = "475210815.190913"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
+            landmarkName = "createWorkCategory(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Categorized/FirebaseController.swift"
+            timestampString = "475210815.190913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "278"
@@ -618,11 +554,75 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Categorized/FirebaseController.swift"
-            timestampString = "475193467.895617"
+            timestampString = "475210815.190913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
+            landmarkName = "createWorkCategory(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Categorized/FirebaseController.swift"
+            timestampString = "475210815.190913"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
+            landmarkName = "createHomeCategory(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Categorized/FirebaseController.swift"
+            timestampString = "475210815.190913"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
+            landmarkName = "createWorkCategory(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Categorized/FirebaseController.swift"
+            timestampString = "475210815.190913"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
+            landmarkName = "createWorkCategory(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Categorized/FirebaseController.swift"
+            timestampString = "475210815.190913"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
             landmarkName = "createUserInFirebase(_:password:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -640,6 +640,70 @@
             startingLineNumber = "31"
             endingLineNumber = "31"
             landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Categorized/NotesTableViewController.swift"
+            timestampString = "475211162.369891"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "newButtonTapped(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Categorized/NotesTableViewController.swift"
+            timestampString = "475211168.000253"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "newButtonTapped(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Categorized/NotesTableViewController.swift"
+            timestampString = "475211172.034173"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Categorized/FirebaseController.swift"
+            timestampString = "475211570.473647"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "fetchCategoriesNotes(_:completion:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

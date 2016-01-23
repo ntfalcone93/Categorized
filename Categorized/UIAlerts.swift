@@ -12,7 +12,6 @@ import Firebase
 
 extension UIAlertController {
     
-    
     // Alert for sharing notes
     class func displayShareSheet(target: UIViewController, note: Note) {
         let activityViewController = UIActivityViewController(activityItems: [note.title, note.bodyText], applicationActivities: nil)

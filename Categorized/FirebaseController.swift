@@ -25,9 +25,27 @@ class FirebaseController: NSObject {
     //    }
     
     // MARK: Updating Categories and Notes
-    func updateNote(bodyText: String, note: Note) {
+    func updateNote(bodyText: String, note: Note, category: Category) {
         note.ref!.childByAppendingPath("bodyText").setValue(bodyText)
-        note.ref!.childByAppendingPath("dateLastEdited").setValue("\(NSDate())")
+        // Updates dateLastEdited with a formatted date
+        let date = NSDate()
+        let formatter = NSDateFormatter()
+        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        formatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"
+        let dateString = formatter.stringFromDate(date)
+        // Updates note
+        note.ref!.childByAppendingPath("dateLastEdited").setValue(dateString)
+        // Updates category
+        category.ref!.childByAppendingPath("dateLastEdited").setValue(dateString)
+    }
+    
+    func updateCategoriesDateLastEdited(category: Category) {
+        let date = NSDate()
+        let formatter = NSDateFormatter()
+        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        formatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"
+        let dateString = formatter.stringFromDate(date)
+        category.ref!.childByAppendingPath("dateLastEdited").setValue(dateString)
     }
     
     
@@ -100,6 +118,7 @@ class FirebaseController: NSObject {
                         self.usersCategories.append(unwrappedCategory)
                     }
                     if categoryID.ref!.key == categoryIDs.last!.ref!.key {
+                        self.usersCategories.sortInPlace({$0.dateLastEditedUTCString > $1.dateLastEditedUTCString})
                         completion()
                     }
                 })
@@ -129,6 +148,7 @@ class FirebaseController: NSObject {
                         self.notesInCategory.append(unwrappedNote)
                     }
                     if noteID.ref!.key == noteIDs.last!.ref!.key {
+                        self.notesInCategory.sortInPlace({$0.dateLastEditedUTCString > $1.dateLastEditedUTCString})
                         completion()
                     }
                 })
@@ -214,20 +234,8 @@ class FirebaseController: NSObject {
                             if error == nil {
                                 // Sets userID in NSUserDefaults making it easier for user to login
                                 NSUserDefaults.standardUserDefaults().setObject(auth.uid, forKey: "userID")
-                                // Gives them a home category
-                                // TODO: Took this out because it was the source of a crash when creating an account
                                 
-                                //                                self.createHomeCategory({ (firebase) -> () in
-                                //                                    if let ref = firebase {
-                                //                                        userRef.childByAppendingPath("categories").childByAppendingPath("\(ref.key)").setValue(true)
-                                //                                    }
-                                //                                })
-                                //                                // Gives them a work category
-                                //                                self.createWorkCategory({ (firebase) -> () in
-                                //                                    if let ref = firebase {
-                                //                                        userRef.childByAppendingPath("categories").childByAppendingPath("\(ref.key)").setValue(true)
-                                //                                    }
-                                //                                })
+                                
                             } else {
                                 print("Error setting users properties: \(error.localizedDescription)")
                             }

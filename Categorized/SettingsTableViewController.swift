@@ -15,7 +15,7 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTheme", name: "changedTheme", object: nil)
     }
     
     // MARK: IBActions
@@ -108,6 +108,43 @@ extension SettingsTableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        // Theme
+        if let theme = defaults.objectForKey("themeNum") {
+            if let colorIndex = theme as? Int {
+                switch colorIndex {
+                case 0:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeOrange()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeOrange()
+                    break
+                case 1:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
+                    break
+                case 2:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeGreen()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeGreen()
+                    break
+                case 3:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeBlue()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeBlue()
+                    break
+                case 4:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themePink()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themePink()
+                    break
+                default:
+                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
+                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
+                    break
+                }
+            }
+        } else {
+            navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
+            navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
+        }
+    }
+    
+    func updateTheme() {
         // Theme
         if let theme = defaults.objectForKey("themeNum") {
             if let colorIndex = theme as? Int {
