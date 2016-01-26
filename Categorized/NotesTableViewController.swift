@@ -70,10 +70,10 @@ class NotesTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("noteCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("noteCell") as! NotesTableViewCell
         
         let note = FirebaseController.sharedInstance.notesInCategory[indexPath.row]
-        cell.textLabel?.text = note.title
+        cell.notesLabel.text = note.title
         
         return cell
     }

@@ -42,21 +42,21 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("settingCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("settingCell", forIndexPath: indexPath) as! SettingsTableViewCell
         
         switch indexPath.row {
         case 0 :
-            cell.textLabel?.text = "Change Font Size"
+            cell.settingLabel.text = "Change Font"
         case 1:
-            cell.textLabel?.text = "Change Color Theme"
+            cell.settingLabel.text = "Change Color Theme"
         case 2:
-            cell.textLabel?.text = "Terms of Service"
+            cell.settingLabel.text = "Terms of Service"
         case 3:
-            cell.textLabel?.text = "Change Password"
+            cell.settingLabel.text = "Change Password"
         case 4:
-            cell.textLabel?.text = "Log Out"
+            cell.settingLabel.text = "Log Out"
         case 5:
-            cell.textLabel?.text = "Delete Account"
+            cell.settingLabel.text = "Delete Account"
         default:
             break
         }
@@ -142,6 +142,19 @@ extension SettingsTableViewController {
             navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
             navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
         }
+        
+        // Font
+        if let fontSizeObject = defaults.objectForKey("fontSize"), let fontStyleObject = defaults.objectForKey("fontStyle") {
+            if let fontSize = fontSizeObject as? CGFloat, let fontStyle = fontStyleObject as? String {
+                if let customFont = UIFont(name: fontStyle, size: fontSize) {
+                    UINavigationBar.appearance().titleTextAttributes = [ NSFontAttributeName: customFont]
+                    UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: customFont], forState: UIControlState.Normal)
+                    UILabel.appearance().font = customFont
+                    UITableViewCell.appearance().textLabel?.font = customFont
+                    UITextView.appearance().font = customFont
+                }
+            }
+        }
     }
     
     func updateTheme() {
@@ -178,6 +191,18 @@ extension SettingsTableViewController {
         } else {
             navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
             navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
+        }
+        
+        // Font
+        if let fontSizeObject = defaults.objectForKey("fontSize"), let fontStyleObject = defaults.objectForKey("fontStyle") {
+            if let fontSize = fontSizeObject as? CGFloat, let fontStyle = fontStyleObject as? String {
+                if let customFont = UIFont(name: fontStyle, size: fontSize) {
+                    UINavigationBar.appearance().titleTextAttributes = [ NSFontAttributeName: customFont]
+                    UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: customFont], forState: UIControlState.Normal)
+                    UILabel.appearance().font = customFont
+                    UITextView.appearance().font = customFont
+                }
+            }
         }
     }
 }

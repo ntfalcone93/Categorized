@@ -12,18 +12,13 @@ class CategoryTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
-    @IBOutlet weak var dateAndTimeLabel: UILabel!
-    
+    @IBOutlet weak var noteCount: UILabel!
     
     func configureCellWithCategory(category: Category) {
         titleLabel.text = category.title
         captionLabel.text = category.caption
-        
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = .MediumStyle
-        dateFormatter.timeStyle = .ShortStyle
-        let dateString = dateFormatter.stringFromDate(category.dateLastEdited)
-        dateAndTimeLabel.text = dateString
+        noteCount.text = ""
+//        noteCount.text = "\(category.notes.count)"
     }
     
     override func awakeFromNib() {

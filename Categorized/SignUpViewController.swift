@@ -32,7 +32,7 @@ class SignUpViewController: UIViewController {
             // Code to create accout
             if let email = emailTextField.text, let password = passwordTextField.text {
                 FirebaseController.sharedInstance.createUserInFirebase(email, password: password)
-                dismissViewControllerAnimated(true, completion: nil)
+                self.performSegueWithIdentifier("unwindFromSignUpSegue", sender: nil)
             }
         } else {
             print("Error occured while signing up user")
@@ -43,16 +43,12 @@ class SignUpViewController: UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+        if segue.identifier == "unwindFromSignUpSegue" {
+            let categoryTVC = segue.destinationViewController as! CategoryTableViewController
+            categoryTVC.userWasSentToLogin = true
+        }
     }
-    */
-    
 }
 
 extension SignUpViewController : UITextFieldDelegate {

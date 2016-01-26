@@ -17,20 +17,13 @@ class CategoryTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Check if user is logged in
-        self.checkForUser { () -> () in
-            // Fetch the users categories
-            if let unwrappedUser = FirebaseController.sharedInstance.currentUser {
-                FirebaseController.sharedInstance.fetchUsersCategories(unwrappedUser, completion: { () -> () in
-                    // Category count
-                    let count = FirebaseController.sharedInstance.usersCategories.count
-                    self.categoryCount.title = "\(count) Categories"
-                    
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.tableView.reloadData()
-                    })
-                })
+        // If the user wasn't sent to the login view
+        if userWasSentToLogin != true {
+            // Check if user is logged in
+            checkForUser { (userLoggedIn) -> () in
+                if userLoggedIn == true {
+                    self.fetchUsersCategories()
+                }
             }
         }
         
@@ -52,7 +45,6 @@ class CategoryTableViewController: UITableViewController {
     // MARK: IBActions
     // Edit button
     @IBAction func editButtonTapped(sender: AnyObject) {
-        
     }
     
     // New button
@@ -90,21 +82,38 @@ class CategoryTableViewController: UITableViewController {
         // No additional code needed for this the function properly
     }
     
+    @IBAction func unwindFromSignUpSegue(unwindSegue: UIStoryboardSegue) {
+        // No additional code needed for this the function properly
+    }
+    
     // Checks to see if a user is logged in still and fetches that user
-    func checkForUser(completion:() -> ()){
+    func checkForUser(completion:(userLoggedIn: Bool) -> ()){
         FirebaseController.sharedInstance.fetchCurrentUser({ (authData) -> () in
             if authData == nil {
                 self.performSegueWithIdentifier("toLoginViewController", sender: nil)
-                completion()
+                completion(userLoggedIn: false)
             } else {
                 if let auth = authData {
                     FirebaseController.sharedInstance.retrieveCurrentUserWithUserID(auth.uid, completion: { (user) -> () in
                         FirebaseController.sharedInstance.currentUser = user
-                        completion()
+                        completion(userLoggedIn: true)
                     })
                 }
             }
         })
+    }
+    
+    func fetchUsersCategories() {
+        if let unwrappedUser = FirebaseController.sharedInstance.currentUser {
+            FirebaseController.sharedInstance.fetchUsersCategories(unwrappedUser, completion: { () -> () in
+                // Category count
+                let count = FirebaseController.sharedInstance.usersCategories.count
+                self.categoryCount.title = "\(count) Categories"
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadData()
+                })
+            })
+        }
     }
     
     // MARK: - Table view data source
@@ -118,12 +127,20 @@ class CategoryTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("categoryCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("customCategoryCell", forIndexPath: indexPath) as! CategoryTableViewCell
         cell.backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
         let category = FirebaseController.sharedInstance.usersCategories[indexPath.row]
-        cell.textLabel?.text = category.title
+        cell.configureCellWithCategory(category)
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
     
     // Override to support conditional editing of the table view.
@@ -156,23 +173,28 @@ extension CategoryTableViewController {
         // Added this because if the user is sent to the loginVC the view does not reload
         if userWasSentToLogin == true {
             // Check if user is logged in
-            self.checkForUser { () -> () in
-                // Fetch the users categories
-                if let unwrappedUser = FirebaseController.sharedInstance.currentUser {
-                    FirebaseController.sharedInstance.fetchUsersCategories(unwrappedUser, completion: { () -> () in
-                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            self.tableView.reloadData()
-                        })
-                    })
+            checkForUser { (userLoggedIn) -> () in
+                if userLoggedIn == true {
+                    self.fetchUsersCategories()
                 }
             }
         }
         
-        if FirebaseController.sharedInstance.usersCategories.count == 0 {
-            categoryCount.title = "0 Categories"
-        } else {
-            let count = FirebaseController.sharedInstance.usersCategories.count
-            categoryCount.title = "\(count) Categories"
+        // Category count
+        let count = FirebaseController.sharedInstance.usersCategories.count
+        categoryCount.title = "\(count) Categories"
+        
+        
+        // Font
+        if let fontSizeObject = defaults.objectForKey("fontSize"), let fontStyleObject = defaults.objectForKey("fontStyle") {
+            if let fontSize = fontSizeObject as? CGFloat, let fontStyle = fontStyleObject as? String {
+                if let customFont = UIFont(name: fontStyle, size: fontSize) {
+                    UINavigationBar.appearance().titleTextAttributes = [ NSFontAttributeName: customFont]
+                    UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: customFont], forState: UIControlState.Normal)
+                    UILabel.appearance().font = customFont
+                    UITextView.appearance().font = customFont
+                }
+            }
         }
         
         // Theme

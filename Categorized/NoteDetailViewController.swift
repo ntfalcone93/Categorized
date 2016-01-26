@@ -19,6 +19,9 @@ class NoteDetailViewController: UIViewController, UIScrollViewDelegate, UITextVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Backgroung Image
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
+        
         if let unwrappedNote = note {
             
             // Body text
@@ -27,21 +30,16 @@ class NoteDetailViewController: UIViewController, UIScrollViewDelegate, UITextVi
                     self.textView.text = updateNote.bodyText
                 }
             })
-            // Text view font size
-            if let font = textView.font {
-                if let fontSize = defaults.objectForKey("fontSize") {
-                    textView.font = UIFont(name: font.fontName, size: CGFloat(fontSize as! NSNumber))
-                } else {
-                    textView.font = UIFont(name: font.fontName, size: CGFloat(16))
-                }
-            }
         }
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(true)
         if let unwrappedNote = note, let unwrappedCategory = category {
-            FirebaseController.sharedInstance.updateNote(textView.text, note: unwrappedNote, category: unwrappedCategory)
+            // Only saves the note if the bodyText has changed
+            if unwrappedNote.bodyText != textView.text {
+                FirebaseController.sharedInstance.updateNote(textView.text, note: unwrappedNote, category: unwrappedCategory)
+            }
         }
     }
     
@@ -54,20 +52,10 @@ class NoteDetailViewController: UIViewController, UIScrollViewDelegate, UITextVi
     // Share button
     @IBAction func shareButtonTapped(sender: AnyObject) {
         // TODO: Find out why this crashes
-//        if let unwrappedNote = note {
-//            UIAlertController.displayShareSheet(self, note: unwrappedNote)
-//        }
+        //        if let unwrappedNote = note {
+        //            UIAlertController.displayShareSheet(self, note: unwrappedNote)
+        //        }
     }
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
     
     // MARK: Scroll view and text view delegate
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -78,6 +66,7 @@ class NoteDetailViewController: UIViewController, UIScrollViewDelegate, UITextVi
 extension NoteDetailViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        
         // Theme
         if let theme = defaults.objectForKey("themeNum") {
             if let colorIndex = theme as? Int {
