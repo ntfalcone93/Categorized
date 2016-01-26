@@ -16,6 +16,8 @@ class SettingsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTheme", name: "changedTheme", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFont", name: "changedFont", object: nil)
     }
     
     // MARK: IBActions
@@ -26,6 +28,13 @@ class SettingsTableViewController: UITableViewController {
     // MARK: Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
+    }
+    
+    // Removes NSNotificationCenter observers when the view disappears
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(true)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "changedTheme", object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "changedFont", object: nil)
     }
     
     
@@ -145,13 +154,35 @@ extension SettingsTableViewController {
         
         // Font
         if let fontSizeObject = defaults.objectForKey("fontSize"), let fontStyleObject = defaults.objectForKey("fontStyle") {
+            // Cast objects from Defaults
             if let fontSize = fontSizeObject as? CGFloat, let fontStyle = fontStyleObject as? String {
                 if let customFont = UIFont(name: fontStyle, size: fontSize) {
-                    UINavigationBar.appearance().titleTextAttributes = [ NSFontAttributeName: customFont]
-                    UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: customFont], forState: UIControlState.Normal)
-                    UILabel.appearance().font = customFont
-                    UITableViewCell.appearance().textLabel?.font = customFont
-                    UITextView.appearance().font = customFont
+                    // If the chosen font size is bigger than 22 then the size for everything but the textView defaults to 24
+                    if fontSize >= 24 {
+                        if let bigFont = UIFont(name: fontStyle, size: 24) {
+                            UINavigationBar.appearance().titleTextAttributes = [ NSFontAttributeName: bigFont]
+                            UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: bigFont], forState: UIControlState.Normal)
+                            UILabel.appearance().font = bigFont
+                            // Text view keeps the users custom font size
+                            UITextView.appearance().font = customFont
+                        }
+                        // If the chosen font size is smaller than 20 then the size for everything but the textView defaults to 24
+                    } else if fontSize <= 18 {
+                        if let smallerFont = UIFont(name: fontStyle, size: 18) {
+                            UINavigationBar.appearance().titleTextAttributes = [ NSFontAttributeName: smallerFont]
+                            UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: smallerFont], forState: UIControlState.Normal)
+                            UILabel.appearance().font = smallerFont
+                            // Text view keeps the users custom font size
+                            UITextView.appearance().font = customFont
+                        }
+                    } else {
+                        // Else if the font size is 18 - 24 than the font is whatever the user chose
+                        UINavigationBar.appearance().titleTextAttributes = [ NSFontAttributeName: customFont]
+                        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: customFont], forState: UIControlState.Normal)
+                        UILabel.appearance().font = customFont
+                        UITextView.appearance().font = customFont
+                    }
+                    
                 }
             }
         }
@@ -192,15 +223,42 @@ extension SettingsTableViewController {
             navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
             navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
         }
-        
+    }
+    
+    func updateFont() {
         // Font
         if let fontSizeObject = defaults.objectForKey("fontSize"), let fontStyleObject = defaults.objectForKey("fontStyle") {
+            // Cast objects from Defaults
             if let fontSize = fontSizeObject as? CGFloat, let fontStyle = fontStyleObject as? String {
                 if let customFont = UIFont(name: fontStyle, size: fontSize) {
-                    UINavigationBar.appearance().titleTextAttributes = [ NSFontAttributeName: customFont]
-                    UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: customFont], forState: UIControlState.Normal)
-                    UILabel.appearance().font = customFont
-                    UITextView.appearance().font = customFont
+                    // If the chosen font size is bigger than 22 then the size for everything but the textView defaults to 24
+                    if fontSize >= 24 {
+                        if let bigFont = UIFont(name: fontStyle, size: 24) {
+                            UINavigationBar.appearance().titleTextAttributes = [ NSFontAttributeName: bigFont]
+                            UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: bigFont], forState: UIControlState.Normal)
+                            UILabel.appearance().font = bigFont
+                            // Text view keeps the users custom font size
+                            UITextView.appearance().font = customFont
+                        }
+                        // If the chosen font size is smaller than 20 then the size for everything but the textView defaults to 24
+                    } else if fontSize <= 18 {
+                        if let smallerFont = UIFont(name: fontStyle, size: 18) {
+                            UINavigationBar.appearance().titleTextAttributes = [ NSFontAttributeName: smallerFont]
+                            UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: smallerFont], forState: UIControlState.Normal)
+                            UILabel.appearance().font = smallerFont
+                            // Text view keeps the users custom font size
+                            UITextView.appearance().font = customFont
+                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                self.tableView.reloadData()
+                            })
+                        }
+                    } else {
+                        // Else if the font size is 18 - 24 than the font is whatever the user chose
+                        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: customFont]
+                        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: customFont], forState: UIControlState.Normal)
+                        UILabel.appearance().font = customFont
+                        UITextView.appearance().font = customFont
+                    }
                 }
             }
         }

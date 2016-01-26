@@ -6,15 +6,16 @@
 //  Copyright © 2016 FalcOne Development. All rights reserved.
 //
 
-import UIKit
+import UIKitl
 
 class PickerViewController: UIViewController {
     
     @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet weak var doneButton: UIToolbar!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var currentFontSize: UIBarButtonItem!
     let fontSizes = [12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36]
-    let fontStyles = ["American Typewriter", "Arial", "Avenir", "Courier", "Georgia", "Helvetica", "San Francisco", "Times New Roman", "Verdana"]
+    let fontStyles = ["AmericanTypewriter", "Arial", "Avenir", "Courier", "Georgia", "Helvetica", "Times New Roman", "Verdana"]
     
     var selectedFontStyle = ""
     let defaults = NSUserDefaults.standardUserDefaults()
@@ -22,22 +23,36 @@ class PickerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Toolbar background doesn't show
         toolbar.backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
         
         // Sets the current index from the font size that is stored in NSUserDefaults
         if let fontStyle = defaults.objectForKey("fontStyle"), let fontSize = defaults.objectForKey("fontSize") {
             if let fontStyleString = fontStyle as? String, let fontInt = fontSize as? Int {
+                // Indexes of the font size/style in their array
                 let indexForStyle = getIndexOfFontStyle(fontStyleString)
                 let indexForSize = getIndexOfFontSizes(fontInt)
+                // The picker view shows the rows that are currently chosen
                 pickerView.selectRow(indexForStyle, inComponent: 0, animated: true)
                 pickerView.selectRow(indexForSize, inComponent: 1, animated: true)
-                currentFontSize.title = "Current Style: \(fontStyleString) - \(fontInt)"
+                // Title and font for currentFontSize bar button on toolbar
+                currentFontSize.title = "  Current: \(fontStyleString) - \(fontInt)"
+                if let font = UIFont(name: fontStyleString, size: 16) {
+                    currentFontSize.setTitleTextAttributes([NSFontAttributeName: font], forState: .Normal)
+                }
             }
         }
-        
+        //
         currentFontSize.enabled = false
         currentFontSize.tintColor = UIColor.blackColor()
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(true)
+        // Posts notification to update the font
+        NSNotificationCenter.defaultCenter().postNotificationName("changedFont", object: nil)
+    }
+    
     
     // MARK: IBActions
     @IBAction func doneButtonTapped(sender: AnyObject) {
@@ -97,74 +112,70 @@ extension PickerViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
         switch component {
+            // Font styles
         case 0:
             switch row {
+                // Each row get a corresponding font
             case 0:
                 let label = UILabel()
                 label.textColor = UIColor.blackColor()
                 label.text = "American Typewriter"
                 label.textAlignment = NSTextAlignment.Center
-                label.font = UIFont(name: "AmericanTypewriter", size: 24)
+                label.font = UIFont(name: "AmericanTypewriter", size: 22)
                 return label
             case 1:
                 let label = UILabel()
                 label.textColor = UIColor.blackColor()
                 label.text = "Arial"
                 label.textAlignment = NSTextAlignment.Center
-                label.font = UIFont(name: "Arial", size: 24)
+                label.font = UIFont(name: "Arial", size: 22)
                 return label
             case 2:
                 let label = UILabel()
                 label.textColor = UIColor.blackColor()
                 label.text = "Avenir"
                 label.textAlignment = NSTextAlignment.Center
-                label.font = UIFont(name: "Avenir", size: 24)
+                label.font = UIFont(name: "Avenir", size: 22)
                 return label
             case 3:
                 let label = UILabel()
                 label.textColor = UIColor.blackColor()
                 label.text = "Courier"
                 label.textAlignment = NSTextAlignment.Center
-                label.font = UIFont(name: "Courier", size: 24)
+                label.font = UIFont(name: "Courier", size: 22)
                 return label
             case 4:
                 let label = UILabel()
                 label.textColor = UIColor.blackColor()
                 label.text = "Georgia"
                 label.textAlignment = NSTextAlignment.Center
-                label.font = UIFont(name: "Georgia", size: 24)
+                label.font = UIFont(name: "Georgia", size: 22)
                 return label
             case 5:
                 let label = UILabel()
                 label.textColor = UIColor.blackColor()
                 label.text = "Helvetica"
                 label.textAlignment = NSTextAlignment.Center
-                label.font = UIFont(name: "Helvetica", size: 24)
+                label.font = UIFont(name: "Helvetica", size: 22)
                 return label
             case 6:
                 let label = UILabel()
                 label.textColor = UIColor.blackColor()
-                label.text = "San Francisco"
+                label.text = "Times New Roman"
                 label.textAlignment = NSTextAlignment.Center
-                label.font = UIFont(name: "SanFranciscoText", size: 24)
+                label.font = UIFont(name: "TimesNewRomanPSMT", size: 22)
                 return label
             case 7:
                 let label = UILabel()
                 label.textColor = UIColor.blackColor()
-                label.text = "Times New Roman"
-                label.textAlignment = NSTextAlignment.Center
-                label.font = UIFont(name: "TimesNewRomanPSMT", size: 24)
-                return label
-            case 8:
-                let label = UILabel()
-                label.textColor = UIColor.blackColor()
                 label.text = "Verdana"
                 label.textAlignment = NSTextAlignment.Center
-                label.font = UIFont(name: "Verdana", size: 24)
+                label.font = UIFont(name: "Verdana", size: 22)
                 return label
             default:
                 return UIView()
             }
+            // Font sizes
         case 1:
             switch row {
             case 0:
@@ -272,9 +283,11 @@ extension PickerViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     
     func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         if component == 0 {
-            return 300
+            // Width for the font styles component is the width - 1/4
+            return CGFloat(self.view.frame.size.width - (self.view.frame.size.width / 4) as NSNumber)
         } else {
-            return 50
+            // Width for the font sizes component is 1/4
+            return CGFloat(self.view.frame.size.width / 4 as NSNumber)
         }
     }
     
@@ -286,8 +299,10 @@ extension PickerViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch component {
+            // Sets the font style in NSUserDefaults
         case 0:
             defaults.setValue(fontStyles[row], forKey: "fontStyle")
+            // Sets the font size in NSUserDefaults
         case 1:
             defaults.setValue(fontSizes[row], forKey: "fontSize")
         default:

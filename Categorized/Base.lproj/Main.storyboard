@@ -436,17 +436,11 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="titleLabel" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBT-pV-G8W">
-                                            <rect key="frame" x="15" y="11" width="510" height="21"/>
+                                            <rect key="frame" x="15" y="0.0" width="510" height="33"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="qCe-wa-OgJ"/>
+                                                <constraint firstAttribute="height" constant="33" id="qCe-wa-OgJ"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="captionLabel" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vT-tu-yjr">
-                                            <rect key="frame" x="15" y="38" width="510" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -459,16 +453,22 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="captionLabel" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vT-tu-yjr">
+                                            <rect key="frame" x="15" y="40" width="510" height="28"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="4vT-tu-yjr" secondAttribute="bottom" constant="3" id="3Zu-ol-mxp"/>
-                                        <constraint firstItem="4vT-tu-yjr" firstAttribute="top" secondItem="pBT-pV-G8W" secondAttribute="bottom" constant="6" id="4ps-lS-zwm"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="4vT-tu-yjr" secondAttribute="bottom" constant="-6.5" id="3Zu-ol-mxp"/>
+                                        <constraint firstItem="4vT-tu-yjr" firstAttribute="top" secondItem="pBT-pV-G8W" secondAttribute="bottom" constant="7" id="4ps-lS-zwm"/>
                                         <constraint firstItem="zJ9-pF-fAx" firstAttribute="centerY" secondItem="PNE-o8-mhr" secondAttribute="centerY" id="N4g-CZ-Jmh"/>
                                         <constraint firstItem="zJ9-pF-fAx" firstAttribute="leading" secondItem="4vT-tu-yjr" secondAttribute="trailing" constant="8" symbolic="YES" id="PqJ-SQ-Vz9"/>
                                         <constraint firstItem="zJ9-pF-fAx" firstAttribute="leading" secondItem="pBT-pV-G8W" secondAttribute="trailing" constant="8" symbolic="YES" id="QDl-wC-1hD"/>
                                         <constraint firstItem="zJ9-pF-fAx" firstAttribute="trailing" secondItem="PNE-o8-mhr" secondAttribute="trailingMargin" constant="-5" id="ZJw-ii-Mmp"/>
                                         <constraint firstItem="zJ9-pF-fAx" firstAttribute="top" secondItem="PNE-o8-mhr" secondAttribute="topMargin" constant="16" id="cUr-H8-f7l"/>
-                                        <constraint firstItem="pBT-pV-G8W" firstAttribute="top" secondItem="PNE-o8-mhr" secondAttribute="topMargin" constant="3" id="gBy-Eo-ouW"/>
+                                        <constraint firstItem="pBT-pV-G8W" firstAttribute="top" secondItem="PNE-o8-mhr" secondAttribute="topMargin" constant="-8" id="gBy-Eo-ouW"/>
                                         <constraint firstItem="4vT-tu-yjr" firstAttribute="leading" secondItem="pBT-pV-G8W" secondAttribute="leading" id="rBq-xr-8LV"/>
                                         <constraint firstItem="4vT-tu-yjr" firstAttribute="leading" secondItem="PNE-o8-mhr" secondAttribute="leadingMargin" constant="7" id="zcB-nb-mkt"/>
                                     </constraints>
@@ -528,24 +528,24 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="settingCell" id="AuC-xN-eIy" customClass="SettingsTableViewCell" customModule="Categorized" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="settingCell" rowHeight="50" id="AuC-xN-eIy" customClass="SettingsTableViewCell" customModule="Categorized" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AuC-xN-eIy" id="UVc-uM-PZ3">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOv-FO-2K1">
-                                            <rect key="frame" x="8" y="11" width="584" height="21"/>
+                                            <rect key="frame" x="15" y="8" width="584" height="33.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="JOv-FO-2K1" firstAttribute="leading" secondItem="UVc-uM-PZ3" secondAttribute="leadingMargin" id="IB7-si-MEY"/>
-                                        <constraint firstItem="JOv-FO-2K1" firstAttribute="trailing" secondItem="UVc-uM-PZ3" secondAttribute="trailingMargin" id="hNK-Pf-X2c"/>
-                                        <constraint firstItem="JOv-FO-2K1" firstAttribute="top" secondItem="UVc-uM-PZ3" secondAttribute="topMargin" constant="3" id="osg-gK-MIh"/>
+                                        <constraint firstItem="JOv-FO-2K1" firstAttribute="leading" secondItem="UVc-uM-PZ3" secondAttribute="leadingMargin" constant="7" id="IB7-si-MEY"/>
+                                        <constraint firstItem="JOv-FO-2K1" firstAttribute="trailing" secondItem="UVc-uM-PZ3" secondAttribute="trailingMargin" constant="7" id="hNK-Pf-X2c"/>
+                                        <constraint firstItem="JOv-FO-2K1" firstAttribute="top" secondItem="UVc-uM-PZ3" secondAttribute="topMargin" id="osg-gK-MIh"/>
                                         <constraint firstItem="JOv-FO-2K1" firstAttribute="centerY" secondItem="UVc-uM-PZ3" secondAttribute="centerY" id="ovd-1G-rWZ"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -707,8 +707,8 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fB2-M6-pX9">
                                 <rect key="frame" x="0.0" y="340" width="600" height="44"/>
                                 <items>
-                                    <barButtonItem title="Current Font Size:" id="afo-uC-Xmc"/>
-                                    <barButtonItem systemItem="flexibleSpace" id="Rtz-sj-ri0"/>
+                                    <barButtonItem title="Current Font:" id="afo-uC-Xmc"/>
+                                    <barButtonItem systemItem="flexibleSpace" id="rKb-ss-5Yf"/>
                                     <barButtonItem systemItem="done" id="ykM-ZM-HgU">
                                         <connections>
                                             <action selector="doneButtonTapped:" destination="LNR-1X-DYf" id="eqV-MU-JM1"/>
@@ -729,6 +729,7 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                     </view>
                     <connections>
                         <outlet property="currentFontSize" destination="afo-uC-Xmc" id="sHG-KQ-gj3"/>
+                        <outlet property="doneButton" destination="fB2-M6-pX9" id="Ncm-sL-fHF"/>
                         <outlet property="pickerView" destination="sj3-bG-6cG" id="fjz-j9-hsk"/>
                         <outlet property="toolbar" destination="fB2-M6-pX9" id="thj-4N-rO0"/>
                     </connections>
@@ -754,17 +755,17 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qER-dN-o3e">
-                                            <rect key="frame" x="8" y="14" width="584" height="21"/>
+                                            <rect key="frame" x="15" y="8" width="584" height="33.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="qER-dN-o3e" firstAttribute="leading" secondItem="2bY-fg-NAW" secondAttribute="leadingMargin" id="3st-Mr-2qR"/>
+                                        <constraint firstItem="qER-dN-o3e" firstAttribute="leading" secondItem="2bY-fg-NAW" secondAttribute="leadingMargin" constant="7" id="3st-Mr-2qR"/>
                                         <constraint firstItem="qER-dN-o3e" firstAttribute="centerY" secondItem="2bY-fg-NAW" secondAttribute="centerY" id="HQP-9i-gWw"/>
-                                        <constraint firstItem="qER-dN-o3e" firstAttribute="trailing" secondItem="2bY-fg-NAW" secondAttribute="trailingMargin" id="Nhv-BU-Udv"/>
-                                        <constraint firstItem="qER-dN-o3e" firstAttribute="top" secondItem="2bY-fg-NAW" secondAttribute="topMargin" constant="6" id="uNq-xC-kaF"/>
+                                        <constraint firstItem="qER-dN-o3e" firstAttribute="trailing" secondItem="2bY-fg-NAW" secondAttribute="trailingMargin" constant="7" id="Nhv-BU-Udv"/>
+                                        <constraint firstItem="qER-dN-o3e" firstAttribute="top" secondItem="2bY-fg-NAW" secondAttribute="topMargin" id="uNq-xC-kaF"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
