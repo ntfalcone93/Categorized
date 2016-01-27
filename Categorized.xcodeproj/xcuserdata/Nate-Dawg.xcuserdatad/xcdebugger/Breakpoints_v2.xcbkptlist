@@ -33,6 +33,38 @@
             endingLineNumber = "228"
             landmarkName = "createUserInFirebase(_:password:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Categorized.FirebaseController.(createUserInFirebase (Categorized.FirebaseController) -&gt; (Swift.String, password : Swift.String) -&gt; ()).(closure #1)"
+                  moduleName = "Categorized"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
+                  timestampString = "475612596.901157"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "228"
+                  endingLineNumber = "228"
+                  offsetFromSymbolStart = "176">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Categorized.FirebaseController.(createUserInFirebase (Categorized.FirebaseController) -&gt; (Swift.String, password : Swift.String) -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "Categorized"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
+                  timestampString = "475612596.921478"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "229"
+                  endingLineNumber = "229"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -74,12 +106,12 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "475536306.465357"
+                  timestampString = "475612599.060721"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "232"
                   endingLineNumber = "232"
-                  offsetFromSymbolStart = "235">
+                  offsetFromSymbolStart = "204">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -89,12 +121,12 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "475536306.465555"
+                  timestampString = "475612599.060897"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "234"
                   endingLineNumber = "234"
-                  offsetFromSymbolStart = "23">
+                  offsetFromSymbolStart = "28">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -202,12 +234,12 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "475536306.470071"
+                  timestampString = "475612599.113726"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "256"
                   endingLineNumber = "256"
-                  offsetFromSymbolStart = "197">
+                  offsetFromSymbolStart = "196">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -217,12 +249,12 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "475536306.470202"
+                  timestampString = "475612599.113846"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "257"
                   endingLineNumber = "257"
-                  offsetFromSymbolStart = "27">
+                  offsetFromSymbolStart = "32">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -266,12 +298,12 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "475536306.471609"
+                  timestampString = "475612599.116305"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "259"
                   endingLineNumber = "259"
-                  offsetFromSymbolStart = "318">
+                  offsetFromSymbolStart = "288">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -281,12 +313,12 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "475536306.471732"
+                  timestampString = "475612599.116872"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "260"
                   endingLineNumber = "260"
-                  offsetFromSymbolStart = "23">
+                  offsetFromSymbolStart = "28">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -378,12 +410,12 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "475536306.475078"
+                  timestampString = "475612599.129445"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "273"
                   endingLineNumber = "273"
-                  offsetFromSymbolStart = "197">
+                  offsetFromSymbolStart = "196">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -393,12 +425,12 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "475536306.475215"
+                  timestampString = "475612599.12959"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "274"
                   endingLineNumber = "274"
-                  offsetFromSymbolStart = "27">
+                  offsetFromSymbolStart = "32">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -458,12 +490,12 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "475536306.477039"
+                  timestampString = "475612599.13132"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "276"
                   endingLineNumber = "276"
-                  offsetFromSymbolStart = "318">
+                  offsetFromSymbolStart = "288">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -473,12 +505,12 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "475536306.477161"
+                  timestampString = "475612599.131429"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "277"
                   endingLineNumber = "277"
-                  offsetFromSymbolStart = "23">
+                  offsetFromSymbolStart = "28">
                </Location>
             </Locations>
          </BreakpointContent>

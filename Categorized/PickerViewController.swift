@@ -6,7 +6,7 @@
 //  Copyright © 2016 FalcOne Development. All rights reserved.
 //
 
-import UIKitl
+import UIKit
 
 class PickerViewController: UIViewController {
     
