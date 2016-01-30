@@ -11,8 +11,8 @@ import UIKit
 class PickerViewController: UIViewController {
     
     @IBOutlet weak var toolbar: UIToolbar!
-    @IBOutlet weak var doneButton: UIToolbar!
     @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var currentFontSize: UIBarButtonItem!
     let fontSizes = [12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36]
     let fontStyles = ["AmericanTypewriter", "Arial", "Avenir", "Courier", "Georgia", "Helvetica", "Times New Roman", "Verdana"]
@@ -321,27 +321,27 @@ extension PickerViewController {
             if let colorIndex = theme as? Int {
                 switch colorIndex {
                 case 0:
-                    toolbar.tintColor = UIColor.themeOrange()
+                    doneButton.tintColor = UIColor.themeOrange()
                     break
                 case 1:
-                    toolbar.tintColor = UIColor.themeYellow()
+                    doneButton.tintColor = UIColor.themeYellow()
                     break
                 case 2:
-                    toolbar.tintColor = UIColor.themeGreen()
+                    doneButton.tintColor = UIColor.themeGreen()
                     break
                 case 3:
-                    toolbar.tintColor = UIColor.themeBlue()
+                    doneButton.tintColor = UIColor.themeBlue()
                     break
                 case 4:
-                    toolbar.tintColor = UIColor.themePink()
+                    doneButton.tintColor = UIColor.themePink()
                     break
                 default:
-                    toolbar.tintColor = UIColor.themeYellow()
+                    doneButton.tintColor = UIColor.themeYellow()
                     break
                 }
             }
         } else {
-            toolbar.tintColor = UIColor.themeYellow()
+            doneButton.tintColor = UIColor.themeYellow()
         }
     }
 }

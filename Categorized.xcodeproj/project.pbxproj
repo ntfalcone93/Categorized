@@ -36,6 +36,7 @@
 		02DF52BA1C4C1FED003D9E33 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52B91C4C1FED003D9E33 /* TermsViewController.swift */; };
 		02DF52BF1C4DA2D6003D9E33 /* UIAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52BE1C4DA2D6003D9E33 /* UIAlerts.swift */; };
 		02DF52C11C4DE0BC003D9E33 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF52C01C4DE0BC003D9E33 /* UIColor.swift */; };
+		02EF03261C5D2FB600054335 /* CategoryNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EF03251C5D2FB600054335 /* CategoryNavController.swift */; };
 		02FE2F611C4EDCE9005FFFFC /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FE2F601C4EDCE9005FFFFC /* PickerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		02DF52B91C4C1FED003D9E33 /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		02DF52BE1C4DA2D6003D9E33 /* UIAlerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlerts.swift; sourceTree = "<group>"; };
 		02DF52C01C4DE0BC003D9E33 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		02EF03251C5D2FB600054335 /* CategoryNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryNavController.swift; sourceTree = "<group>"; };
 		02FE2F601C4EDCE9005FFFFC /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -213,6 +215,7 @@
 			children = (
 				02DF52BB1C4C1FF4003D9E33 /* Login */,
 				02DF528B1C4AF10A003D9E33 /* CategoryTableViewController.swift */,
+				02EF03251C5D2FB600054335 /* CategoryNavController.swift */,
 				02DF528F1C4AF4FF003D9E33 /* NotesTableViewController.swift */,
 				02DF52921C4AF625003D9E33 /* NoteDetailViewController.swift */,
 				0249D5A21C4EB32F0042D88A /* SettingsTableViewController.swift */,
@@ -409,6 +412,7 @@
 				02DF528C1C4AF10A003D9E33 /* CategoryTableViewController.swift in Sources */,
 				02DF52B21C4B39A9003D9E33 /* User.swift in Sources */,
 				025EEB8F1C4FF6F200909F94 /* ThemeViewController.swift in Sources */,
+				02EF03261C5D2FB600054335 /* CategoryNavController.swift in Sources */,
 				02DF52901C4AF4FF003D9E33 /* NotesTableViewController.swift in Sources */,
 				02DF52971C4B0163003D9E33 /* Note.swift in Sources */,
 				0249D5A31C4EB32F0042D88A /* SettingsTableViewController.swift in Sources */,

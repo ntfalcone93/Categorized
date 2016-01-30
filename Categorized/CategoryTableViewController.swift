@@ -168,7 +168,7 @@ class CategoryTableViewController: UITableViewController {
 
 extension CategoryTableViewController {
     override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         
         // Added this because if the user is sent to the loginVC the view does not reload
         if userWasSentToLogin == true {

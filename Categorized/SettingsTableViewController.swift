@@ -248,9 +248,6 @@ extension SettingsTableViewController {
                             UILabel.appearance().font = smallerFont
                             // Text view keeps the users custom font size
                             UITextView.appearance().font = customFont
-                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                self.tableView.reloadData()
-                            })
                         }
                     } else {
                         // Else if the font size is 18 - 24 than the font is whatever the user chose

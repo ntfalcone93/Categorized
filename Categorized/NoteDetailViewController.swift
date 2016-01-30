@@ -13,8 +13,8 @@ class NoteDetailViewController: UIViewController, UIScrollViewDelegate, UITextVi
     var note: Note?
     // IBOutlets
     @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var shareButton: UIBarButtonItem!
     let defaults = NSUserDefaults.standardUserDefaults()
+    var keyboardHeight: CGFloat?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +31,9 @@ class NoteDetailViewController: UIViewController, UIScrollViewDelegate, UITextVi
                 }
             })
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name:UIKeyboardWillShowNotification, object: nil)
+        //        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name:UIKeyboardWillHideNotification, object: nil)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -40,6 +43,21 @@ class NoteDetailViewController: UIViewController, UIScrollViewDelegate, UITextVi
             if unwrappedNote.bodyText != textView.text {
                 FirebaseController.sharedInstance.updateNote(textView.text, note: unwrappedNote, category: unwrappedCategory)
             }
+        }
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            view.frame.origin.y -= keyboardSize.height
+            keyboardHeight = keyboardSize.height
+        }
+        
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            textView.frame.origin.y += keyboardSize.height
         }
     }
     
@@ -61,6 +79,10 @@ class NoteDetailViewController: UIViewController, UIScrollViewDelegate, UITextVi
     func scrollViewDidScroll(scrollView: UIScrollView) {
         textView.resignFirstResponder()
     }
+    
+    func textViewDidChange(textView: UITextView) {
+        
+    }
 }
 
 extension NoteDetailViewController {
@@ -75,37 +97,37 @@ extension NoteDetailViewController {
                     navigationItem.leftBarButtonItem?.tintColor = UIColor.themeOrange()
                     navigationItem.rightBarButtonItem?.tintColor = UIColor.themeOrange()
                     navigationController?.navigationBar.tintColor = UIColor.themeOrange()
-                    shareButton.tintColor = UIColor.themeOrange()
+                    //                    shareButton.tintColor = UIColor.themeOrange()
                     break
                 case 1:
                     navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
                     navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
                     navigationController?.navigationBar.tintColor = UIColor.themeYellow()
-                    shareButton.tintColor = UIColor.themeYellow()
+                    //                    shareButton.tintColor = UIColor.themeYellow()
                     break
                 case 2:
                     navigationItem.leftBarButtonItem?.tintColor = UIColor.themeGreen()
                     navigationItem.rightBarButtonItem?.tintColor = UIColor.themeGreen()
                     navigationController?.navigationBar.tintColor = UIColor.themeGreen()
-                    shareButton.tintColor = UIColor.themeGreen()
+                    //                    shareButton.tintColor = UIColor.themeGreen()
                     break
                 case 3:
                     navigationItem.leftBarButtonItem?.tintColor = UIColor.themeBlue()
                     navigationItem.rightBarButtonItem?.tintColor = UIColor.themeBlue()
                     navigationController?.navigationBar.tintColor = UIColor.themeBlue()
-                    shareButton.tintColor = UIColor.themeBlue()
+                    //                    shareButton.tintColor = UIColor.themeBlue()
                     break
                 case 4:
                     navigationItem.leftBarButtonItem?.tintColor = UIColor.themePink()
                     navigationItem.rightBarButtonItem?.tintColor = UIColor.themePink()
                     navigationController?.navigationBar.tintColor = UIColor.themePink()
-                    shareButton.tintColor = UIColor.themePink()
+                    //                    shareButton.tintColor = UIColor.themePink()
                     break
                 default:
                     navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
                     navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
                     navigationController?.navigationBar.tintColor = UIColor.themeYellow()
-                    shareButton.tintColor = UIColor.themeYellow()
+                    //                    shareButton.tintColor = UIColor.themeYellow()
                     break
                 }
             }
@@ -113,7 +135,7 @@ extension NoteDetailViewController {
             navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
             navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
             navigationController?.navigationBar.tintColor = UIColor.themeYellow()
-            shareButton.tintColor = UIColor.themeYellow()
+            //            shareButton.tintColor = UIColor.themeYellow()
         }
     }
 }

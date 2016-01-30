@@ -11,6 +11,7 @@ import UIKit
 class ThemeViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var toolbar: UIToolbar!
     let defaults = NSUserDefaults.standardUserDefaults()
     
@@ -40,27 +41,27 @@ extension ThemeViewController {
             if let colorIndex = theme as? Int {
                 switch colorIndex {
                 case 0:
-                    toolbar.tintColor = UIColor.themeOrange()
+                    doneButton.tintColor = UIColor.themeOrange()
                     break
                 case 1:
-                    toolbar.tintColor = UIColor.themeYellow()
+                    doneButton.tintColor = UIColor.themeYellow()
                     break
                 case 2:
-                    toolbar.tintColor = UIColor.themeGreen()
+                    doneButton.tintColor = UIColor.themeGreen()
                     break
                 case 3:
-                    toolbar.tintColor = UIColor.themeBlue()
+                    doneButton.tintColor = UIColor.themeBlue()
                     break
                 case 4:
-                    toolbar.tintColor = UIColor.themePink()
+                    doneButton.tintColor = UIColor.themePink()
                     break
                 default:
-                    toolbar.tintColor = UIColor.themeYellow()
+                    doneButton.tintColor = UIColor.themeYellow()
                     break
                 }
             }
         } else {
-            toolbar.tintColor = UIColor.themeYellow()
+            doneButton.tintColor = UIColor.themeYellow()
         }
 
     }
