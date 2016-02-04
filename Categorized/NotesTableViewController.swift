@@ -48,7 +48,7 @@ class NotesTableViewController: UITableViewController {
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toNoteDetailSegue" {
-            let noteDetailVC = segue.destinationViewController as! NoteDetailViewController
+            let noteDetailVC = segue.destinationViewController as! NoteDetailTableViewController
             if let indexPath = tableView.indexPathForSelectedRow {
                 let note = FirebaseController.sharedInstance.notesInCategory[indexPath.row]
                 noteDetailVC.note = note

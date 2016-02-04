@@ -1,72 +1,65 @@
 //
-//  NoteDetailViewController.swift
+//  NoteDetailTableViewController.swift
 //  Categorized
 //
-//  Created by Nathan on 1/16/16.
+//  Created by Nathan on 2/3/16.
 //  Copyright © 2016 FalcOne Development. All rights reserved.
 //
 
 import UIKit
 
-class NoteDetailViewController: UIViewController, UIScrollViewDelegate, UITextViewDelegate {
+class NoteDetailTableViewController: UITableViewController {
+    
     var category: Category?
     var note: Note?
-    // IBOutlets
-    @IBOutlet weak var textView: UITextView!
     
     let defaults = NSUserDefaults.standardUserDefaults()
-    var keyboardHeight: CGFloat?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Backgroung Image
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
         
-        if let unwrappedNote = note {
-            
-            // Body text
-            FirebaseController.sharedInstance.fetchNoteWithNoteID(unwrappedNote.ref!.key, completion: { (note) -> () in
-                if let updateNote = note {
-                    self.textView.text = updateNote.bodyText
-                }
-            })
-        }
+        //        if let unwrappedNote = note {
+        //            FirebaseController.sharedInstance.fetchNoteWithNoteID(unwrappedNote.ref!.key, completion: { (note) -> () in
+        //                if let updateNote = note {
+        //                    self.textView.text = updateNote.bodyText
+        //                }
+        //            })
+        //        }
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name:UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name:UIKeyboardWillHideNotification, object: nil)
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(true)
-        if let unwrappedNote = note, let unwrappedCategory = category {
-            // Only saves the note if the bodyText has changed
-            if unwrappedNote.bodyText != textView.text {
-                FirebaseController.sharedInstance.updateNote(textView.text, note: unwrappedNote, category: unwrappedCategory)
-            }
-        }
-    }
+    //    override func viewWillDisappear(animated: Bool) {
+    //        super.viewWillDisappear(true)
+    //        if let unwrappedNote = note, let unwrappedCategory = category {
+    //            // Only saves the note if the bodyText has changed
+    //            if unwrappedNote.bodyText != textView.text {
+    //                FirebaseController.sharedInstance.updateNote(textView.text, note: unwrappedNote, category: unwrappedCategory)
+    //            }
+    //        }
+    //    }
     
     func keyboardWillShow(notification: NSNotification) {
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-//            bottomConstraint.constant = keyboardSize.height
-            textView.layoutIfNeeded()
-            textView.frame.origin.y -= keyboardSize.height
-            keyboardHeight = keyboardSize.height
+//                        bottomConstraint.constant = keyboardSize.height
+            //            textView.layoutIfNeeded()
+//            tableView.frame.origin.y -= keyboardSize.height
+            //            keyboardHeight = keyboardSize.height
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-//            bottomConstraint.constant = keyboardSize.height
-            textView.layoutIfNeeded()
-//            textView.frame.origin.y += keyboardSize.height
+//                        bottomConstraint.constant = keyboardSize.height
+            //            textView.layoutIfNeeded()
+//            tableView.frame.origin.y += keyboardSize.height
         }
     }
     
-    // MARK: IBActions
-    // Share button
     @IBAction func shareButtonTapped(sender: AnyObject) {
         // TODO: Find out why this crashes
         //        if let unwrappedNote = note {
@@ -75,16 +68,30 @@ class NoteDetailViewController: UIViewController, UIScrollViewDelegate, UITextVi
     }
     
     // MARK: Scroll view and text view delegate
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        //        textView.resignFirstResponder()
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        resignFirstResponder()
     }
     
-    func textViewDidChange(textView: UITextView) {
+    // MARK: - Table view data source
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("textViewCell", forIndexPath: indexPath) as! TextViewTableViewCell
         
+        if let note = note, let category = category {
+            cell.configureCellWithNoteAndCategory(note, category: category)
+        }
+        return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return CGFloat(view.frame.size.height - 100)
     }
 }
 
-extension NoteDetailViewController {
+extension NoteDetailTableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         

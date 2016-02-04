@@ -436,7 +436,7 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                                 <rect key="frame" x="0.0" y="92" width="600" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1FE-cO-NVV" id="PNE-o8-mhr">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="titleLabel" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBT-pV-G8W">
@@ -536,7 +536,7 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                                 <rect key="frame" x="0.0" y="92" width="600" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AuC-xN-eIy" id="UVc-uM-PZ3">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOv-FO-2K1">
@@ -756,7 +756,7 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                                 <rect key="frame" x="0.0" y="92" width="600" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yyG-iN-ngX" id="2bY-fg-NAW">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qER-dN-o3e">
@@ -775,7 +775,7 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="notesLabel" destination="qER-dN-o3e" id="FtR-Dn-Kbk"/>
-                                    <segue destination="6Lm-On-O6S" kind="show" identifier="toNoteDetailSegue" id="aXr-Ms-GlN"/>
+                                    <segue destination="int-5P-ugo" kind="show" identifier="toNoteDetailSegue" id="ihi-Ez-AJW"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -826,8 +826,16 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ouQ-WI-Uqz">
                                 <rect key="frame" x="15" y="0.0" width="570" height="556"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="556" id="GOx-6O-gju"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="GOx-6O-gju"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <outlet property="delegate" destination="6Lm-On-O6S" id="dYN-pJ-bSG"/>
                                 </connections>
@@ -837,18 +845,64 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                         <constraints>
                             <constraint firstItem="ouQ-WI-Uqz" firstAttribute="leading" secondItem="CSg-fg-NVX" secondAttribute="leadingMargin" constant="-5" id="3fi-cz-qP1"/>
                             <constraint firstItem="ouQ-WI-Uqz" firstAttribute="top" secondItem="CSg-fg-NVX" secondAttribute="top" id="sso-Ti-d51"/>
-                            <constraint firstItem="ouQ-WI-Uqz" firstAttribute="bottom" secondItem="iaZ-GA-cZL" secondAttribute="top" id="v10-vB-b1x"/>
+                            <constraint firstItem="ouQ-WI-Uqz" firstAttribute="bottom" secondItem="iaZ-GA-cZL" secondAttribute="top" constant="-44" identifier="bottomConstraint" id="v10-vB-b1x"/>
                             <constraint firstItem="ouQ-WI-Uqz" firstAttribute="centerX" secondItem="CSg-fg-NVX" secondAttribute="centerX" id="yI8-fJ-7Ie"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="P2t-iJ-NI7"/>
                     <connections>
+                        <outlet property="bottomConstraint" destination="v10-vB-b1x" id="ES2-BE-jnF"/>
                         <outlet property="textView" destination="ouQ-WI-Uqz" id="TEb-3a-9gJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QqH-f0-1RL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2428" y="409"/>
+        </scene>
+        <!--Note Detail Table View Controller-->
+        <scene sceneID="saW-cv-bGV">
+            <objects>
+                <tableViewController id="int-5P-ugo" customClass="NoteDetailTableViewController" customModule="Categorized" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="395" sectionHeaderHeight="28" sectionFooterHeight="28" id="fOJ-em-5LW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="textViewCell" rowHeight="395" id="bJy-TR-C1o" customClass="TextViewTableViewCell" customModule="Categorized" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="395"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bJy-TR-C1o" id="7GE-eM-pYg">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="395"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Awj-Aq-kO4">
+                                            <rect key="frame" x="15" y="0.0" width="585" height="394.5"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Awj-Aq-kO4" firstAttribute="leading" secondItem="7GE-eM-pYg" secondAttribute="leading" constant="15" id="EOW-Sd-N7v"/>
+                                        <constraint firstItem="Awj-Aq-kO4" firstAttribute="top" secondItem="7GE-eM-pYg" secondAttribute="top" id="l4c-w6-5Vf"/>
+                                        <constraint firstAttribute="trailing" secondItem="Awj-Aq-kO4" secondAttribute="trailing" id="onF-km-ahT"/>
+                                        <constraint firstAttribute="bottom" secondItem="Awj-Aq-kO4" secondAttribute="bottom" id="r4Z-1v-KbI"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="textView" destination="Awj-Aq-kO4" id="TR5-UV-zbk"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="int-5P-ugo" id="eZX-nQ-RkM"/>
+                            <outlet property="delegate" destination="int-5P-ugo" id="Sks-WF-M5e"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kdr-y3-2sL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3061" y="409"/>
         </scene>
         <!--Category Nav Controller-->
         <scene sceneID="wRx-5V-k4A">
