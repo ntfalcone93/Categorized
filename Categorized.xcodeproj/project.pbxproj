@@ -12,8 +12,6 @@
 		022EDF9A1C573E8F003A9EFF /* NotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022EDF991C573E8F003A9EFF /* NotesTableViewCell.swift */; };
 		0249D5A31C4EB32F0042D88A /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0249D5A21C4EB32F0042D88A /* SettingsTableViewController.swift */; };
 		025EEB8F1C4FF6F200909F94 /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EEB8E1C4FF6F200909F94 /* ThemeViewController.swift */; };
-		02AB8B631C62ECB100EC9DF4 /* NoteDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AB8B621C62ECB100EC9DF4 /* NoteDetailTableViewController.swift */; };
-		02AB8B651C62ECC900EC9DF4 /* TextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AB8B641C62ECC900EC9DF4 /* TextViewTableViewCell.swift */; };
 		02DF525E1C4AEFBE003D9E33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DF525D1C4AEFBE003D9E33 /* AppDelegate.swift */; };
 		02DF52631C4AEFBE003D9E33 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02DF52611C4AEFBE003D9E33 /* Main.storyboard */; };
 		02DF52651C4AEFBE003D9E33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02DF52641C4AEFBE003D9E33 /* Assets.xcassets */; };
@@ -65,8 +63,6 @@
 		022EDF991C573E8F003A9EFF /* NotesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesTableViewCell.swift; sourceTree = "<group>"; };
 		0249D5A21C4EB32F0042D88A /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		025EEB8E1C4FF6F200909F94 /* ThemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
-		02AB8B621C62ECB100EC9DF4 /* NoteDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDetailTableViewController.swift; sourceTree = "<group>"; };
-		02AB8B641C62ECC900EC9DF4 /* TextViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewTableViewCell.swift; sourceTree = "<group>"; };
 		02DF525A1C4AEFBE003D9E33 /* Categorized.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Categorized.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02DF525D1C4AEFBE003D9E33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02DF52621C4AEFBE003D9E33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -137,7 +133,6 @@
 			children = (
 				0228AE601C4F1643002CF317 /* CategoryTableViewCell.swift */,
 				022EDF991C573E8F003A9EFF /* NotesTableViewCell.swift */,
-				02AB8B641C62ECC900EC9DF4 /* TextViewTableViewCell.swift */,
 				022EDF971C573DCE003A9EFF /* SettingsTableViewCell.swift */,
 			);
 			name = "Table View Cells";
@@ -222,7 +217,6 @@
 				02DF528B1C4AF10A003D9E33 /* CategoryTableViewController.swift */,
 				02EF03251C5D2FB600054335 /* CategoryNavController.swift */,
 				02DF528F1C4AF4FF003D9E33 /* NotesTableViewController.swift */,
-				02AB8B621C62ECB100EC9DF4 /* NoteDetailTableViewController.swift */,
 				02DF52921C4AF625003D9E33 /* NoteDetailViewController.swift */,
 				0249D5A21C4EB32F0042D88A /* SettingsTableViewController.swift */,
 				02FE2F601C4EDCE9005FFFFC /* PickerViewController.swift */,
@@ -414,7 +408,6 @@
 				02DF525E1C4AEFBE003D9E33 /* AppDelegate.swift in Sources */,
 				02DF52951C4B015D003D9E33 /* Category.swift in Sources */,
 				0228AE611C4F1643002CF317 /* CategoryTableViewCell.swift in Sources */,
-				02AB8B651C62ECC900EC9DF4 /* TextViewTableViewCell.swift in Sources */,
 				02DF52931C4AF625003D9E33 /* NoteDetailViewController.swift in Sources */,
 				02DF528C1C4AF10A003D9E33 /* CategoryTableViewController.swift in Sources */,
 				02DF52B21C4B39A9003D9E33 /* User.swift in Sources */,
@@ -425,7 +418,6 @@
 				0249D5A31C4EB32F0042D88A /* SettingsTableViewController.swift in Sources */,
 				02DF52B61C4C1ABE003D9E33 /* LoginViewController.swift in Sources */,
 				02DF52BA1C4C1FED003D9E33 /* TermsViewController.swift in Sources */,
-				02AB8B631C62ECB100EC9DF4 /* NoteDetailTableViewController.swift in Sources */,
 				022EDF9A1C573E8F003A9EFF /* NotesTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

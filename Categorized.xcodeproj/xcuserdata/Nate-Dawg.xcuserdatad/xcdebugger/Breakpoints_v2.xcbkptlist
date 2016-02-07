@@ -42,7 +42,7 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "476253734.394263"
+                  timestampString = "476571974.366485"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "228"
@@ -57,7 +57,7 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "476253734.394501"
+                  timestampString = "476571974.366723"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "229"
@@ -106,7 +106,7 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "476253734.398361"
+                  timestampString = "476571974.368629"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "232"
@@ -121,7 +121,7 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "476253734.398542"
+                  timestampString = "476571974.368816"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "234"
@@ -234,7 +234,7 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "476253734.403157"
+                  timestampString = "476571974.372351"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "256"
@@ -249,7 +249,7 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "476253734.403369"
+                  timestampString = "476571974.372477"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "257"
@@ -298,7 +298,7 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "476253734.405134"
+                  timestampString = "476571974.373719"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "259"
@@ -313,7 +313,7 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "476253734.405383"
+                  timestampString = "476571974.373847"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "260"
@@ -410,7 +410,7 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "476253734.409386"
+                  timestampString = "476571974.37658"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "273"
@@ -425,7 +425,7 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "476253734.409499"
+                  timestampString = "476571974.376705"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "274"
@@ -490,7 +490,7 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "476253734.414332"
+                  timestampString = "476571974.378393"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "276"
@@ -505,7 +505,7 @@
                   moduleName = "Categorized"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Nate-Dawg/Desktop/Notes%20App/Categorized/Categorized/FirebaseController.swift"
-                  timestampString = "476253734.414486"
+                  timestampString = "476571974.378512"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "277"
@@ -634,11 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Categorized/NoteDetailViewController.swift"
-            timestampString = "476209674.401127"
+            timestampString = "476571973.30394"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "keyboardWillShow(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -650,11 +650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Categorized/NoteDetailViewController.swift"
-            timestampString = "476209675.651711"
+            timestampString = "476571973.30394"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "keyboardWillShow(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -666,12 +666,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Categorized/NoteDetailViewController.swift"
-            timestampString = "476209677.519494"
+            timestampString = "476571973.30394"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "keyboardWillShow(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Categorized/TextViewTableViewCell.swift"
+            timestampString = "476412615.595284"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "awakeFromNib()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Categorized/TextViewTableViewCell.swift"
+            timestampString = "476412836.190704"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "scrollViewDidScroll(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Categorized/NoteDetailTableViewController.swift"
+            timestampString = "476564864.478662"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "textViewDidChange(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Categorized/NoteDetailTableViewController.swift"
+            timestampString = "476564864.478662"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "textView(_:shouldChangeTextInRange:replacementText:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

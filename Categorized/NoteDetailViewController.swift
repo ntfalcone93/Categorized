@@ -12,8 +12,9 @@ class NoteDetailViewController: UIViewController, UIScrollViewDelegate, UITextVi
     var category: Category?
     var note: Note?
     // IBOutlets
-    @IBOutlet weak var textView: UITextView!
+        @IBOutlet weak var textView: UITextView!
     
+//    let textView = UITextView()
     let defaults = NSUserDefaults.standardUserDefaults()
     var keyboardHeight: CGFloat?
     
@@ -22,6 +23,15 @@ class NoteDetailViewController: UIViewController, UIScrollViewDelegate, UITextVi
         
         // Backgroung Image
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
+        
+        // TextView
+        view.addSubview(textView)
+        textView.frame.size.height = self.view.frame.size.height
+        textView.frame.size.width = self.view.frame.size.width - 15
+        textView.center = self.view.center
+        textView.bounces = true
+        textView.alwaysBounceVertical = true
+        textView.backgroundColor = UIColor.clearColor()
         
         if let unwrappedNote = note {
             
@@ -50,18 +60,13 @@ class NoteDetailViewController: UIViewController, UIScrollViewDelegate, UITextVi
     func keyboardWillShow(notification: NSNotification) {
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-//            bottomConstraint.constant = keyboardSize.height
-            textView.layoutIfNeeded()
-            textView.frame.origin.y -= keyboardSize.height
-            keyboardHeight = keyboardSize.height
+            textView.frame.size.height -= keyboardSize.height
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-//            bottomConstraint.constant = keyboardSize.height
-            textView.layoutIfNeeded()
-//            textView.frame.origin.y += keyboardSize.height
+            textView.frame.size.height += keyboardSize.height
         }
     }
     
@@ -76,7 +81,11 @@ class NoteDetailViewController: UIViewController, UIScrollViewDelegate, UITextVi
     
     // MARK: Scroll view and text view delegate
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        //        textView.resignFirstResponder()
+        if scrollView.dragging == true {
+            textView.resignFirstResponder()
+        }
+        //        textView.frame.size.height = self.view.frame.size.height
+        //        textView.frame.size.width = self.view.frame.size.width - 15
     }
     
     func textViewDidChange(textView: UITextView) {
