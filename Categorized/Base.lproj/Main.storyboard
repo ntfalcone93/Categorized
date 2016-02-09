@@ -107,7 +107,10 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="categorizedLabel" destination="6ba-BS-sdT" id="O8y-bc-Lxl"/>
+                        <outlet property="dontHaveAccountButton" destination="YCT-HR-KHU" id="ysu-CZ-abU"/>
                         <outlet property="emailTextField" destination="Nha-Kg-1Th" id="sWf-jR-xMt"/>
+                        <outlet property="forgotPasswordButton" destination="JQH-bl-FhP" id="xBK-fj-dbH"/>
                         <outlet property="passwordTextField" destination="bd1-i5-eTh" id="aXs-aa-z9e"/>
                         <outlet property="signInButton" destination="38H-5r-dcB" id="I0q-3C-Tnq"/>
                         <segue destination="Ycp-DD-7Ks" kind="unwind" identifier="unwindFromLoginToCategoryTVC" unwindAction="unwindFromLoginSegue:" id="NIP-TG-teo"/>
@@ -232,10 +235,12 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="eMT-2p-oNU" id="1j7-g7-2vy"/>
                         <outlet property="confirmPasswordTextField" destination="hkc-6U-ueX" id="gvO-bb-Cok"/>
                         <outlet property="createAccountButton" destination="c3U-36-sKd" id="6xA-1Z-2Tc"/>
                         <outlet property="emailTextField" destination="Uwy-Vn-c0M" id="yiY-5I-RuE"/>
                         <outlet property="passwordTextField" destination="adg-6U-CAC" id="W7d-16-vvN"/>
+                        <outlet property="signUpLabel" destination="ujV-nT-PMs" id="nnH-SA-nRM"/>
                         <segue destination="YIB-FG-cgd" kind="unwind" identifier="unwindFromSignUpSegue" unwindAction="unwindFromSignUpSegue:" id="UJc-We-d8c"/>
                     </connections>
                 </viewController>
@@ -449,7 +454,7 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                                 <rect key="frame" x="0.0" y="92" width="600" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1FE-cO-NVV" id="PNE-o8-mhr">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# notes" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJ9-pF-fAx">
@@ -547,11 +552,11 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                                 <rect key="frame" x="0.0" y="92" width="600" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AuC-xN-eIy" id="UVc-uM-PZ3">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOA-4k-Flr">
-                                            <rect key="frame" x="15" y="8" width="393" height="34"/>
+                                            <rect key="frame" x="15" y="8" width="570" height="34"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -560,7 +565,7 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="TOA-4k-Flr" secondAttribute="bottom" constant="-1" id="16l-dd-dwP"/>
                                         <constraint firstAttribute="topMargin" secondItem="TOA-4k-Flr" secondAttribute="top" id="2aV-t8-aZ6"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="TOA-4k-Flr" secondAttribute="trailing" constant="184" id="39b-VB-kN2"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="TOA-4k-Flr" secondAttribute="trailing" constant="7" id="39b-VB-kN2"/>
                                         <constraint firstItem="TOA-4k-Flr" firstAttribute="leading" secondItem="UVc-uM-PZ3" secondAttribute="leadingMargin" constant="7" id="rnA-cM-2TZ"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -766,7 +771,7 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                                 <rect key="frame" x="0.0" y="92" width="600" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yyG-iN-ngX" id="2bY-fg-NAW">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qER-dN-o3e">

@@ -13,6 +13,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var forgotPasswordButton: UIButton!
+    @IBOutlet weak var categorizedLabel: UILabel!
+    @IBOutlet weak var dontHaveAccountButton: UIButton!
     let defaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
@@ -21,7 +24,15 @@ class LoginViewController: UIViewController {
         // Background Image
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
         
+        // Keeps the labels and buttons the correct font and size
+        categorizedLabel.font = UIFont(name: "AmericanTypewriter", size: 50)
+        emailTextField.font = UIFont(name: "AmericanTypewriter", size: 14)
+        passwordTextField.font = UIFont(name: "AmericanTypewriter", size: 14)
+        forgotPasswordButton.titleLabel?.font = UIFont(name: "AmericanTypewriter", size: 13)
+        dontHaveAccountButton.titleLabel?.font = UIFont(name: "AmericanTypewriter", size: 15)
+        
         // Sign In button
+        signInButton.titleLabel?.font = UIFont(name: "AmericanTypewriter", size: 26)
         signInButton.layer.cornerRadius = 22
         signInButton.layer.borderColor = UIColor.clearColor().CGColor
         signInButton.layer.borderWidth = 2

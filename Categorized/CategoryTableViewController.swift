@@ -18,9 +18,9 @@ class CategoryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // If the user wasn't sent to the login view
-        if userWasSentToLogin != true {
-            // Check if user is logged in
-            checkForUser { (userLoggedIn) -> () in
+        // Check if user is logged in
+        checkForUser { (userLoggedIn) -> () in
+            if self.userWasSentToLogin != true {
                 if userLoggedIn == true {
                     self.fetchUsersCategories()
                 }
@@ -84,6 +84,9 @@ class CategoryTableViewController: UITableViewController {
     
     @IBAction func unwindFromSignUpSegue(unwindSegue: UIStoryboardSegue) {
         // No additional code needed for this the function properly
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.tableView.reloadData()
+        })
     }
     
     // Checks to see if a user is logged in still and fetches that user
@@ -172,6 +175,8 @@ extension CategoryTableViewController {
         
         // Added this because if the user is sent to the loginVC the view does not reload
         if userWasSentToLogin == true {
+            // Set the bool back to false
+            userWasSentToLogin = false
             // Check if user is logged in
             checkForUser { (userLoggedIn) -> () in
                 if userLoggedIn == true {

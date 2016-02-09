@@ -15,13 +15,23 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var createAccountButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var signUpLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
         
+        // Keeps the labels and buttons the correct font and size
+        signUpLabel.font = UIFont(name: "AmericanTypewriter", size: 40)
+        emailTextField.font = UIFont(name: "AmericanTypewriter", size: 14)
+        passwordTextField.font = UIFont(name: "AmericanTypewriter", size: 14)
+        confirmPasswordTextField.font = UIFont(name: "AmericanTypewriter", size: 14)
+        
+        
         // Create Account button
+        createAccountButton.titleLabel?.font = UIFont(name: "AmericanTypewriter", size: 24)
         createAccountButton.layer.cornerRadius = 22
         createAccountButton.layer.borderColor = UIColor.clearColor().CGColor
         createAccountButton.layer.borderWidth = 2
@@ -41,8 +51,9 @@ class SignUpViewController: UIViewController {
         if passwordTextField.text == confirmPasswordTextField.text && passwordTextField.text != "" {
             // Code to create accout
             if let email = emailTextField.text, let password = passwordTextField.text {
-                FirebaseController.sharedInstance.createUserInFirebase(email, password: password)
-                self.performSegueWithIdentifier("unwindFromSignUpSegue", sender: nil)
+                FirebaseController.sharedInstance.createUserInFirebase(email, password: password, completion: { () -> () in
+                    self.performSegueWithIdentifier("unwindFromSignUpSegue", sender: nil)
+                })
             }
         } else {
             print("Error occured while signing up user")

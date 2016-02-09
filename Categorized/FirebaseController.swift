@@ -218,10 +218,15 @@ class FirebaseController: NSObject {
         ref.childByAppendingPath("categories").childByAppendingPath(category.ref!.key).childByAppendingPath("notes").childByAppendingPath(note.ref!.key).removeValue()
     }
     
+    //
+    func wipeArraysForNewUser() {
+        self.usersCategories.removeAll()
+        self.notesInCategory.removeAll()
+    }
     
     // MARK: User creation
     // Create new user
-    func createUserInFirebase(email: String, password: String) {
+    func createUserInFirebase(email: String, password: String, completion: () -> ()) {
         // create user
         ref.createUser(email, password: password, withCompletionBlock: { (error) -> Void in
             if error == nil {
@@ -234,57 +239,22 @@ class FirebaseController: NSObject {
                             if error == nil {
                                 // Sets userID in NSUserDefaults making it easier for user to login
                                 NSUserDefaults.standardUserDefaults().setObject(auth.uid, forKey: "userID")
-                                
+                                completion()
                                 
                             } else {
                                 print("Error setting users properties: \(error.localizedDescription)")
+                                completion()
                             }
                         })
                     } else {
                         print("Error while authenticating user: \(error.localizedDescription)")
+                        completion()
                     }
                 })
             } else {
                 print("Error while creating user: \(error.localizedDescription)")
+                completion()
             }
         })
     }
-    
-    // Stock categories when user first creates an account
-    func createHomeCategory(completion: (Firebase?) -> ()) {
-        let homeCategory = Category(title: "Home", caption: "")
-        ref.childByAppendingPath("categories").childByAutoId().setValue(homeCategory.toAnyObject()) { (error, firebaseRef) -> Void in
-            if error == nil {
-                let note = Note(title: "New note", bodyText: "")
-                self.ref.childByAppendingPath("notes").childByAutoId().setValue(note.toAnyObject(), withCompletionBlock: { (error, noteRef) -> Void in
-                    if error == nil {
-                        firebaseRef.childByAppendingPath("notes").childByAppendingPath(noteRef.key).setValue(true)
-                    }
-                })
-                completion(firebaseRef)
-            } else {
-                completion(nil)
-            }
-        }
-        completion(nil)
-    }
-    func createWorkCategory(completion: (Firebase?) -> ()) {
-        let workCategory = Category(title: "Work", caption: "")
-        ref.childByAppendingPath("categories").childByAutoId().setValue(workCategory.toAnyObject()) { (error, firebaseRef) -> Void in
-            if error == nil {
-                let note = Note(title: "New note", bodyText: "")
-                self.ref.childByAppendingPath("notes").childByAutoId().setValue(note.toAnyObject(), withCompletionBlock: { (error, noteRef) -> Void in
-                    if error == nil {
-                        firebaseRef.childByAppendingPath("notes").childByAppendingPath(noteRef.key).setValue(true)
-                    }
-                })
-                completion(firebaseRef)
-            } else {
-                completion(nil)
-            }
-        }
-        completion(nil)
-    }
-    
-    
 }

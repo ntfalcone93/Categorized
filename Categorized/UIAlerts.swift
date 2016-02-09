@@ -249,6 +249,7 @@ extension UIAlertController {
         let logOutAction = UIAlertAction(title: "Log Out", style: .Destructive) { (action) -> Void in
             
             let ref = FirebaseController.sharedInstance.ref
+            FirebaseController.sharedInstance.wipeArraysForNewUser()
             // Logs out user
             ref.unauth()
             // Removes userID from NSUserDefaults so user isn't logged back in
