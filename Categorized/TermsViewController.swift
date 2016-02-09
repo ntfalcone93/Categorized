@@ -17,6 +17,8 @@ class TermsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
+        
         // Theme
         if let theme = defaults.objectForKey("themeNum") {
             if let colorIndex = theme as? Int {
@@ -45,10 +47,10 @@ class TermsViewController: UIViewController {
             doneButton.tintColor = UIColor.themeYellow()
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    // Starts text view at top
+    override func viewDidLayoutSubviews() {
+        textView.setContentOffset(CGPoint.zero, animated: false)
     }
     
     // IBActions

@@ -14,11 +14,21 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var createAccountButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
+        
+        // Create Account button
+        createAccountButton.layer.cornerRadius = 22
+        createAccountButton.layer.borderColor = UIColor.clearColor().CGColor
+        createAccountButton.layer.borderWidth = 2
+        createAccountButton.layer.shadowColor = UIColor.grayColor().CGColor
+        createAccountButton.layer.shadowOffset = CGSizeMake(1, 2)
+        createAccountButton.layer.shadowRadius = 1.0
+        createAccountButton.layer.shadowOpacity = 1.0
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,6 +51,13 @@ class SignUpViewController: UIViewController {
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // Tap gesture resigns keyboard
+    @IBAction func resignKeyboardGestureTapped(sender: AnyObject) {
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        confirmPasswordTextField.resignFirstResponder()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

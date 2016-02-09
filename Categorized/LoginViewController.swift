@@ -12,12 +12,23 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var signInButton: UIButton!
     let defaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Background Image
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
         
+        // Sign In button
+        signInButton.layer.cornerRadius = 22
+        signInButton.layer.borderColor = UIColor.clearColor().CGColor
+        signInButton.layer.borderWidth = 2
+        signInButton.layer.shadowColor = UIColor.grayColor().CGColor
+        signInButton.layer.shadowOffset = CGSizeMake(1, 2)
+        signInButton.layer.shadowRadius = 1.0
+        signInButton.layer.shadowOpacity = 1.0
     }
     
     // MARK: IBActions
@@ -44,6 +55,12 @@ class LoginViewController: UIViewController {
     
     @IBAction func forgotPasswordButtonTapped(sender: AnyObject) {
         UIAlertController.forgotPassword(self)
+    }
+    
+    // Tap gesture resigns keyboard
+    @IBAction func resignKeyboardGestureTapped(sender: AnyObject) {
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
     }
     
     // MARK: - Navigation

@@ -29,47 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITableViewCell.appearance().backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
         UIPickerView.appearance().backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
         
-        // Theme
-//        if let theme = defaults.objectForKey("themeNum") {
-//            if let colorIndex = theme as? Int {
-//                switch colorIndex {
-//                case 0:
-//                    UINavigationBar.appearance().tintColor = UIColor.highlighterOrange()
-//                    UIBarButtonItem.appearance().tintColor = UIColor.highlighterOrange()
-//                    UIButton.appearance().tintColor = UIColor.highlighterOrange()
-//                    break
-//                case 1:
-//                    UINavigationBar.appearance().tintColor = UIColor.highlighterYellow()
-//                    UIBarButtonItem.appearance().tintColor = UIColor.highlighterYellow()
-//                    UIButton.appearance().tintColor = UIColor.highlighterYellow()
-//                    break
-//                case 2:
-//                    UINavigationBar.appearance().tintColor = UIColor.highlighterGreen()
-//                    UIBarButtonItem.appearance().tintColor = UIColor.highlighterGreen()
-//                    UIButton.appearance().tintColor = UIColor.highlighterGreen()
-//                    break
-//                case 3:
-//                    UINavigationBar.appearance().tintColor = UIColor.highlighterBlue()
-//                    UIBarButtonItem.appearance().tintColor = UIColor.highlighterBlue()
-//                    UIButton.appearance().tintColor = UIColor.highlighterBlue()
-//                    break
-//                case 4:
-//                    UINavigationBar.appearance().tintColor = UIColor.highlighterPink()
-//                    UIBarButtonItem.appearance().tintColor = UIColor.highlighterPink()
-//                    UIButton.appearance().tintColor = UIColor.highlighterPink()
-//                    break
-//                default:
-//                    UINavigationBar.appearance().tintColor = UIColor.highlighterYellow()
-//                    UIBarButtonItem.appearance().tintColor = UIColor.highlighterYellow()
-//                    UIButton.appearance().tintColor = UIColor.highlighterYellow()
-//                    break
-//                }
-//            }
-//        } else {
-//            UINavigationBar.appearance().tintColor = UIColor.highlighterOrange()
-//            UIBarButtonItem.appearance().tintColor = UIColor.highlighterOrange()
-//            UIButton.appearance().tintColor = UIColor.highlighterOrange()
-//        }
         return true
     }
     
@@ -81,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        NSNotificationCenter.defaultCenter().postNotificationName("appWillEnterBackground", object: nil)
     }
     
     func applicationWillEnterForeground(application: UIApplication) {

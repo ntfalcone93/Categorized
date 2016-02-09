@@ -14,7 +14,6 @@ class Note: NSObject {
     let title: String
     let bodyText: String
     let dateLastEditedUTCString: String
-//    let categoryID: String
     var ref: Firebase?
     
     // Converts dateLastEditedUTCString into a date

@@ -43,18 +43,17 @@ class NoteDetailViewController: UIViewController, UIScrollViewDelegate, UITextVi
             })
         }
         
+        // Keyboard notifications
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name:UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name:UIKeyboardWillHideNotification, object: nil)
+        
+        // Saving note notification
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "saveNote", name: "appWillEnterBackground", object: nil)
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(true)
-        if let unwrappedNote = note, let unwrappedCategory = category {
-            // Only saves the note if the bodyText has changed
-            if unwrappedNote.bodyText != textView.text {
-                FirebaseController.sharedInstance.updateNote(textView.text, note: unwrappedNote, category: unwrappedCategory)
-            }
-        }
+        saveNote()
     }
     
     func keyboardWillShow(notification: NSNotification) {
@@ -90,6 +89,16 @@ class NoteDetailViewController: UIViewController, UIScrollViewDelegate, UITextVi
     
     func textViewDidChange(textView: UITextView) {
         
+    }
+    
+    // Saves note
+    func saveNote() {
+        if let unwrappedNote = note, let unwrappedCategory = category {
+            // Only saves the note if the bodyText has changed
+            if unwrappedNote.bodyText != textView.text {
+                FirebaseController.sharedInstance.updateNote(textView.text, note: unwrappedNote, category: unwrappedCategory)
+            }
+        }
     }
 }
 
