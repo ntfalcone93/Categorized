@@ -30,13 +30,13 @@ class SettingsTableViewController: UITableViewController {
         
     }
     
-    // Removes NSNotificationCenter observers when the view disappears
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(true)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "changedTheme", object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "changedFont", object: nil)
+    @IBAction func unwindFromFontViewToSettings(unwindSegue: UIStoryboardSegue) {
+        if unwindSegue.identifier == "unwindFromFontViewToSettings" {
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadData()
+            })
+        }
     }
-    
     
     // MARK: - Table view data source
     
@@ -251,11 +251,12 @@ extension SettingsTableViewController {
                         }
                     } else {
                         // Else if the font size is 18 - 24 than the font is whatever the user chose
-                        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: customFont]
+                        UINavigationBar.appearance().titleTextAttributes = [ NSFontAttributeName: customFont]
                         UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: customFont], forState: UIControlState.Normal)
                         UILabel.appearance().font = customFont
                         UITextView.appearance().font = customFont
                     }
+                    
                 }
             }
         }

@@ -23,32 +23,6 @@ class NoteDetailViewController: UIViewController, UIScrollViewDelegate, UITextVi
         
         // Backgroung Image
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
-        
-        // TextView
-        view.addSubview(textView)
-        textView.frame.size.height = self.view.frame.size.height
-        textView.frame.size.width = self.view.frame.size.width - 15
-        textView.center = self.view.center
-        textView.bounces = true
-        textView.alwaysBounceVertical = true
-        textView.backgroundColor = UIColor.clearColor()
-        
-        if let unwrappedNote = note {
-            
-            // Body text
-            FirebaseController.sharedInstance.fetchNoteWithNoteID(unwrappedNote.ref!.key, completion: { (note) -> () in
-                if let updateNote = note {
-                    self.textView.text = updateNote.bodyText
-                }
-            })
-        }
-        
-        // Keyboard notifications
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name:UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name:UIKeyboardWillHideNotification, object: nil)
-        
-        // Saving note notification
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "saveNote", name: "appWillEnterBackground", object: nil)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -105,6 +79,33 @@ class NoteDetailViewController: UIViewController, UIScrollViewDelegate, UITextVi
 extension NoteDetailViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        
+        // TextView
+        view.addSubview(textView)
+        textView.frame.size.height = self.view.frame.size.height
+        textView.frame.size.width = self.view.frame.size.width - 15
+        textView.center = self.view.center
+        textView.bounces = true
+        textView.alwaysBounceVertical = true
+        textView.backgroundColor = UIColor.clearColor()
+        
+        //
+        if let unwrappedNote = note {
+            
+            // Body text
+            FirebaseController.sharedInstance.fetchNoteWithNoteID(unwrappedNote.ref!.key, completion: { (note) -> () in
+                if let updateNote = note {
+                    self.textView.text = updateNote.bodyText
+                }
+            })
+        }
+        
+        // Keyboard notifications
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name:UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name:UIKeyboardWillHideNotification, object: nil)
+        
+        // Saving note notification
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "saveNote", name: "appWillEnterBackground", object: nil)
         
         // Theme
         if let theme = defaults.objectForKey("themeNum") {

@@ -48,7 +48,7 @@ class PickerViewController: UIViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(true)
+        super.viewWillDisappear(animated)
         // Posts notification to update the font
         NSNotificationCenter.defaultCenter().postNotificationName("changedFont", object: nil)
     }

@@ -75,6 +75,7 @@ class CategoryTableViewController: UITableViewController {
     // Unwinds from the settingsTVC
     @IBAction func unwindFromSettingsSegue(unwindSegue: UIStoryboardSegue) {
         // No additional code needed for this the function properly
+        print("unwinded")
     }
     
     // Unwinds from the loginVC
