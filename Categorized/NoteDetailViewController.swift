@@ -60,11 +60,7 @@ class NoteDetailViewController: UIViewController, UIScrollViewDelegate, UITextVi
         //        textView.frame.size.height = self.view.frame.size.height
         //        textView.frame.size.width = self.view.frame.size.width - 15
     }
-    
-    func textViewDidChange(textView: UITextView) {
         
-    }
-    
     // Saves note
     func saveNote() {
         if let unwrappedNote = note, let unwrappedCategory = category {
@@ -82,6 +78,7 @@ extension NoteDetailViewController {
         
         // TextView
         view.addSubview(textView)
+        textView.font = UIFont(name: "AmericanTypewriter", size: 20)
         textView.frame.size.height = self.view.frame.size.height
         textView.frame.size.width = self.view.frame.size.width - 15
         textView.center = self.view.center

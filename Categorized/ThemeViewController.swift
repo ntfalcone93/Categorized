@@ -20,15 +20,10 @@ class ThemeViewController: UIViewController {
         
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(true)
-        
-        NSNotificationCenter.defaultCenter().postNotificationName("changedTheme", object: nil)
-    }
-    
     // MARK: IBActions
     @IBAction func doneButtonTapped(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("changedTheme", object: nil)
     }
 }
 
@@ -108,24 +103,24 @@ extension ThemeViewController: UICollectionViewDataSource, UICollectionViewDeleg
         switch indexPath.row {
         case 0:
             defaults.setObject(0, forKey: "themeNum")
-            dismissViewControllerAnimated(true, completion: nil)
-            break
+            doneButton.tintColor = UIColor.themeOrange()
+            NSNotificationCenter.defaultCenter().postNotificationName("changedTheme", object: nil)
         case 1:
             defaults.setObject(1, forKey: "themeNum")
-            dismissViewControllerAnimated(true, completion: nil)
-            break
+            doneButton.tintColor = UIColor.themeYellow()
+            NSNotificationCenter.defaultCenter().postNotificationName("changedTheme", object: nil)
         case 2:
             defaults.setObject(2, forKey: "themeNum")
-            dismissViewControllerAnimated(true, completion: nil)
-            break
+            doneButton.tintColor = UIColor.themeGreen()
+            NSNotificationCenter.defaultCenter().postNotificationName("changedTheme", object: nil)
         case 3:
             defaults.setObject(3, forKey: "themeNum")
-            dismissViewControllerAnimated(true, completion: nil)
-            break
+            doneButton.tintColor = UIColor.themeBlue()
+            NSNotificationCenter.defaultCenter().postNotificationName("changedTheme", object: nil)
         case 4:
             defaults.setObject(4, forKey: "themeNum")
-            dismissViewControllerAnimated(true, completion: nil)
-            break
+            doneButton.tintColor = UIColor.themePink()
+            NSNotificationCenter.defaultCenter().postNotificationName("changedTheme", object: nil)
         default:
             break
         }

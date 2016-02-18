@@ -257,4 +257,64 @@ class FirebaseController: NSObject {
             }
         })
     }
+    
+    func deleteUserFromFirebase(user: User, email: String, password: String, completion: () -> ()) {
+        // Delete all of the users data
+        ref.removeUser(email, password: password) { (error) -> Void in
+            if error == nil {
+                self.ref.childByAppendingPath("users").childByAppendingPath(user.ref!.key).removeValue()
+                completion()
+            } else {
+                print("There was an error while removing the user from Firebase: \(error.localizedDescription)")
+                completion()
+            }
+        }
+    }
 }
+/*
+// Need to finish this method
+func deleteUserFromFirebase(user: User, email: String, password: String, completion: () -> ()) {
+// Delete all of the users data
+ref.removeUser(email, password: password) { (error) -> Void in
+if error == nil {
+// Fetches all of the users categories from firebase
+user.ref!.childByAppendingPath("categories").observeSingleEventOfType(.Value, withBlock: {(snapshot) -> Void in
+let allCategoryObjects = snapshot.children.allObjects
+for categoryId in allCategoryObjects {
+self.fetchCategoryWithCategoryID(categoryId.ref!.key, completion: { (category) -> () in
+if let unwrappedCategory = category {
+// Fetches all of the categories notes from firebase
+unwrappedCategory.ref!.childByAppendingPath("notes").observeSingleEventOfType(.Value, withBlock: {(snapshot) -> Void in
+let allNoteObjects = snapshot.children.allObjects
+for noteId in allNoteObjects {
+self.fetchNoteWithNoteID(noteId.ref!.key, completion: { (note) -> () in
+if let unwrappedNote = note {
+unwrappedNote.ref?.removeValue()
+}
+})
+if let noteString = noteId as? String, lastNoteString = allNoteObjects.last as? String {
+if noteString == lastNoteString {
+if let categoryString = categoryId as? String, lastCategoryString = allCategoryObjects.last as? String {
+if categoryString == lastCategoryString {
+if let user = self.currentUser {
+self.ref.childByAppendingPath("users").childByAppendingPath(user.ref!.key).removeValue()
+completion()
+}
+}
+}
+}
+}
+}
+})
+unwrappedCategory.ref!.removeValue()
+}
+})
+}
+})
+} else {
+print("There was an error while removing the user from Firebase: \(error.localizedDescription)")
+completion()
+}
+}
+}
+*/

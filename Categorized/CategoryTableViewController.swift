@@ -37,9 +37,11 @@ class CategoryTableViewController: UITableViewController {
             let count = FirebaseController.sharedInstance.usersCategories.count
             categoryCount.title = "\(count) Categories"
         }
-        
         // Allows editing
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        // Sets Edit buttons font
+        let customFont = UIFont(name: "AmericanTypeWriter", size: 18)
+        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: customFont!], forState: .Normal)
     }
     
     // MARK: IBActions
@@ -60,7 +62,7 @@ class CategoryTableViewController: UITableViewController {
     
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "categoryToNotesSegue" {
+        if segue.identifier == "categoryWithCaptionToNotesSegue" || segue.identifier == "categoryWithoutCaptionToNotesSegue" {
             let notesTVC = segue.destinationViewController as! NotesTableViewController
             if let indexPath = tableView.indexPathForSelectedRow {
                 let category = FirebaseController.sharedInstance.usersCategories[indexPath.row]
@@ -75,7 +77,6 @@ class CategoryTableViewController: UITableViewController {
     // Unwinds from the settingsTVC
     @IBAction func unwindFromSettingsSegue(unwindSegue: UIStoryboardSegue) {
         // No additional code needed for this the function properly
-        print("unwinded")
     }
     
     // Unwinds from the loginVC
@@ -85,9 +86,6 @@ class CategoryTableViewController: UITableViewController {
     
     @IBAction func unwindFromSignUpSegue(unwindSegue: UIStoryboardSegue) {
         // No additional code needed for this the function properly
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.tableView.reloadData()
-        })
     }
     
     // Checks to see if a user is logged in still and fetches that user
@@ -131,12 +129,18 @@ class CategoryTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("customCategoryCell", forIndexPath: indexPath) as! CategoryTableViewCell
-        cell.backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
+        let cellWithCaption = tableView.dequeueReusableCellWithIdentifier("categoryWithCaptionCell", forIndexPath: indexPath) as! CategoryWithCaptionTableViewCell
+        let cellWithoutCaption = tableView.dequeueReusableCellWithIdentifier("categoryWithoutCaptionCell", forIndexPath: indexPath) as! CategoryWithoutCaptionTableViewCell
+        cellWithCaption.backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
+        cellWithoutCaption.backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
         let category = FirebaseController.sharedInstance.usersCategories[indexPath.row]
-        cell.configureCellWithCategory(category)
-        
-        return cell
+        if category.caption != "" {
+            cellWithCaption.configureCellWithCategory(category)
+            return cellWithCaption
+        } else {
+            cellWithoutCaption.configureCellWithCategory(category)
+            return cellWithoutCaption
+        }
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -191,39 +195,39 @@ extension CategoryTableViewController {
         categoryCount.title = "\(count) Categories"
         
         // Font
-        if let fontSizeObject = defaults.objectForKey("fontSize"), let fontStyleObject = defaults.objectForKey("fontStyle") {
-            // Cast objects from Defaults
-            if let fontSize = fontSizeObject as? CGFloat, let fontStyle = fontStyleObject as? String {
-                if let customFont = UIFont(name: fontStyle, size: fontSize) {
-                    // If the chosen font size is bigger than 22 then the size for everything but the textView defaults to 24
-                    if fontSize >= 24 {
-                        if let bigFont = UIFont(name: fontStyle, size: 24) {
-                            UINavigationBar.appearance().titleTextAttributes = [ NSFontAttributeName: bigFont]
-                            UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: bigFont], forState: UIControlState.Normal)
-                            UILabel.appearance().font = bigFont
-                            // Text view keeps the users custom font size
-                            UITextView.appearance().font = customFont
-                        }
-                        // If the chosen font size is smaller than 20 then the size for everything but the textView defaults to 24
-                    } else if fontSize <= 18 {
-                        if let smallerFont = UIFont(name: fontStyle, size: 18) {
-                            UINavigationBar.appearance().titleTextAttributes = [ NSFontAttributeName: smallerFont]
-                            UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: smallerFont], forState: UIControlState.Normal)
-                            UILabel.appearance().font = smallerFont
-                            // Text view keeps the users custom font size
-                            UITextView.appearance().font = customFont
-                        }
-                    } else {
-                        // Else if the font size is 18 - 24 than the font is whatever the user chose
-                        UINavigationBar.appearance().titleTextAttributes = [ NSFontAttributeName: customFont]
-                        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: customFont], forState: UIControlState.Normal)
-                        UILabel.appearance().font = customFont
-                        UITextView.appearance().font = customFont
-                    }
-                    
-                }
-            }
-        }
+        //        if let fontSizeObject = defaults.objectForKey("fontSize"), let fontStyleObject = defaults.objectForKey("fontStyle") {
+        //            // Cast objects from Defaults
+        //            if let fontSize = fontSizeObject as? CGFloat, let fontStyle = fontStyleObject as? String {
+        //                if let customFont = UIFont(name: fontStyle, size: fontSize) {
+        //                    // If the chosen font size is bigger than 22 then the size for everything but the textView defaults to 24
+        //                    if fontSize >= 24 {
+        //                        if let bigFont = UIFont(name: fontStyle, size: 24) {
+        //                            UINavigationBar.appearance().titleTextAttributes = [ NSFontAttributeName: bigFont]
+        //                            UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: bigFont], forState: UIControlState.Normal)
+        //                            UILabel.appearance().font = bigFont
+        //                            // Text view keeps the users custom font size
+        //                            UITextView.appearance().font = customFont
+        //                        }
+        //                        // If the chosen font size is smaller than 20 then the size for everything but the textView defaults to 24
+        //                    } else if fontSize <= 18 {
+        //                        if let smallerFont = UIFont(name: fontStyle, size: 18) {
+        //                            UINavigationBar.appearance().titleTextAttributes = [ NSFontAttributeName: smallerFont]
+        //                            UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: smallerFont], forState: UIControlState.Normal)
+        //                            UILabel.appearance().font = smallerFont
+        //                            // Text view keeps the users custom font size
+        //                            UITextView.appearance().font = customFont
+        //                        }
+        //                    } else {
+        //                        // Else if the font size is 18 - 24 than the font is whatever the user chose
+        //                        UINavigationBar.appearance().titleTextAttributes = [ NSFontAttributeName: customFont]
+        //                        UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: customFont], forState: UIControlState.Normal)
+        //                        UILabel.appearance().font = customFont
+        //                        UITextView.appearance().font = customFont
+        //                    }
+        //
+        //                }
+        //            }
+        //        }
         
         // Theme
         if let theme = defaults.objectForKey("themeNum") {

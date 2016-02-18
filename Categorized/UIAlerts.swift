@@ -159,7 +159,7 @@ extension UIAlertController {
             animated: true,
             completion: nil)
     }
-
+    
     
     class func forgotPassword(target: UIViewController) {
         let alertController = UIAlertController(title: "Forgot Password", message: "No problem, just enter your email to reset your password.", preferredStyle: .Alert)
@@ -273,21 +273,17 @@ extension UIAlertController {
             let emailTextField = alertController.textFields![0]
             let passwordTextField = alertController.textFields![1]
             
-            if let currentUser = FirebaseController.sharedInstance.currentUser {
-                FirebaseController.sharedInstance.ref.removeUser(emailTextField.text, password: passwordTextField.text, withCompletionBlock: { (error) -> Void in
-                    if error == nil {
-                        print("Account was succesfully deleted")
-                        // TODO: Make a method to delete user and all of their content from firebase
-                        FirebaseController.sharedInstance.ref.childByAppendingPath("users").childByAppendingPath(currentUser.ref!.key).removeValue()
+            if emailTextField != "" && passwordTextField != "" {
+                if let currentUser = FirebaseController.sharedInstance.currentUser {
+                    FirebaseController.sharedInstance.deleteUserFromFirebase(currentUser, email: emailTextField.text!, password: passwordTextField.text!, completion: { () -> () in
                         // Removes userID from NSUserDefaults so user isn't logged back in
                         NSUserDefaults.standardUserDefaults().removeObjectForKey("userID")
                         // Unwinds to the categoryTVC which will send logged out user to the loginVC
                         target.performSegueWithIdentifier("unwindToCategoryTVCSegue", sender: nil)
-                    } else {
-                        print("Error deleting account: \(error)")
-                    }
-                    
-                })
+                    })
+                }
+            } else {
+                // Add alert asking the user to fill in fields
             }
         }
         

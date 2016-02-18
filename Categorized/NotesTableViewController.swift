@@ -53,6 +53,8 @@ class NotesTableViewController: UITableViewController {
                 let note = FirebaseController.sharedInstance.notesInCategory[indexPath.row]
                 noteDetailVC.note = note
                 noteDetailVC.title = note.title
+                let backItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+                navigationItem.backBarButtonItem = backItem
                 if let unwrappedCategory = self.category {
                     noteDetailVC.category = unwrappedCategory
                 }
