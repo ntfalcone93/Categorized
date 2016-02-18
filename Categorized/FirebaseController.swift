@@ -12,38 +12,97 @@ import Firebase
 class FirebaseController: NSObject {
     
     static let sharedInstance = FirebaseController()
+    //    let ref = Firebase.defaultConfig()
+    
     let ref = Firebase(url: "https://categorized.firebaseio.com")
     var currentUser: User?
     var usersCategories: [Category] = []
     var notesInCategory: [Note] = []
     
+    //    func ref() -> Firebase {
+    //        Firebase.defaultConfig().persistenceEnabled = true
+    //        return Firebase(url: "https://categorized.firebaseio.com")
+    //    }
     
     // MARK: Updating Categories and Notes
-    func updateNote(bodyText: String, note: Note) {
+    func updateNote(bodyText: String, note: Note, category: Category) {
         note.ref!.childByAppendingPath("bodyText").setValue(bodyText)
-        note.ref!.childByAppendingPath("dateLastEdited").setValue("\(NSDate())")
+        // Updates dateLastEdited with a formatted date
+        let date = NSDate()
+        let formatter = NSDateFormatter()
+        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        formatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"
+        let dateString = formatter.stringFromDate(date)
+        // Updates note
+        note.ref!.childByAppendingPath("dateLastEdited").setValue(dateString)
+        // Updates category
+        category.ref!.childByAppendingPath("dateLastEdited").setValue(dateString)
+    }
+    
+    func updateCategoriesDateLastEdited(category: Category) {
+        let date = NSDate()
+        let formatter = NSDateFormatter()
+        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        formatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"
+        let dateString = formatter.stringFromDate(date)
+        category.ref!.childByAppendingPath("dateLastEdited").setValue(dateString)
     }
     
     
     // MARK: Creating New Categories and notes
-    func createNewCategory(title: String, caption: String) {
+    func createNewCategory(title: String, caption: String, completion: () -> ()) {
         let category = Category(title: title, caption: caption)
         ref.childByAppendingPath("categories").childByAutoId().setValue(category.toAnyObject()) { (error, categoryRef) -> Void in
             if error == nil {
                 if let unwrappedUser = self.currentUser {
                     self.addCategoryToUsersCategories(categoryRef.ref!.key, user: unwrappedUser)
+                    category.ref = categoryRef
+                    self.usersCategories.append(category)
+                    completion()
                 }
+            } else {
+                print("Error creating category: \(error.localizedDescription)")
+                completion()
             }
         }
     }
     
-    func createNewNote(title: String, category: Category) {
+    func createNewNote(title: String, category: Category, completion: () -> ()) {
         let note = Note(title: title, bodyText: "")
         ref.childByAppendingPath("notes").childByAutoId().setValue(note.toAnyObject()) { (error, noteRef) -> Void in
             if error == nil {
                 self.addNoteToCategory(category, noteID: noteRef.ref!.key)
+                note.ref = noteRef
+                self.notesInCategory.append(note)
+                completion()
+            } else {
+                print("Error creating note: \(error.localizedDescription)")
+                completion()
             }
         }
+    }
+    
+    // MARK: Deleting Notes and Categories
+    func deleteCategory(category: Category, user: User) {
+        // Deletes category from Firebase
+        category.ref!.removeValue()
+        // Delete each one of the categoryies notes
+        for noteID in category.notes {
+            deleteNoteWithID(noteID)
+        }
+        // Deletes the category ref from the users array of categories
+        removeCategoryFromUsersCategories(category, user: user)
+    }
+    
+    func deleteNote(note: Note, category: Category) {
+        // Deletes note from Firebase
+        note.ref!.removeValue()
+        // Deletes the note ref from the categories array of notes
+        removeNoteFromCategory(category, note: note)
+    }
+    
+    func deleteNoteWithID(noteID: String) {
+        ref.childByAppendingPath("notes").childByAppendingPath(noteID).removeValue()
     }
     
     // MARK: Fetching Categories and Notes
@@ -51,7 +110,7 @@ class FirebaseController: NSObject {
     func fetchUsersCategories(user: User, completion:() -> ()) {
         usersCategories.removeAll()
         let userCategoriesRef = user.ref!.childByAppendingPath("categories")
-        userCategoriesRef.queryOrderedByValue().observeEventType(.Value, withBlock: {(snapshot) -> Void in
+        userCategoriesRef.queryOrderedByValue().observeSingleEventOfType(.Value, withBlock: {(snapshot) -> Void in
             let categoryIDs = snapshot.children.allObjects
             for categoryID in categoryIDs {
                 self.fetchCategoryWithCategoryID(categoryID.ref!.key, completion: { (category) -> () in
@@ -59,6 +118,7 @@ class FirebaseController: NSObject {
                         self.usersCategories.append(unwrappedCategory)
                     }
                     if categoryID.ref!.key == categoryIDs.last!.ref!.key {
+                        self.usersCategories.sortInPlace({$0.dateLastEditedUTCString > $1.dateLastEditedUTCString})
                         completion()
                     }
                 })
@@ -74,14 +134,13 @@ class FirebaseController: NSObject {
             let category = Category(snapshot: snapshot)
             completion(category)
         })
-        // TODO: Do I need this       completion(nil)
     }
     
     // Notes
     func fetchCategoriesNotes(category: Category, completion:() -> ()) {
         notesInCategory.removeAll()
         let notesRef = category.ref!.childByAppendingPath("notes")
-        notesRef.queryOrderedByValue().observeEventType(.Value, withBlock: {(snapshot) -> Void in
+        notesRef.queryOrderedByValue().observeSingleEventOfType(.Value, withBlock: {(snapshot) -> Void in
             let noteIDs = snapshot.children.allObjects
             for noteID in noteIDs {
                 self.fetchNoteWithNoteID(noteID.ref!.key, completion: { (note) -> () in
@@ -89,6 +148,7 @@ class FirebaseController: NSObject {
                         self.notesInCategory.append(unwrappedNote)
                     }
                     if noteID.ref!.key == noteIDs.last!.ref!.key {
+                        self.notesInCategory.sortInPlace({$0.dateLastEditedUTCString > $1.dateLastEditedUTCString})
                         completion()
                     }
                 })
@@ -158,10 +218,15 @@ class FirebaseController: NSObject {
         ref.childByAppendingPath("categories").childByAppendingPath(category.ref!.key).childByAppendingPath("notes").childByAppendingPath(note.ref!.key).removeValue()
     }
     
+    //
+    func wipeArraysForNewUser() {
+        self.usersCategories.removeAll()
+        self.notesInCategory.removeAll()
+    }
     
     // MARK: User creation
     // Create new user
-    func createUserInFirebase(email: String, password: String) {
+    func createUserInFirebase(email: String, password: String, completion: () -> ()) {
         // create user
         ref.createUser(email, password: password, withCompletionBlock: { (error) -> Void in
             if error == nil {
@@ -174,65 +239,82 @@ class FirebaseController: NSObject {
                             if error == nil {
                                 // Sets userID in NSUserDefaults making it easier for user to login
                                 NSUserDefaults.standardUserDefaults().setObject(auth.uid, forKey: "userID")
-                                // Gives them a home category
-                                self.createHomeCategory({ (firebase) -> () in
-                                    if let ref = firebase {
-                                        userRef.childByAppendingPath("categories").childByAppendingPath("\(ref.key)").setValue(true)
-                                    }
-                                })
-                                // Gives them a work category
-                                self.createWorkCategory({ (firebase) -> () in
-                                    if let ref = firebase {
-                                        userRef.childByAppendingPath("categories").childByAppendingPath("\(ref.key)").setValue(true)
-                                    }
-                                })
+                                completion()
+                                
                             } else {
                                 print("Error setting users properties: \(error.localizedDescription)")
+                                completion()
                             }
                         })
                     } else {
                         print("Error while authenticating user: \(error.localizedDescription)")
+                        completion()
                     }
                 })
             } else {
                 print("Error while creating user: \(error.localizedDescription)")
+                completion()
             }
         })
     }
     
-    // Stock categories when user first creates an account
-    func createHomeCategory(completion: (Firebase?) -> ()) {
-        let homeCategory = Category(title: "Home", caption: "")
-        ref.childByAppendingPath("categories").childByAutoId().setValue(homeCategory.toAnyObject()) { (error, firebaseRef) -> Void in
+    func deleteUserFromFirebase(user: User, email: String, password: String, completion: () -> ()) {
+        // Delete all of the users data
+        ref.removeUser(email, password: password) { (error) -> Void in
             if error == nil {
-                let note = Note(title: "New note", bodyText: "")
-                self.ref.childByAppendingPath("notes").childByAutoId().setValue(note.toAnyObject(), withCompletionBlock: { (error, noteRef) -> Void in
-                    if error == nil {
-                        firebaseRef.childByAppendingPath("notes").childByAppendingPath(noteRef.key).setValue(true)
-                    }
-                })
-                completion(firebaseRef)
+                self.ref.childByAppendingPath("users").childByAppendingPath(user.ref!.key).removeValue()
+                completion()
             } else {
-                completion(nil)
+                print("There was an error while removing the user from Firebase: \(error.localizedDescription)")
+                completion()
             }
         }
-        completion(nil)
-    }
-    func createWorkCategory(completion: (Firebase?) -> ()) {
-        let workCategory = Category(title: "Work", caption: "")
-        ref.childByAppendingPath("categories").childByAutoId().setValue(workCategory.toAnyObject()) { (error, firebaseRef) -> Void in
-            if error == nil {
-                let note = Note(title: "New note", bodyText: "")
-                self.ref.childByAppendingPath("notes").childByAutoId().setValue(note.toAnyObject(), withCompletionBlock: { (error, noteRef) -> Void in
-                    if error == nil {
-                        firebaseRef.childByAppendingPath("notes").childByAppendingPath(noteRef.key).setValue(true)
-                    }
-                })
-                completion(firebaseRef)
-            } else {
-                completion(nil)
-            }
-        }
-        completion(nil)
     }
 }
+/*
+// Need to finish this method
+func deleteUserFromFirebase(user: User, email: String, password: String, completion: () -> ()) {
+// Delete all of the users data
+ref.removeUser(email, password: password) { (error) -> Void in
+if error == nil {
+// Fetches all of the users categories from firebase
+user.ref!.childByAppendingPath("categories").observeSingleEventOfType(.Value, withBlock: {(snapshot) -> Void in
+let allCategoryObjects = snapshot.children.allObjects
+for categoryId in allCategoryObjects {
+self.fetchCategoryWithCategoryID(categoryId.ref!.key, completion: { (category) -> () in
+if let unwrappedCategory = category {
+// Fetches all of the categories notes from firebase
+unwrappedCategory.ref!.childByAppendingPath("notes").observeSingleEventOfType(.Value, withBlock: {(snapshot) -> Void in
+let allNoteObjects = snapshot.children.allObjects
+for noteId in allNoteObjects {
+self.fetchNoteWithNoteID(noteId.ref!.key, completion: { (note) -> () in
+if let unwrappedNote = note {
+unwrappedNote.ref?.removeValue()
+}
+})
+if let noteString = noteId as? String, lastNoteString = allNoteObjects.last as? String {
+if noteString == lastNoteString {
+if let categoryString = categoryId as? String, lastCategoryString = allCategoryObjects.last as? String {
+if categoryString == lastCategoryString {
+if let user = self.currentUser {
+self.ref.childByAppendingPath("users").childByAppendingPath(user.ref!.key).removeValue()
+completion()
+}
+}
+}
+}
+}
+}
+})
+unwrappedCategory.ref!.removeValue()
+}
+})
+}
+})
+} else {
+print("There was an error while removing the user from Firebase: \(error.localizedDescription)")
+completion()
+}
+}
+}
+*/

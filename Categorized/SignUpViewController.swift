@@ -14,11 +14,31 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var createAccountButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var signUpLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
+        
+        // Keeps the labels and buttons the correct font and size
+        signUpLabel.font = UIFont(name: "AmericanTypewriter", size: 40)
+        emailTextField.font = UIFont(name: "AmericanTypewriter", size: 14)
+        passwordTextField.font = UIFont(name: "AmericanTypewriter", size: 14)
+        confirmPasswordTextField.font = UIFont(name: "AmericanTypewriter", size: 14)
+        
+        
+        // Create Account button
+        createAccountButton.titleLabel?.font = UIFont(name: "AmericanTypewriter", size: 24)
+        createAccountButton.layer.cornerRadius = 22
+        createAccountButton.layer.borderColor = UIColor.clearColor().CGColor
+        createAccountButton.layer.borderWidth = 2
+        createAccountButton.layer.shadowColor = UIColor.grayColor().CGColor
+        createAccountButton.layer.shadowOffset = CGSizeMake(1, 2)
+        createAccountButton.layer.shadowRadius = 1.0
+        createAccountButton.layer.shadowOpacity = 1.0
     }
     
     override func didReceiveMemoryWarning() {
@@ -31,8 +51,9 @@ class SignUpViewController: UIViewController {
         if passwordTextField.text == confirmPasswordTextField.text && passwordTextField.text != "" {
             // Code to create accout
             if let email = emailTextField.text, let password = passwordTextField.text {
-                FirebaseController.sharedInstance.createUserInFirebase(email, password: password)
-                dismissViewControllerAnimated(true, completion: nil)
+                FirebaseController.sharedInstance.createUserInFirebase(email, password: password, completion: { () -> () in
+                    self.performSegueWithIdentifier("unwindFromSignUpSegue", sender: nil)
+                })
             }
         } else {
             print("Error occured while signing up user")
@@ -43,16 +64,19 @@ class SignUpViewController: UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+    // Tap gesture resigns keyboard
+    @IBAction func resignKeyboardGestureTapped(sender: AnyObject) {
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        confirmPasswordTextField.resignFirstResponder()
     }
-    */
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "unwindFromSignUpSegue" {
+            let categoryTVC = segue.destinationViewController as! CategoryTableViewController
+            categoryTVC.userWasSentToLogin = true
+        }
+    }
 }
 
 extension SignUpViewController : UITextFieldDelegate {

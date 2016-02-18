@@ -12,20 +12,36 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var forgotPasswordButton: UIButton!
+    @IBOutlet weak var categorizedLabel: UILabel!
+    @IBOutlet weak var dontHaveAccountButton: UIButton!
     let defaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Background Image
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
         
+        // Keeps the labels and buttons the correct font and size
+        categorizedLabel.font = UIFont(name: "AmericanTypewriter", size: 50)
+        emailTextField.font = UIFont(name: "AmericanTypewriter", size: 14)
+        passwordTextField.font = UIFont(name: "AmericanTypewriter", size: 14)
+        forgotPasswordButton.titleLabel?.font = UIFont(name: "AmericanTypewriter", size: 13)
+        dontHaveAccountButton.titleLabel?.font = UIFont(name: "AmericanTypewriter", size: 15)
         
-        // Do any additional setup after loading the view.
+        // Sign In button
+        signInButton.titleLabel?.font = UIFont(name: "AmericanTypewriter", size: 26)
+        signInButton.layer.cornerRadius = 22
+        signInButton.layer.borderColor = UIColor.clearColor().CGColor
+        signInButton.layer.borderWidth = 2
+        signInButton.layer.shadowColor = UIColor.grayColor().CGColor
+        signInButton.layer.shadowOffset = CGSizeMake(1, 2)
+        signInButton.layer.shadowRadius = 1.0
+        signInButton.layer.shadowOpacity = 1.0
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     // MARK: IBActions
     @IBAction func loginButtonTapped(sender: AnyObject) {
         if let email = emailTextField.text, let password = passwordTextField.text {
@@ -34,10 +50,14 @@ class LoginViewController: UIViewController {
                     FirebaseController.sharedInstance.retrieveCurrentUserWithUserID(auth.uid, completion: { (user) -> () in
                         if user != nil {
                             self.defaults.setObject(auth.uid, forKey: "userID")
-                            self.dismissViewControllerAnimated(true, completion: nil)
+                            self.performSegueWithIdentifier("unwindFromLoginToCategoryTVC", sender: nil)
                         }
                     })
+                } else if error.localizedDescription == "NETWORK_ERROR" {
+                    UIAlertController.connectionErrorAlert(self)
+                    print("Error while logging user in: \(error.localizedDescription)")
                 } else {
+                    UIAlertController.invalidLoginAlert(self)
                     print("Error while logging user in: \(error.localizedDescription)")
                 }
             })
@@ -48,12 +68,21 @@ class LoginViewController: UIViewController {
         UIAlertController.forgotPassword(self)
     }
     
+    // Tap gesture resigns keyboard
+    @IBAction func resignKeyboardGestureTapped(sender: AnyObject) {
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+    }
+    
     // MARK: - Navigation
     override func unwindForSegue(unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+        if segue.identifier == "unwindFromLoginToCategoryTVC" {
+            let categoryTVC = segue.destinationViewController as! CategoryTableViewController
+            categoryTVC.userWasSentToLogin = true
+        }
     }
 }
 

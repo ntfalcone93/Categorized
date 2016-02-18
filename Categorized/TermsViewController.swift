@@ -9,31 +9,52 @@
 import UIKit
 
 class TermsViewController: UIViewController {
+    
+    let defaults = NSUserDefaults.standardUserDefaults()
+    @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var textView: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
+        
+        // Theme
+        if let theme = defaults.objectForKey("themeNum") {
+            if let colorIndex = theme as? Int {
+                switch colorIndex {
+                case 0:
+                    doneButton.tintColor = UIColor.themeOrange()
+                    break
+                case 1:
+                    doneButton.tintColor = UIColor.themeYellow()
+                    break
+                case 2:
+                    doneButton.tintColor = UIColor.themeGreen()
+                    break
+                case 3:
+                    doneButton.tintColor = UIColor.themeBlue()
+                    break
+                case 4:
+                    doneButton.tintColor = UIColor.themePink()
+                    break
+                default:
+                    doneButton.tintColor = UIColor.themeYellow()
+                    break
+                }
+            }
+        } else {
+            doneButton.tintColor = UIColor.themeYellow()
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    // Starts text view at top
+    override func viewDidLayoutSubviews() {
+        textView.setContentOffset(CGPoint.zero, animated: false)
     }
     
     // IBActions
     @IBAction func doneButtonTapped(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
