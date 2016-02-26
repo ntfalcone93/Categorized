@@ -51,13 +51,14 @@ class CategoryTableViewController: UITableViewController {
     
     // New button
     @IBAction func newButtonTapped(sender: AnyObject) {
-        UIAlertController.createNewCategory(self) { () -> () in
-            let count = FirebaseController.sharedInstance.usersCategories.count
-            self.categoryCount.title = "\(count) Categories"
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.tableView.reloadData()
-            })
-        }
+
+//        UIAlertController.createNewCategory(self) { () -> () in
+//            let count = FirebaseController.sharedInstance.usersCategories.count
+//            self.categoryCount.title = "\(count) Categories"
+//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                self.tableView.reloadData()
+//            })
+//        }
     }
     
     // MARK: - Navigation
@@ -70,6 +71,10 @@ class CategoryTableViewController: UITableViewController {
                 notesTVC.navigationItem.title = category.title
                 let backItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
                 navigationItem.backBarButtonItem = backItem
+            }
+        } else if segue.identifier == "toNewCategoryVC" {
+            if let newCategoryVC = segue.destinationViewController as? NewCategoryViewController {
+                newCategoryVC.modalPresentationStyle = .OverCurrentContext
             }
         }
     }

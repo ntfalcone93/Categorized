@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -454,7 +455,7 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                                 <rect key="frame" x="0.0" y="92" width="600" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1FE-cO-NVV" id="PNE-o8-mhr">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# notes" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJ9-pF-fAx">
@@ -504,7 +505,7 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                                 <rect key="frame" x="0.0" y="162" width="600" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gav-Rz-4ZO" id="riX-Qm-V7C">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="54.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="55"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# notes" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruy-XF-9cB">
@@ -553,6 +554,7 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                         <barButtonItem title="New" id="I2P-lM-7XB">
                             <connections>
                                 <action selector="newButtonTapped:" destination="CSX-H8-Roa" id="Hzd-Qw-fv6"/>
+                                <segue destination="IoY-Mi-bQ0" kind="showDetail" identifier="toNewCategoryVC" id="et0-Fr-iTw"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -591,13 +593,13 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                                 <rect key="frame" x="0.0" y="92" width="600" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AuC-xN-eIy" id="UVc-uM-PZ3">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOA-4k-Flr">
                                             <rect key="frame" x="15" y="8" width="570" height="34"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -812,7 +814,7 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                                 <rect key="frame" x="0.0" y="92" width="600" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yyG-iN-ngX" id="2bY-fg-NAW">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qER-dN-o3e">
@@ -920,6 +922,139 @@ You will comply with all applicable laws when using or accessing Categorized.</s
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FpK-K7-AUE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="406" y="409"/>
+        </scene>
+        <!--New Category View Controller-->
+        <scene sceneID="bsG-lf-ujf">
+            <objects>
+                <viewController id="IoY-Mi-bQ0" customClass="NewCategoryViewController" customModule="Categorized" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VGd-Db-RJ3"/>
+                        <viewControllerLayoutGuide type="bottom" id="bVc-QS-9Fr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Q6L-lL-lY9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JJE-o3-kYD">
+                                <rect key="frame" x="180" y="70" width="240" height="220"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPj-Zy-VHV">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="30"/>
+                                        <color key="backgroundColor" red="0.89411764709999997" green="0.69411764710000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="AkD-x8-nER"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a new category with a title and caption" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhT-eh-0sk">
+                                        <rect key="frame" x="8" y="34" width="224" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MsS-S3-OYe">
+                                        <rect key="frame" x="8" y="87" width="224" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="VEt-Xu-8Xv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Caption" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="evX-zE-ccy">
+                                        <rect key="frame" x="8" y="125" width="224" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="gHF-yn-LLW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Pp-rW-KAM">
+                                        <rect key="frame" x="0.0" y="171" width="120" height="49"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="43H-yG-Eku">
+                                                <rect key="frame" x="33" y="7" width="55" height="35"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                <state key="normal" title="Cancel"/>
+                                                <connections>
+                                                    <action selector="cancelTapped:" destination="IoY-Mi-bQ0" eventType="touchUpInside" id="PfW-mX-Hlz"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="43H-yG-Eku" firstAttribute="centerX" secondItem="6Pp-rW-KAM" secondAttribute="centerX" id="0Zp-Fh-tJ1"/>
+                                            <constraint firstItem="43H-yG-Eku" firstAttribute="centerY" secondItem="6Pp-rW-KAM" secondAttribute="centerY" id="MtV-XB-5Lu"/>
+                                            <constraint firstAttribute="trailing" secondItem="43H-yG-Eku" secondAttribute="trailing" constant="32" id="P24-Ko-dGe"/>
+                                            <constraint firstItem="43H-yG-Eku" firstAttribute="top" secondItem="6Pp-rW-KAM" secondAttribute="top" constant="7" id="fyz-kK-Uk1"/>
+                                            <constraint firstItem="43H-yG-Eku" firstAttribute="leading" secondItem="6Pp-rW-KAM" secondAttribute="leading" constant="33" id="hlj-G6-IXV"/>
+                                            <constraint firstAttribute="bottom" secondItem="43H-yG-Eku" secondAttribute="bottom" constant="7" id="sgC-fq-kdA"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LzI-Oj-H5s">
+                                        <rect key="frame" x="120" y="171" width="120" height="49"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="303-pV-7HD">
+                                                <rect key="frame" x="37" y="7" width="46" height="35"/>
+                                                <state key="normal" title="Create"/>
+                                                <connections>
+                                                    <action selector="createTapped:" destination="IoY-Mi-bQ0" eventType="touchUpInside" id="36f-Xb-eSM"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="303-pV-7HD" firstAttribute="centerX" secondItem="LzI-Oj-H5s" secondAttribute="centerX" id="1v9-yG-OeR"/>
+                                            <constraint firstAttribute="bottom" secondItem="303-pV-7HD" secondAttribute="bottom" constant="7" id="6p1-ne-s3b"/>
+                                            <constraint firstItem="303-pV-7HD" firstAttribute="top" secondItem="LzI-Oj-H5s" secondAttribute="top" constant="7" id="GZh-V2-dym"/>
+                                            <constraint firstItem="303-pV-7HD" firstAttribute="leading" secondItem="LzI-Oj-H5s" secondAttribute="leading" constant="37" id="ba4-rx-b5s"/>
+                                            <constraint firstItem="303-pV-7HD" firstAttribute="centerY" secondItem="LzI-Oj-H5s" secondAttribute="centerY" id="hyW-Xs-ISS"/>
+                                            <constraint firstAttribute="trailing" secondItem="303-pV-7HD" secondAttribute="trailing" constant="37" id="kdx-Jn-664"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="MsS-S3-OYe" firstAttribute="leading" secondItem="JJE-o3-kYD" secondAttribute="leading" constant="8" id="4ea-12-r0O"/>
+                                    <constraint firstItem="evX-zE-ccy" firstAttribute="height" secondItem="MsS-S3-OYe" secondAttribute="height" id="90w-mP-BtG"/>
+                                    <constraint firstAttribute="trailing" secondItem="evX-zE-ccy" secondAttribute="trailing" constant="8" id="96o-uY-C2c"/>
+                                    <constraint firstItem="BhT-eh-0sk" firstAttribute="top" secondItem="bPj-Zy-VHV" secondAttribute="bottom" constant="4" id="9BO-31-Nfq"/>
+                                    <constraint firstItem="evX-zE-ccy" firstAttribute="top" secondItem="MsS-S3-OYe" secondAttribute="bottom" constant="8" id="AdI-ld-3qD"/>
+                                    <constraint firstItem="MsS-S3-OYe" firstAttribute="top" secondItem="BhT-eh-0sk" secondAttribute="bottom" constant="17" id="J1S-Ww-7ic"/>
+                                    <constraint firstItem="6Pp-rW-KAM" firstAttribute="leading" secondItem="JJE-o3-kYD" secondAttribute="leading" id="Jlf-gn-O1G"/>
+                                    <constraint firstAttribute="bottom" secondItem="6Pp-rW-KAM" secondAttribute="bottom" id="LTy-MC-x63"/>
+                                    <constraint firstAttribute="trailing" secondItem="bPj-Zy-VHV" secondAttribute="trailing" id="NL0-2M-vnI"/>
+                                    <constraint firstItem="LzI-Oj-H5s" firstAttribute="width" secondItem="6Pp-rW-KAM" secondAttribute="width" id="OMw-pJ-7Ug"/>
+                                    <constraint firstAttribute="trailing" secondItem="BhT-eh-0sk" secondAttribute="trailing" constant="8" id="Qjh-Fv-dRA"/>
+                                    <constraint firstItem="evX-zE-ccy" firstAttribute="leading" secondItem="JJE-o3-kYD" secondAttribute="leading" constant="8" id="ROa-7y-ioC"/>
+                                    <constraint firstItem="BhT-eh-0sk" firstAttribute="leading" secondItem="JJE-o3-kYD" secondAttribute="leading" constant="8" id="SNB-Lk-h9h"/>
+                                    <constraint firstAttribute="bottom" secondItem="LzI-Oj-H5s" secondAttribute="bottom" id="USY-f4-Sc5"/>
+                                    <constraint firstItem="LzI-Oj-H5s" firstAttribute="top" secondItem="evX-zE-ccy" secondAttribute="bottom" constant="16" id="VJu-1w-jED"/>
+                                    <constraint firstItem="bPj-Zy-VHV" firstAttribute="top" secondItem="JJE-o3-kYD" secondAttribute="top" id="WX7-f1-leX"/>
+                                    <constraint firstItem="6Pp-rW-KAM" firstAttribute="top" secondItem="evX-zE-ccy" secondAttribute="bottom" constant="16" id="bc2-HY-PzK"/>
+                                    <constraint firstItem="LzI-Oj-H5s" firstAttribute="leading" secondItem="6Pp-rW-KAM" secondAttribute="trailing" id="dLT-ou-a2n"/>
+                                    <constraint firstItem="bPj-Zy-VHV" firstAttribute="leading" secondItem="JJE-o3-kYD" secondAttribute="leading" id="dWw-AZ-GAw"/>
+                                    <constraint firstAttribute="trailing" secondItem="MsS-S3-OYe" secondAttribute="trailing" constant="8" id="gKT-Ha-G9U"/>
+                                    <constraint firstAttribute="width" constant="240" id="qP9-wG-CZo"/>
+                                    <constraint firstItem="LzI-Oj-H5s" firstAttribute="height" secondItem="6Pp-rW-KAM" secondAttribute="height" id="w0E-xM-AMe"/>
+                                    <constraint firstAttribute="trailing" secondItem="LzI-Oj-H5s" secondAttribute="trailing" id="xN4-oP-FGi"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="JJE-o3-kYD" firstAttribute="centerX" secondItem="Q6L-lL-lY9" secondAttribute="centerX" id="1QH-jP-4es"/>
+                            <constraint firstItem="JJE-o3-kYD" firstAttribute="top" secondItem="VGd-Db-RJ3" secondAttribute="bottom" constant="50" id="Ots-VT-OcE"/>
+                            <constraint firstItem="JJE-o3-kYD" firstAttribute="height" secondItem="Q6L-lL-lY9" secondAttribute="height" multiplier="0.5" constant="-80" id="Q60-4n-YGN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="alertView" destination="JJE-o3-kYD" id="TSh-X4-diK"/>
+                        <outlet property="captionTextField" destination="evX-zE-ccy" id="9M2-DT-gST"/>
+                        <outlet property="titleTextField" destination="MsS-S3-OYe" id="qMm-rg-SdX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kvp-av-WE8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="406" y="1082"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UYv-yX-fnZ">
