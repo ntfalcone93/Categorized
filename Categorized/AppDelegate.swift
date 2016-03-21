@@ -24,18 +24,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         // Background Image
-        UINavigationBar.appearance().barTintColor = UIColor(patternImage: UIImage(named: "paper")!)
+        UINavigationBar.appearance().barTintColor = UIColor(patternImage: UIImage(named: "yellowNavTexture")!)
+        UINavigationBar.appearance().tintColor = .blackColor()
+        UIToolbar.appearance().tintColor = .blackColor()
         UITableView.appearance().backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
         UITableViewCell.appearance().backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
         UIPickerView.appearance().backgroundColor = UIColor(patternImage: UIImage(named: "paper")!)
-        UIToolbar.appearance().barTintColor = UIColor(patternImage: UIImage(named: "paper")!)
         
         // Font
-        UILabel.appearance().font = UIFont(name: "AmericanTypeWriter", size: 18)
-        let customFont = UIFont(name: "AmericanTypeWriter", size: 18)
+        UILabel.appearance().font = UIFont(name: ".SFUIRounded-Medium", size: 18)
+        let customFont = UIFont(name: ".SFUIDisplay-Medium", size: 18)
         UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: customFont!], forState: UIControlState.Normal)
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: customFont!]
-        UITextView.appearance().font = UIFont(name: "AmericanTypeWriter", size: 18)
+        UITextView.appearance().font = UIFont(name: ".SFUIDisplay-Medium", size: 18)
         
         return true
     }

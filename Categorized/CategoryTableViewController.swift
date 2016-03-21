@@ -38,10 +38,8 @@ class CategoryTableViewController: UITableViewController {
             categoryCount.title = "\(count) Categories"
         }
         // Allows editing
-        self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        // Sets Edit buttons font
-        let customFont = UIFont(name: "AmericanTypeWriter", size: 18)
-        self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: customFont!], forState: .Normal)
+        //TODO: Take this edit function out
+//        self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     // MARK: IBActions
@@ -51,14 +49,14 @@ class CategoryTableViewController: UITableViewController {
     
     // New button
     @IBAction func newButtonTapped(sender: AnyObject) {
-
-//        UIAlertController.createNewCategory(self) { () -> () in
-//            let count = FirebaseController.sharedInstance.usersCategories.count
-//            self.categoryCount.title = "\(count) Categories"
-//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                self.tableView.reloadData()
-//            })
-//        }
+        
+        //        UIAlertController.createNewCategory(self) { () -> () in
+        //            let count = FirebaseController.sharedInstance.usersCategories.count
+        //            self.categoryCount.title = "\(count) Categories"
+        //            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        //                self.tableView.reloadData()
+        //            })
+        //        }
     }
     
     // MARK: - Navigation
@@ -233,47 +231,5 @@ extension CategoryTableViewController {
         //                }
         //            }
         //        }
-        
-        // Theme
-        if let theme = defaults.objectForKey("themeNum") {
-            if let colorIndex = theme as? Int {
-                switch colorIndex {
-                case 0:
-                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeOrange()
-                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeOrange()
-                    newCategoryButton.tintColor = UIColor.themeOrange()
-                    break
-                case 1:
-                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
-                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
-                    newCategoryButton.tintColor = UIColor.themeYellow()
-                    break
-                case 2:
-                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeGreen()
-                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeGreen()
-                    newCategoryButton.tintColor = UIColor.themeGreen()
-                    break
-                case 3:
-                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeBlue()
-                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeBlue()
-                    newCategoryButton.tintColor = UIColor.themeBlue()
-                    break
-                case 4:
-                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themePink()
-                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themePink()
-                    newCategoryButton.tintColor = UIColor.themePink()
-                    break
-                default:
-                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
-                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
-                    newCategoryButton.tintColor = UIColor.themeYellow()
-                    break
-                }
-            }
-        } else {
-            navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
-            navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
-            newCategoryButton.tintColor = UIColor.themeYellow()
-        }
     }
 }

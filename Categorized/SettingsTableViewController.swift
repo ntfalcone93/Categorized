@@ -20,7 +20,7 @@ class SettingsTableViewController: UITableViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFont", name: "changedFont", object: nil)
         
         // Sets Done buttons font
-        let customFont = UIFont(name: "AmericanTypeWriter", size: 18)
+        let customFont = UIFont(name: ".SFUIText-Light", size: 18)
         self.navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: customFont!], forState: .Normal)
     }
     
@@ -164,40 +164,6 @@ extension SettingsTableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        // Theme
-        if let theme = defaults.objectForKey("themeNum") {
-            if let colorIndex = theme as? Int {
-                switch colorIndex {
-                case 0:
-                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeOrange()
-                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeOrange()
-                    break
-                case 1:
-                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
-                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
-                    break
-                case 2:
-                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeGreen()
-                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeGreen()
-                    break
-                case 3:
-                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeBlue()
-                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeBlue()
-                    break
-                case 4:
-                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themePink()
-                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themePink()
-                    break
-                default:
-                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
-                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
-                    break
-                }
-            }
-        } else {
-            navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
-            navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
-        }
         
         // Font
         //        if let fontSizeObject = defaults.objectForKey("fontSize"), let fontStyleObject = defaults.objectForKey("fontStyle") {
@@ -233,43 +199,6 @@ extension SettingsTableViewController {
         //                }
         //            }
         //        }
-    }
-    
-    func updateTheme() {
-        // Theme
-        if let theme = defaults.objectForKey("themeNum") {
-            if let colorIndex = theme as? Int {
-                switch colorIndex {
-                case 0:
-                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeOrange()
-                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeOrange()
-                    break
-                case 1:
-                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
-                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
-                    break
-                case 2:
-                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeGreen()
-                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeGreen()
-                    break
-                case 3:
-                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeBlue()
-                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeBlue()
-                    break
-                case 4:
-                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themePink()
-                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themePink()
-                    break
-                default:
-                    navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
-                    navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
-                    break
-                }
-            }
-        } else {
-            navigationItem.leftBarButtonItem?.tintColor = UIColor.themeYellow()
-            navigationItem.rightBarButtonItem?.tintColor = UIColor.themeYellow()
-        }
     }
     
     func updateFont() {
